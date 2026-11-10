@@ -43,6 +43,11 @@ O projeto foi construído seguindo uma estrita filosofia **Mobile-First**, garan
    - As categorias dos rituais contam com rolagem horizontal contínua (*momentum scrolling*) e centralização automática no toque.
 5. **Slider Antes / Depois Responsivo:**
    - O comparador de transformações aceita toque direto com o polegar, drag por mouse e controle deslizante acessível com indicador circular dourado de 48px e `touch-action: pan-y` para não interromper a rolagem natural da página.
+6. **Máscaras e Validação Dinâmica de Telefone:**
+   - Formatação automática em tempo real para números celulares `(11) 99999-9999` nos campos de contato e agendamento.
+   - Restrição de data mínima para hoje (`min="YYYY-MM-DD"`), prevenindo agendamentos em datas passadas.
+7. **Scroll Reveal Animations:**
+   - Transições de revelação suave com Intersection Observer, respeitando as preferências de redução de movimento do sistema (`prefers-reduced-motion: reduce`).
 
 ---
 
@@ -83,7 +88,7 @@ O projeto foi construído seguindo uma estrita filosofia **Mobile-First**, garan
 10. **Depoimentos & Reputação:**
     - Citações reais de noivas e clientes assíduas dos Jardins com avaliação 5 estrelas.
 11. **Agendamento & Concierge Exclusivo:**
-    - Formulário completo para solicitação de reserva, quadro de horários e destaque do serviço de Valet VIP gratuito.
+    - Formulário completo para solicitação de reserva, quadro de horários e destaque do serviço de manobrista (Valet VIP).
 12. **Newsletter AURA Privilège:**
     - Inscrição minimalista para recebimento de privilégios e convites.
 13. **Rodapé Oficial:**
@@ -104,18 +109,14 @@ O projeto está configurado para execução isolada e de alta performance via Do
 - **Porta Mapeada:** `http://localhost:3000` (evitando qualquer colisão de portas com outros projetos).
 - **Docker Compose:** Serviço `aura-landing` configurado com recarregamento em tempo real via montagem de volumes.
 
-### Comandos de Operação Docker:
-```bash
-# Subir a aplicação em segundo plano com build
-docker compose up -d --build
+---
 
-# Verificar status do container
-docker ps --filter "name=aura-maison-web"
+## 6. Governança do Repositório Git & `.gitignore`
 
-# Visualizar logs do Nginx
-docker logs -f aura-maison-web
-
-# Parar o container
-docker compose down
-```
-
+O arquivo `.gitignore` foi configurado para manter o repositório limpo, leve e seguro:
+- **Dependências & Gerenciadores:** `node_modules/`, `.npm`, `.yarn/`, `package-lock.json`.
+- **Logs & Depuração:** `*.log`, `npm-debug.log*`, `docker-compose.override.yml`.
+- **Segredos & Variáveis de Ambiente:** `.env`, `.env.local`, `.env.*.local`.
+- **Arquivos do Sistema:** `.DS_Store`, `Thumbs.db`, `desktop.ini`.
+- **IDEs & Editores:** `.vscode/`, `.idea/`, `*.swp`.
+- **Binários Pesados de Mockup:** `*.pdf` (preservando o repositório sem arquivos pesados de briefing).

@@ -1,6 +1,6 @@
 /**
  * AURA MAISON DE BEAUTÉ — MAIN JAVASCRIPT
- * Interatividades Touch-First, Mobile Sheet, Comparador e Concierge
+ * Interatividades Touch-First, Mobile Sheet, Comparador, Máscaras e Scroll Reveal
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initBookingModal();
   initFormsAndToasts();
   initActiveNavOnScroll();
+  initPhoneMasks();
+  initMinDates();
+  initScrollReveal();
 });
 
 /* ==========================================================================
@@ -99,7 +102,7 @@ function initMobileMenu() {
     }
   });
 
-  // Swipe right to close drawer
+  // Gesto swipe para a direita fecha o menu no celular
   let touchStartX = 0;
   drawer.addEventListener('touchstart', (e) => {
     touchStartX = e.touches[0].clientX;
@@ -159,7 +162,7 @@ function initBeforeAfterSlider() {
     handlePointerMove(e.clientX);
   });
 
-  // Suporte Touch Nativo (com pan-y preservando rolagem vertical suave)
+  // Suporte Touch Nativo (pan-y preservando rolagem vertical suave)
   comparisonCard.addEventListener('touchstart', (e) => {
     if (e.touches.length > 0) {
       handlePointerMove(e.touches[0].clientX);
@@ -167,9 +170,8 @@ function initBeforeAfterSlider() {
   }, { passive: true });
 
   comparisonCard.addEventListener('touchmove', (e) => {
-    if (e.touches.length > 0) {
-      handlePointerMove(e.touches[0].clientX);
-    }
+    if (!isDragging || e.touches.length === 0) return;
+    handlePointerMove(e.touches[0].clientX);
   }, { passive: true });
 
   // Posição inicial: 50%
@@ -241,6 +243,12 @@ function initBookingModal() {
         }
       }
     }
+
+    // Foco no primeiro campo
+    setTimeout(() => {
+      const firstInput = modalBackdrop.querySelector('input');
+      if (firstInput) firstInput.focus();
+    }, 200);
   };
 
   const closeModal = () => {
@@ -410,4 +418,68 @@ function initActiveNavOnScroll() {
   });
 
   sections.forEach(sec => observer.observe(sec));
+}
+
+/* ==========================================================================
+   8. MÁSCARA DINÂMICA DE TELEFONE CELULAR (11) 99999-9999
+   ========================================================================== */
+function initPhoneMasks() {
+  const phoneInputs = document.querySelectorAll('input[type="tel"]');
+
+  phoneInputs.forEach(input => {
+    input.addEventListener('input', (e) => {
+      let value = e.target.value.replace(/\D/g, ''); // Apenas números
+      if (value.length > 11) value = value.slice(0, 11);
+
+      if (value.length <= 2) {
+        e.target.value = value.length > 0 ? `(${value}` : '';
+      } else if (value.length <= 6) {
+        e.target.value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+      } else if (value.length <= 10) {
+        e.target.value = `(${value.slice(0, 2)}) ${value.slice(2, 6)}-${value.slice(6)}`;
+      } else {
+        e.target.value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7, 11)}`;
+      }
+    });
+  });
+}
+
+/* ==========================================================================
+   9. DATA MÍNIMA PARA AGENDAMENTOS (A PARTIR DE HOJE)
+   ========================================================================== */
+function initMinDates() {
+  const dateInputs = document.querySelectorAll('input[type="date"]');
+  const today = new Date().toISOString().split('T')[0];
+
+  dateInputs.forEach(input => {
+    input.min = today;
+  });
+}
+
+/* ==========================================================================
+   10. SCROLL REVEAL ANIMATIONS (INTERSECTION OBSERVER)
+   ========================================================================== */
+function initScrollReveal() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // Se o usuário prefere movimento reduzido, revela todos imediatamente
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => el.classList.add('is-revealed'));
+    return;
+  }
+
+  const revealElements = document.querySelectorAll('.reveal-on-scroll');
+  if (!revealElements.length) return;
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    rootMargin: '0px 0px -40px 0px',
+    threshold: 0.1
+  });
+
+  revealElements.forEach(el => revealObserver.observe(el));
 }

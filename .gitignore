@@ -1,0 +1,51 @@
+# ==============================================================================
+# AURA MAISON DE BEAUTÉ — GITIGNORE
+# ==============================================================================
+
+# Dependências & Pacotes
+node_modules/
+.npm
+.yarn/
+package-lock.json
+yarn.lock
+
+# Logs & Debug
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+docker-compose.override.yml
+
+# Variáveis de Ambiente & Segredos
+.env
+.env.local
+.env.*.local
+
+# Arquivos de Sistema Operacional
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+[Dd]esktop.ini
+
+# Editores & IDEs
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Arquivos temporários & de build
+dist/
+build/
+tmp/
+temp/
+
+# Arquivos binários pesados de briefing / mockups (opcional para manter repositório leve)
+*.pdf
+
