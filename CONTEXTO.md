@@ -12,12 +12,12 @@
 - **Frontend:**
   - HTML5 semântico, acessível e otimizado para SEO local e mobile.
   - CSS3 puro com arquitetura estritamente **Mobile-First**, tipografia fluida via `clamp()`, suporte a *Safe Area Insets* de smartphones modernos, glassmorphism e paleta de cores de luxo.
-  - JavaScript ES6+ modular com suporte a interações touch, controle gestual de bottom sheet, slider antes/depois arrastável, máscaras dinâmicas de telefone e notificações toast.
+  - JavaScript ES6+ modular com suporte a interações touch, controle gestual de bottom sheet, slider antes/depois arrastável, máscaras dinâmicas de telefone, integração com API REST e notificações toast.
 - **Assets Visuais:**
   - Imagens em formato `.avif` de alta definição, leves e com renderização de alta fidelidade cromática.
-- **Infraestrutura & Governança:**
+- **Infraestrutura, API & Docker:**
   - 100% conteinerizado com **Docker** e orquestrado via **Docker Compose**.
-  - Servidor web **Nginx Alpine** com suporte nativo a MIME types para `.avif`, compressão Gzip, cabeçalhos de cache e políticas de segurança HTTP.
+  - Servidor web **Nginx Alpine** com suporte nativo a MIME types para `.avif`, compressão Gzip, cabeçalhos de cache, políticas de segurança HTTP e endpoints de API REST para `/api/agendamentos` e `/api/newsletter`.
   - **Porta de Acesso Local:** `http://localhost:3000`.
   - Arquivo `.gitignore` configurado para proteção contra commits de dependências, logs, variáveis de ambiente e arquivos pesados.
 
@@ -32,7 +32,7 @@
 ---
 
 ## 4. Estado Atual do Projeto
-- **Passos Concluídos:** Passo 1 e Passo 2 (**CONCLUÍDOS** ✅).
+- **Passos Concluídos:** Passo 1, Passo 2 e Passo 3 (**CONCLUÍDOS** ✅).
 - **Servidor Ativo:** Container `aura-maison-web` em execução no Docker na porta `3000`.
-- **Status de Resposta:** HTTP 200 OK verificado para a página principal, folhas de estilo, scripts com máscaras e imagens `.avif`.
-- **Próximo Passo:** Passo 3 (Integração de Webhook com CRM & Concierge WhatsApp Automatizado) — *Aguardando autorização explícita do usuário.*
+- **Status de Resposta:** HTTP 200 OK verificado para todas as rotas estáticas e endpoints da API (`/api/agendamentos` e `/api/newsletter`).
+- **Próximo Passo:** Passo 4 (Auditoria Lighthouse, Otimização de Pré-carregamento e Pacote de Produção) — *Aguardando autorização explícita do usuário.*

@@ -51,7 +51,32 @@ O projeto foi construído seguindo uma estrita filosofia **Mobile-First**, garan
 
 ---
 
-## 4. Estrutura das Seções Implementadas
+## 4. Integração Concierge WhatsApp & CRM API (Passo 3)
+
+### 4.1. Fluxo Automatizado de Conversão VIP
+1. **Geração de Protocolo Exclusivo:** O sistema cria dinamicamente um protocolo de atendimento único (ex: `AURA-VIP-8492`).
+2. **Registro Assíncrono no CRM (Docker API):** O formulário submete os dados via `POST /api/agendamentos`, registrando o lead e garantindo alta disponibilidade.
+3. **Composição da Mensagem Concierge no WhatsApp:**
+   A mensagem enviada à cliente é estruturada com etiqueta nobre:
+   ```text
+   Olá, Concierge AURA Maison de Beauté! ✨
+
+   Gostaria de solicitar uma reserva VIP:
+   ✦ Protocolo: AURA-VIP-XXXX
+   ✦ Nome: [Nome da Cliente]
+   ✦ Ritual Desejado: [Ritual Selecionado]
+   ✦ Data Preferencial: [DD/MM/AAAA]
+   ✦ WhatsApp: (11) 9XXXX-XXXX
+   ✦ Observações: [Detalhes opcionais]
+
+   Aguardo as opções de horários privativos disponíveis nos Jardins. Muito obrigada!
+   ```
+4. **Redirecionamento Fluido:** Abre a conversa diretamente com o Concierge oficial do salão (`(11) 3088-9900`), garantindo zero atrito na jornada do cliente.
+5. **Círculo AURA Privilège (Newsletter):** Conectado ao endpoint `POST /api/newsletter` com confirmação visual via toast.
+
+---
+
+## 5. Estrutura das Seções da Landing Page
 
 1. **Header Fixo / Glassmorphism:**
    - Logotipo institucional AURA Maison de Beauté.
@@ -97,7 +122,7 @@ O projeto foi construído seguindo uma estrita filosofia **Mobile-First**, garan
 
 ---
 
-## 5. Arquitetura de Contêiner & Docker (100% no Docker)
+## 6. Arquitetura de Contêiner & Docker (100% no Docker)
 
 O projeto está configurado para execução isolada e de alta performance via Docker:
 - **Imagem Base:** `nginx:alpine`
@@ -106,12 +131,13 @@ O projeto está configurado para execução isolada e de alta performance via Do
   - Compressão Gzip ativada.
   - Cabeçalhos de cache estático (`Cache-Control: public, no-transform; expires 7d`).
   - Cabeçalhos de segurança HTTP (`X-Frame-Options`, `X-Content-Type-Options`, `X-XSS-Protection`).
+  - Endpoints REST para `/api/agendamentos` e `/api/newsletter` com suporte a CORS.
 - **Porta Mapeada:** `http://localhost:3000` (evitando qualquer colisão de portas com outros projetos).
 - **Docker Compose:** Serviço `aura-landing` configurado com recarregamento em tempo real via montagem de volumes.
 
 ---
 
-## 6. Governança do Repositório Git & `.gitignore`
+## 7. Governança do Repositório Git & `.gitignore`
 
 O arquivo `.gitignore` foi configurado para manter o repositório limpo, leve e seguro:
 - **Dependências & Gerenciadores:** `node_modules/`, `.npm`, `.yarn/`, `package-lock.json`.

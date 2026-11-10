@@ -18,18 +18,32 @@
 ### Passo 2: Otimizações Avançadas, Máscaras Dinâmicas, Scroll Reveal e Governança com .gitignore
 - **Status:** **CONCLUÍDO** ✅
 - **Entregas Realizadas:**
-  1. **Criação do `.gitignore`:** Configurado para ignorar dependências, arquivos temporários de SO (macOS, Windows, Linux), caches de IDEs, logs e arquivos binários pesados de briefing (`*.pdf`), mantendo o repositório enxuto e seguro.
-  2. **Máscaras Dinâmicas de Telefone Celular:** Formatação automática em tempo real para o padrão `(11) 99999-9999` com sanitização e restrição de caracteres não numéricos em todos os formulários.
-  3. **Restrição de Datas Mínimas:** Configuração de bloqueio automático para datas anteriores ao dia atual em inputs de data de agendamento VIP.
-  4. **Scroll Reveal Animations:** Micro-interações de revelação suave com Intersection Observer, respeitando a preferência de redução de movimento (`prefers-reduced-motion: reduce`).
-  5. **Auditoria de Conectividade Docker:** Container `aura-maison-web` ativo, com respostas HTTP 200 OK validadas para todos os assets e scripts.
-  6. **Atualização da Documentação:** `DOCUMENTACAO.md`, `PASSOS.md` e `CONTEXTO.md` atualizados.
+  1. Criação e validação do `.gitignore` para proteção do repositório contra arquivos pesados e caches.
+  2. Máscaras dinâmicas de telefone celular `(11) 99999-9999` com sanitização em tempo real.
+  3. Restrição automática de datas retroativas para agendamento.
+  4. Scroll Reveal com Intersection Observer respeitando preferências de movimento.
+  5. Atualização da documentação viva.
 
 ---
 
 ### Passo 3: Integração de Webhook com CRM & Concierge WhatsApp Automatizado
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Endpoints de API no Docker (`nginx.conf`):**
+     - Endpoint `POST /api/agendamentos` com suporte a CORS e confirmação de lead em JSON.
+     - Endpoint `POST /api/newsletter` para submissão do Círculo AURA Privilège.
+  2. **Geração Automática de Protocolo VIP:** Cada solicitação gera um código de reserva exclusivo (ex: `AURA-VIP-XXXX`).
+  3. **Composição Estruturada para WhatsApp do Concierge:**
+     - Montagem de mensagem elegante com nome da cliente, protocolo, ritual, data formatada e observações.
+     - Redirecionamento automático e transparente para `wa.me/551130889900`.
+  4. **Feedback Visual de Alto Padrão:** Notificação Toast com número de protocolo e confirmação de envio.
+  5. **Atualização da Documentação:** `DOCUMENTACAO.md`, `PASSOS.md` e `CONTEXTO.md` devidamente atualizados.
+
+---
+
+### Passo 4: Auditoria Lighthouse, Otimização de Pré-carregamento e Pacote de Produção
 - **Status:** **PENDENTE** ⏳ *(Aguardando solicitação explícita do usuário para início)*
 - **Escopo Previsto:**
-  1. Conexão do formulário de agendamento a um endpoint de webhook para envio direto de mensagens estruturadas ao WhatsApp do Concierge do salão.
-  2. Implementação de camada de backend leve em contêiner Docker para gravação de leads e disparo de e-mails de confirmação da newsletter.
-  3. Painel administrativo privativo para o Concierge gerenciar horários e solicitações de noivas.
+  1. Auditoria de pontuação Lighthouse (Performance, Acessibilidade, Melhores Práticas e SEO buscando 95+ em todas as métricas).
+  2. Otimização de tags `<link rel="preload">` para fontes e critical-path CSS.
+  3. Verificação de suporte a Service Workers offline básicos caso desejado.

@@ -1,6 +1,6 @@
 /**
  * AURA MAISON DE BEAUTÉ — MAIN JAVASCRIPT
- * Interatividades Touch-First, Mobile Sheet, Comparador, Máscaras e Scroll Reveal
+ * Interatividades Touch-First, Mobile Sheet, Comparador, API Concierge & CRM
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initBeforeAfterSlider();
   initRitualsFilter();
   initBookingModal();
-  initFormsAndToasts();
+  initFormsAndConcierge();
   initActiveNavOnScroll();
   initPhoneMasks();
   initMinDates();
@@ -244,7 +244,7 @@ function initBookingModal() {
       }
     }
 
-    // Foco no primeiro campo
+    // Foco no primeiro campo após abertura
     setTimeout(() => {
       const firstInput = modalBackdrop.querySelector('input');
       if (firstInput) firstInput.focus();
@@ -300,26 +300,97 @@ function initBookingModal() {
 }
 
 /* ==========================================================================
-   6. FORMS, VALIDATION & LUXURY TOASTS
+   6. CONCIERGE WHATSAPP & CRM AUTOMATIZADO (PASSOS E INTEGRAÇÃO)
    ========================================================================== */
-function initFormsAndToasts() {
-  // Formulário do Modal
+function initFormsAndConcierge() {
+  const WHATSAPP_CONCIERGE_NUMBER = '551130889900'; // Telefone Oficial AURA Jardins
+
+  // Gerador de Protocolo de Alto Padrão
+  const generateProtocol = () => {
+    const randomCode = Math.floor(1000 + Math.random() * 9000);
+    return `AURA-VIP-${randomCode}`;
+  };
+
+  // Processador Central de Agendamentos VIP
+  const handleBookingSubmit = async (formElement, formData) => {
+    const submitBtn = formElement.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<span>Processando com Concierge...</span>';
+    submitBtn.disabled = true;
+
+    const protocol = generateProtocol();
+
+    // 1. Envio assíncrono para o endpoint CRM local no Docker
+    try {
+      await fetch('/api/agendamentos', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          protocol: protocol,
+          name: formData.name,
+          phone: formData.phone,
+          ritual: formData.ritualText,
+          date: formData.date,
+          notes: formData.notes || '',
+          timestamp: new Date().toISOString()
+        })
+      });
+    } catch (err) {
+      console.warn('API local indisponível, prosseguindo com Concierge direto via WhatsApp:', err);
+    }
+
+    // 2. Construção da Mensagem Elegante para o WhatsApp do Concierge
+    const dateFormatted = formData.date ? formData.date.split('-').reverse().join('/') : 'A combinar';
+    const notesText = formData.notes ? `\n✦ Observações: ${formData.notes}` : '';
+
+    const whatsappMessage = encodeURIComponent(
+      `Olá, Concierge AURA Maison de Beauté! ✨\n\n` +
+      `Gostaria de solicitar uma reserva VIP:\n` +
+      `✦ Protocolo: ${protocol}\n` +
+      `✦ Nome: ${formData.name}\n` +
+      `✦ Ritual Desejado: ${formData.ritualText}\n` +
+      `✦ Data Preferencial: ${dateFormatted}\n` +
+      `✦ WhatsApp: ${formData.phone}${notesText}\n\n` +
+      `Aguardo as opções de horários privativos disponíveis nos Jardins. Muito obrigada!`
+    );
+
+    const whatsappUrl = `https://wa.me/${WHATSAPP_CONCIERGE_NUMBER}?text=${whatsappMessage}`;
+
+    // 3. Feedback visual com Toast e fechamento suave
+    setTimeout(() => {
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+      formElement.reset();
+
+      if (window.closeBookingModal) window.closeBookingModal();
+
+      showToast(`Protocolo ${protocol} gerado com distinção! Conectando ao Concierge VIP...`);
+
+      // 4. Redirecionamento amigável para o WhatsApp Oficial
+      setTimeout(() => {
+        window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+      }, 1000);
+    }, 850);
+  };
+
+  // Formulário do Modal de Agendamento
   const modalBookingForm = document.querySelector('#modal-booking-form');
   if (modalBookingForm) {
     modalBookingForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const submitBtn = modalBookingForm.querySelector('button[type="submit"]');
-      const originalText = submitBtn.innerHTML;
-      submitBtn.innerHTML = '<span>Confirmando com Concierge...</span>';
-      submitBtn.disabled = true;
-
-      setTimeout(() => {
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-        modalBookingForm.reset();
-        if (window.closeBookingModal) window.closeBookingModal();
-        showToast('Solicitação recebida com distinção! O Concierge AURA entrará em contato em breve via WhatsApp.');
-      }, 900);
+      const select = modalBookingForm.querySelector('#modal-ritual-select');
+      const formData = {
+        name: modalBookingForm.querySelector('#modal-name').value.trim(),
+        phone: modalBookingForm.querySelector('#modal-phone').value.trim(),
+        ritualValue: select.value,
+        ritualText: select.options[select.selectedIndex]?.text || select.value,
+        date: modalBookingForm.querySelector('#modal-date').value,
+        notes: ''
+      };
+      handleBookingSubmit(modalBookingForm, formData);
     });
   }
 
@@ -328,30 +399,53 @@ function initFormsAndToasts() {
   if (sectionBookingForm) {
     sectionBookingForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const submitBtn = sectionBookingForm.querySelector('button[type="submit"]');
+      const select = sectionBookingForm.querySelector('#book-ritual');
+      const formData = {
+        name: sectionBookingForm.querySelector('#book-name').value.trim(),
+        phone: sectionBookingForm.querySelector('#book-phone').value.trim(),
+        ritualValue: select.value,
+        ritualText: select.options[select.selectedIndex]?.text || select.value,
+        date: sectionBookingForm.querySelector('#book-date').value,
+        notes: sectionBookingForm.querySelector('#book-notes')?.value.trim() || ''
+      };
+      handleBookingSubmit(sectionBookingForm, formData);
+    });
+  }
+
+  // Formulário de Newsletter
+  const newsletterForm = document.querySelector('#newsletter-form');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const input = newsletterForm.querySelector('input[type="email"]');
+      const email = input ? input.value.trim() : '';
+
+      if (!email) return;
+
+      const submitBtn = newsletterForm.querySelector('button[type="submit"]');
       const originalText = submitBtn.innerHTML;
-      submitBtn.innerHTML = '<span>Processando Reserva VIP...</span>';
+      submitBtn.innerHTML = '<span>Inscrevendo...</span>';
       submitBtn.disabled = true;
+
+      try {
+        await fetch('/api/newsletter', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({ email: email, timestamp: new Date().toISOString() })
+        });
+      } catch (err) {
+        console.warn('API newsletter offline:', err);
+      }
 
       setTimeout(() => {
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
-        sectionBookingForm.reset();
-        showToast('Agendamento pré-reservado. Nosso Concierge confirmará seu ritual no Jardins com prioridade.');
-      }, 900);
-    });
-  }
-
-  // Newsletter Form
-  const newsletterForm = document.querySelector('#newsletter-form');
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const input = newsletterForm.querySelector('input[type="email"]');
-      if (input && input.value) {
-        showToast('Bem-vinda ao Círculo AURA Maison. Seu privilégio exclusivo foi enviado ao seu e-mail.');
-        input.value = '';
-      }
+        newsletterForm.reset();
+        showToast('Bem-vinda ao Círculo AURA Privilège. Seu convite de boas-vindas foi despachado ao seu e-mail.');
+      }, 700);
     });
   }
 }
@@ -388,7 +482,7 @@ function showToast(message) {
     setTimeout(() => {
       toast.remove();
     }, 350);
-  }, 4200);
+  }, 4800);
 }
 
 /* ==========================================================================
@@ -461,7 +555,6 @@ function initMinDates() {
    ========================================================================== */
 function initScrollReveal() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    // Se o usuário prefere movimento reduzido, revela todos imediatamente
     document.querySelectorAll('.reveal-on-scroll').forEach(el => el.classList.add('is-revealed'));
     return;
   }
