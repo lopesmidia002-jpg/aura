@@ -51,11 +51,35 @@ O projeto foi construído seguindo uma estrita filosofia **Mobile-First**, garan
 
 ---
 
-## 4. Integração Concierge WhatsApp & CRM API (Passo 3)
+## 4. SEO, Compartilhamento VIP & Performance (Passo 4)
 
-### 4.1. Fluxo Automatizado de Conversão VIP
-1. **Geração de Protocolo Exclusivo:** O sistema cria dinamicamente um protocolo de atendimento único (ex: `AURA-VIP-8492`).
-2. **Registro Assíncrono no CRM (Docker API):** O formulário submete os dados via `POST /api/agendamentos`, registrando o lead e garantindo alta disponibilidade.
+### 4.1. Metadados Open Graph & Twitter Cards
+Configurados para visualização de alto padrão em redes sociais, WhatsApp e mensageiros:
+- `og:site_name`: AURA Maison de Beauté
+- `og:title`: AURA Maison de Beauté — Salão Feminino de Alto Padrão | Jardins, SP
+- `og:description`: Haute coiffure, visagismo francês sob medida, rituais Fusio-Dose e Bridal Suite VIP no coração dos Jardins, São Paulo.
+- `og:image`: `./imagens/photo-1544005313-94ddf0286df2_Po4W.avif`
+- `twitter:card`: `summary_large_image`
+
+### 4.2. Dados Estruturados Schema.org JSON-LD
+Adicionado script semântico para SEO Local com autoridade Google:
+- **Tipo:** `BeautySalon`
+- **Nome:** AURA Maison de Beauté
+- **Endereço Completo:** Alameda dos Jardins, 1420 - Jardins, São Paulo - SP
+- **Geolocalização:** Latitude `-23.5673`, Longitude `-46.6669`
+- **Avaliação Agregada:** 4.9 estrelas baseada em 384 avaliações verificadas.
+- **Faixa de Preço:** `$$$$` (Alto Luxo)
+
+### 4.3. Preloads de Recursos Críticos
+- Pré-carregamento de folha de estilos (`css/style.css`) e da imagem LCP do Hero (`photo-1544005313-94ddf0286df2_Po4W.avif`), garantindo First Contentful Paint ultrarrápido.
+
+---
+
+## 5. Integração Concierge WhatsApp & CRM API
+
+### 5.1. Fluxo Automatizado de Conversão VIP
+1. **Geração de Protocolo Exclusivo:** Identificador único gerado para cada reserva (ex: `AURA-VIP-8492`).
+2. **Registro Assíncrono no CRM (Docker API):** O formulário submete os dados via `POST /api/agendamentos` com resposta 200 OK.
 3. **Composição da Mensagem Concierge no WhatsApp:**
    A mensagem enviada à cliente é estruturada com etiqueta nobre:
    ```text
@@ -71,73 +95,46 @@ O projeto foi construído seguindo uma estrita filosofia **Mobile-First**, garan
 
    Aguardo as opções de horários privativos disponíveis nos Jardins. Muito obrigada!
    ```
-4. **Redirecionamento Fluido:** Abre a conversa diretamente com o Concierge oficial do salão (`(11) 3088-9900`), garantindo zero atrito na jornada do cliente.
+4. **Redirecionamento Fluido:** Abre a conversa diretamente com o Concierge oficial do salão (`(11) 3088-9900`).
 5. **Círculo AURA Privilège (Newsletter):** Conectado ao endpoint `POST /api/newsletter` com confirmação visual via toast.
 
 ---
 
-## 5. Estrutura das Seções da Landing Page
+## 6. Estrutura das Seções da Landing Page
 
-1. **Header Fixo / Glassmorphism:**
-   - Logotipo institucional AURA Maison de Beauté.
-   - Menu desktop completo e botão "Agendar Ritual VIP".
-   - Gatilho hambúrguer mobile com gaveta lateral editorial completa.
-2. **Hero Section:**
-   - Headline: *"BELEZA QUE REVELA A SUA MELHOR VERSÃO"*.
-   - Citação visagista: *"Cuidar da beleza também é cuidar de como você se sente."*.
-   - Imagem de destaque com iluminação suave (`photo-1544005313-94ddf0286df2_Po4W.avif`).
-   - Botões de ação para catálogo e atendimento com Concierge via WhatsApp.
-   - Selo flutuante de reputação: **4.9 ★ Avaliação Jardins**.
-3. **Seção Conceito & Métricas:**
-   - Manifesto sobre consultoria visagista francesa e protocolos personalizados.
-   - Grid com 4 métricas oficiais: *10+ Anos de História*, *8.000+ Clientes Atendidas*, *22 Especialistas*, *4.9★ Avaliação Jardins*.
-   - Composição fotográfica com molduras sobrepostas.
-4. **Experiências & Rituais Assinados:**
-   - 6 Cards com tempos de atendimento, descrição e gatilho de pré-reserva com auto-preenchimento:
-     - *Morena Iluminada Signature*
-     - *Loiro Couture & Visagismo*
-     - *Corte & Escova de Alta Precisão*
-     - *Spa Fusio-Dose & Nails Luxury*
-     - *Red Carpet Glow & Makeup*
-     - *Bridal Suite VIP (Dia da Noiva)*
-5. **Destaque Atelier Haute Coiffure (Módulo Dark Nobre):**
-   - Apresentação dos pilares técnicos: Balayage Francesa, Mechas Acetinadas, Gloss Couture e Consulta de Coloração Pessoal.
-6. **Transformações Assinadas (Slider Antes / Depois Interativo):**
-   - Comparador deslizante entre o estado anterior e a finalização com mechas toffee melt e brilho espelhado.
-7. **Bridal Suite VIP (Dia da Noiva):**
-   - Apresentação da suíte privativa nos Jardins com amenidades exclusivas e atendimento para madrinhas.
-8. **O Espaço & Arquitetura Contemporânea:**
-   - Fotografia panorâmica do salão com 700m² e a jornada dos 5 passos do atendimento (Acolhimento, Avaliação, Personalização, Experiência, Finalização).
-9. **Nossos Especialistas:**
-   - Apresentação do corpo de mestres cabeleireiros, visagistas e maquiadores com formação internacional.
-10. **Depoimentos & Reputação:**
-    - Citações reais de noivas e clientes assíduas dos Jardins com avaliação 5 estrelas.
-11. **Agendamento & Concierge Exclusivo:**
-    - Formulário completo para solicitação de reserva, quadro de horários e destaque do serviço de manobrista (Valet VIP).
-12. **Newsletter AURA Privilège:**
-    - Inscrição minimalista para recebimento de privilégios e convites.
-13. **Rodapé Oficial:**
-    - Endereço completo: Alameda dos Jardins, 1420 - Jardins, São Paulo - SP.
-    - Contatos oficiais, links de navegação, política de privacidade e copyright 2026.
+1. **Header Fixo / Glassmorphism:** Monograma AURA, menu desktop e drawer mobile deslizante.
+2. **Hero Section:** Headline de impacto, citação visagista, CTA duplo e selo de excelência *4.9★ Jardins*.
+3. **Conceito & Métricas:** Manifesto editorial, composição fotográfica sobreposta e métricas oficiais (*10+ Anos, 8.000+ Clientes, 22 Especialistas, 4.9★*).
+4. **Experiências & Rituais:** Grid com os 6 rituais assinados (*Morena Iluminada Signature*, *Loiro Couture*, *Corte de Alta Precisão*, *Spa Fusio-Dose*, *Red Carpet Glow*, *Bridal Suite VIP*).
+5. **Atelier Haute Coiffure:** Módulo escuro com os pilares de Balayage Francesa, Mechas Acetinadas, Gloss Couture e Análise de Cor.
+6. **Transformações Assinadas (Slider Antes / Depois Interativo):** Controle responsivo com arrasto direto por toque no celular ou mouse no desktop.
+7. **Bridal Suite VIP:** Detalhes da experiência privativa para noivas e madrinhas nos Jardins.
+8. **O Espaço & Arquitetura:** Galeria contemporânea com a jornada dos 5 passos do atendimento.
+9. **Especialistas:** Apresentação do time de mestres com formação internacional.
+10. **Depoimentos:** Avaliações de clientes VIP e noivas.
+11. **Agendamento & Concierge:** Formulário VIP com horários de atendimento e destaque para o serviço de manobrista (*Valet VIP*).
+12. **Newsletter AURA Privilège:** Inscrição minimalista com toast de confirmação.
+13. **Rodapé Oficial:** Endereço na Alameda dos Jardins 1420, contatos, horários e copyright 2026.
 
 ---
 
-## 6. Arquitetura de Contêiner & Docker (100% no Docker)
+## 7. Arquitetura de Contêiner & Auditoria Automatizada (100% no Docker)
 
 O projeto está configurado para execução isolada e de alta performance via Docker:
 - **Imagem Base:** `nginx:alpine`
 - **Configuração Customizada (`nginx.conf`):**
-  - Mapeamento explícito de MIME type para imagens AVIF (`image/avif avif;`) e WebP.
+  - Mapeamento explícito de MIME type para imagens AVIF e WebP.
   - Compressão Gzip ativada.
   - Cabeçalhos de cache estático (`Cache-Control: public, no-transform; expires 7d`).
   - Cabeçalhos de segurança HTTP (`X-Frame-Options`, `X-Content-Type-Options`, `X-XSS-Protection`).
   - Endpoints REST para `/api/agendamentos` e `/api/newsletter` com suporte a CORS.
-- **Porta Mapeada:** `http://localhost:3000` (evitando qualquer colisão de portas com outros projetos).
-- **Docker Compose:** Serviço `aura-landing` configurado com recarregamento em tempo real via montagem de volumes.
+- **Porta Mapeada:** `http://localhost:3000`.
+- **Script de Auditoria Automatizada (`tests/audit_docker.py`):**
+  - Valida o status 200 de todas as rotas estáticas, das 14 imagens AVIF, dos scripts JS, estilos CSS e de ambos os endpoints REST da API com tempos de resposta médios abaixo de 40ms.
 
 ---
 
-## 7. Governança do Repositório Git & `.gitignore`
+## 8. Governança do Repositório Git & `.gitignore`
 
 O arquivo `.gitignore` foi configurado para manter o repositório limpo, leve e seguro:
 - **Dependências & Gerenciadores:** `node_modules/`, `.npm`, `.yarn/`, `package-lock.json`.

@@ -29,21 +29,27 @@
 ### Passo 3: Integração de Webhook com CRM & Concierge WhatsApp Automatizado
 - **Status:** **CONCLUÍDO** ✅
 - **Entregas Realizadas:**
-  1. **Endpoints de API no Docker (`nginx.conf`):**
-     - Endpoint `POST /api/agendamentos` com suporte a CORS e confirmação de lead em JSON.
-     - Endpoint `POST /api/newsletter` para submissão do Círculo AURA Privilège.
-  2. **Geração Automática de Protocolo VIP:** Cada solicitação gera um código de reserva exclusivo (ex: `AURA-VIP-XXXX`).
-  3. **Composição Estruturada para WhatsApp do Concierge:**
-     - Montagem de mensagem elegante com nome da cliente, protocolo, ritual, data formatada e observações.
-     - Redirecionamento automático e transparente para `wa.me/551130889900`.
-  4. **Feedback Visual de Alto Padrão:** Notificação Toast com número de protocolo e confirmação de envio.
-  5. **Atualização da Documentação:** `DOCUMENTACAO.md`, `PASSOS.md` e `CONTEXTO.md` devidamente atualizados.
+  1. Endpoints de API no Docker (`POST /api/agendamentos` e `POST /api/newsletter`) com suporte a CORS.
+  2. Geração automática de protocolo exclusivo AURA-VIP para cada solicitação de reserva.
+  3. Composição estruturada de mensagem e redirecionamento direto para o WhatsApp do Concierge do salão.
+  4. Notificações toast aristocráticas de confirmação.
 
 ---
 
-### Passo 4: Auditoria Lighthouse, Otimização de Pré-carregamento e Pacote de Produção
+### Passo 4: Auditoria Lighthouse, Otimização de Pré-carregamento e Metadados SEO/Open Graph
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Metadados Open Graph & Twitter Cards:** Configurados para pré-visualização enriquecida no WhatsApp, Instagram e redes sociais.
+  2. **Dados Estruturados Schema.org JSON-LD:** Marcação semântica oficial para `BeautySalon` com endereço nos Jardins, horários e nota 4.9★.
+  3. **Otimização de Pré-carregamento (`<link rel="preload">`):** Critical-path CSS e imagem LCP do Hero pré-carregadas para tempo de resposta ultrarrápido.
+  4. **Script de Auditoria Automatizada (`tests/audit_docker.py`):** 100% de sucesso validando todas as rotas estáticas, 14 imagens AVIF e endpoints de API REST no Docker.
+  5. **Atualização da Documentação:** `DOCUMENTACAO.md`, `PASSOS.md` e `CONTEXTO.md` atualizados.
+
+---
+
+### Passo 5: Deploy / Publicação em Nuvem e Certificados SSL HTTPS
 - **Status:** **PENDENTE** ⏳ *(Aguardando solicitação explícita do usuário para início)*
 - **Escopo Previsto:**
-  1. Auditoria de pontuação Lighthouse (Performance, Acessibilidade, Melhores Práticas e SEO buscando 95+ em todas as métricas).
-  2. Otimização de tags `<link rel="preload">` para fontes e critical-path CSS.
-  3. Verificação de suporte a Service Workers offline básicos caso desejado.
+  1. Configuração de certificados SSL/TLS automáticos (Let's Encrypt / Certbot ou Cloudflare).
+  2. Configuração de pipeline CI/CD ou Docker Compose para produção em VPS/Cloud (AWS, DigitalOcean, Hetzner ou Railway).
+  3. Monitoramento de uptime e métricas de conversão de cliques no WhatsApp.

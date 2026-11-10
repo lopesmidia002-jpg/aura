@@ -10,7 +10,7 @@
 
 ## 2. Stack Tecnológica & Arquitetura
 - **Frontend:**
-  - HTML5 semântico, acessível e otimizado para SEO local e mobile.
+  - HTML5 semântico, acessível e otimizado para SEO local e mobile com dados estruturados **Schema.org JSON-LD** e **Open Graph**.
   - CSS3 puro com arquitetura estritamente **Mobile-First**, tipografia fluida via `clamp()`, suporte a *Safe Area Insets* de smartphones modernos, glassmorphism e paleta de cores de luxo.
   - JavaScript ES6+ modular com suporte a interações touch, controle gestual de bottom sheet, slider antes/depois arrastável, máscaras dinâmicas de telefone, integração com API REST e notificações toast.
 - **Assets Visuais:**
@@ -20,6 +20,7 @@
   - Servidor web **Nginx Alpine** com suporte nativo a MIME types para `.avif`, compressão Gzip, cabeçalhos de cache, políticas de segurança HTTP e endpoints de API REST para `/api/agendamentos` e `/api/newsletter`.
   - **Porta de Acesso Local:** `http://localhost:3000`.
   - Arquivo `.gitignore` configurado para proteção contra commits de dependências, logs, variáveis de ambiente e arquivos pesados.
+  - Script automatizado de auditoria (`tests/audit_docker.py`) validando 100% dos endpoints e assets.
 
 ---
 
@@ -32,7 +33,7 @@
 ---
 
 ## 4. Estado Atual do Projeto
-- **Passos Concluídos:** Passo 1, Passo 2 e Passo 3 (**CONCLUÍDOS** ✅).
+- **Passos Concluídos:** Passo 1, Passo 2, Passo 3 e Passo 4 (**CONCLUÍDOS** ✅).
 - **Servidor Ativo:** Container `aura-maison-web` em execução no Docker na porta `3000`.
-- **Status de Resposta:** HTTP 200 OK verificado para todas as rotas estáticas e endpoints da API (`/api/agendamentos` e `/api/newsletter`).
-- **Próximo Passo:** Passo 4 (Auditoria Lighthouse, Otimização de Pré-carregamento e Pacote de Produção) — *Aguardando autorização explícita do usuário.*
+- **Status de Resposta:** HTTP 200 OK verificado com script automatizado para todas as rotas estáticas, as 14 imagens AVIF e os endpoints da API (`/api/agendamentos` e `/api/newsletter`).
+- **Próximo Passo:** Passo 5 (Deploy / Publicação em Nuvem e Certificados SSL HTTPS) — *Aguardando autorização explícita do usuário.*
