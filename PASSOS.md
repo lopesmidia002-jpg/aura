@@ -158,3 +158,14 @@
   3. **Sombra e Elevação Suave:** Aplicação de sombra aveludada (`box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25)`) e elevação ergonômica `translateY(-2px)`.
   4. **Extensão a Todos os Botões Transparentes:** Efeito aplicado no Hero ("CONHECER O SALÃO"), no conceito ("CONHECER RITUAIS EXCLUSIVOS"), no catálogo de rituais ("VER TABELA COMPLETA DE RITUAIS & PREÇOS"), no corpo artístico ("CONHECER TODO O CORPO ARTÍSTICO") e no Instagram ("SEGUIR NO INSTAGRAM").
   5. **Auditoria de Integridade no Docker:** 100% dos testes de carregamento, API e assets validados via `tests/audit_docker.py`.
+
+---
+
+### Passo 13: Correção do Formato e Proporção 4:3 da Foto Sobreposta de Ferramentas
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Calibração da Proporção 4:3 (Landscape):** Correção do formato de `.concept-inset-img-box` que anteriormente estava sendo comprimido para um formato quase quadrado (1.1:1). Aplicação de `aspect-ratio: 4 / 3` tanto no contêiner quanto no elemento `<img>`.
+  2. **Enquadramento Completo dos Elementos Fotográficos:** Ajuste da largura para `width: 78%` (max `370px`) e `object-position: center center`, permitindo que o vasinho de cerâmica com suculenta no canto esquerdo, o pente, a chapinha, a escova de raquete e o secador no canto direito fiquem 100% visíveis, eliminando o corte lateral indesejado.
+  3. **Moldura e Profundidade Editorial:** Preservação da moldura de passpartout em branco puro de 8px (`border: 8px solid #FFFFFF`) com cantos de 2px e sombra difusa (`box-shadow: 0 18px 42px rgba(20, 16, 12, 0.16)`).
+  4. **Responsividade Mobile:** Ajuste proporcional para telas móveis (`width: 72%`, `border-width: 6px`).
+  5. **Auditoria no Docker:** 100% dos testes validados com sucesso no container (`tests/audit_docker.py`).
