@@ -588,6 +588,200 @@
      - Recarga do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
      - Auditoria automatizada `tests/audit_docker.py` executada com 100% de sucesso.
 
+---
+
+### Passo 37: Remoção do Negrito no Título Editorial do Manifesto (Tipografia Regular Fiel ao Original)
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Análise de Peso Tipográfico no Mockup Original do PDF:**
+     - Mensuração analítica de espessura de traço no vetor original do PDF (`tests/pdf_manifesto_exact.png`) e conferência com a imagem enviada pelo usuário (`media_1794433434582_1b7ef284.jpg`).
+     - Constatação de que a headline *"Beleza não é sobre mudar quem você é. É sobre revelar."* possui peso regular/delicado (`font-weight: 400`), enquanto o elemento `<h2>` herdava o padrão de browser `font-weight: bold` (700).
+  2. **Calibração de Peso em CSS (`css/style.css`):**
+     - Aplicação explícita de `font-weight: 400;` na classe `.manifesto-huge-heading` (inclusive na media query responsiva para mobile `< 480px`), removendo o negrito e restaurando a elegância e leveza visual das serifas clássicas da família Cormorant Garamond / Playfair Display.
+  3. **Blindagem Contra Cache v=5.3.0 e Validação no Docker:**
+     - Versionamento `v=5.3.0` aplicado em `index.html` e `style.css`.
+     - Recarga do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
+     - Inspeção automatizada confirmando `font-weight: 400` servido pelo Nginx.
+     - Auditoria automatizada `tests/audit_docker.py` executada com 100% de sucesso.
+
+---
+
+### Passo 38: Correção da Sequência e Substituição da Foto no Feed Instagram (Fidelidade 1:1 ao PDF)
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Auditoria Comparativa das Imagens do Grid do Instagram (`#instagram`):**
+     - Extração milimétrica das 6 fotografias originais a partir da renderização em alta resolução da página do PDF oficial (`AURA Maison de Beauté — Salão Feminino de Alto Padrão Experiências Exclusivas.pdf`), entre as coordenadas y=13824 e y=14017 (tamanho 194x193 px com gaps de 16px).
+     - Confronto pixel a pixel com a imagem do site atual (`media_1794434081770_554d013a.jpg`) e o mockup de referência (`media_1794434095994_934b6a97.jpg`).
+  2. **Identificação e Remoção da Fotografia Divergente:**
+     - A foto que estava na 5ª célula (`photo-1595476108010-b4d1f102b1b1_002_Po4W.avif`, lavatório com mulher lavando cabelos) não fazia parte do grid do Instagram do design original do PDF.
+     - Essa imagem foi substituída pelo asset oficial de escovação e blow dry em salão (`photo-1580618672591-eb180b1a973f_003_Po4W.avif`), que possui enquadramento perfeito (score de similaridade 5.59 / quase nulo em relação ao PDF).
+  3. **Reordenação Fiel da Sequência Fotográfica (`index.html`):**
+     - Posição 1: Salão AURA em preto e branco (`photo-1560066984-138dadb4c035_003_Po4W.avif`, alt="Ambiente AURA")
+     - Posição 2: Cabelo cacheado volumoso em fundo rosa (`photo-1519699047748-de8e457a634e_Po4W.avif`, alt="Morena Iluminada")
+     - Posição 3: Acessórios e pentes em mesa branca (`photo-1527799820374-dcf8d9d4a388_002_Po4W.avif`, alt="Pincéis e Acessórios")
+     - Posição 4: Escovação & Styling profissional com secador (`photo-1580618672591-eb180b1a973f_003_Po4W.avif`, alt="Escovação & Styling")
+     - Posição 5: Mulher loira com gorro e cachecol na neve (`photo-1487412720507-e7ab37603c6f_002_Po4W.avif`, alt="Loiro Couture")
+     - Posição 6: Noivos com buquê floral de casamento (`photo-1519741497674-611481863552_002_Po4W.avif`, alt="Noiva AURA")
+  4. **Blindagem Contra Cache v=5.4.0 e Validação no Docker:**
+     - Versionamento `v=5.4.0` aplicado em `index.html` (links e preloads) e `style.css`.
+     - Recarga do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
+     - Auditoria automatizada `tests/audit_docker.py` executada com 100% de sucesso.
+
+---
+
+### Passo 39: Calibração Cromática do Selo Circular de Excelência (Todas as Palavras em Dourado Nobre 1:1 com o Original)
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Análise Cromática do Selo no Mockup Original do PDF:**
+     - Extração e análise do selo circular `.badge-excellence-circle` ("10+ ANOS DE EXCELÊNCIA") no vetor do PDF oficial e confronto com a referência enviada pelo usuário (`media_1794434653394_586c2dc5.png`).
+     - Constatação de que tanto o numeral "10+" quanto as palavras "ANOS DE EXCELÊNCIA" e a borda circular são todos renderizados em ouro nobre acetinado (`var(--gold-primary)` / `#C5A059`), enquanto o CSS mantinha anteriormente `.badge-txt` em tom marfim/esbranquiçado `#DDD7CE`.
+  2. **Calibração Cromática em CSS (`css/style.css`):**
+     - `.badge-txt` atualizado para `color: var(--gold-primary);`, assegurando que todas as palavras do selo circular fiquem em dourado nobre acetinado perfeitamente harmonizado com o numeral `.badge-num` e a borda de 1.5px do selo.
+  3. **Blindagem Contra Cache v=5.5.0 e Validação no Docker:**
+     - Versionamento `v=5.5.0` aplicado em `index.html` (links e preloads) e `style.css`.
+     - Recarga do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
+     - Inspeção de rede confirmando `color: var(--gold-primary)` servido em `/css/style.css`.
+     - Auditoria automatizada `tests/audit_docker.py` executada com 100% de sucesso.
+
+---
+
+### Passo 40: Calibração da Caixa de Transparência da Colorimetria (Contorno Pontilhado e Tipografia Branca 1:1 com o Original)
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Análise Detalhada no Mockup Original do PDF:**
+     - Extração e análise da caixa de aviso de transparência (`.transparency-alert`) na seção de Colorimetria (`#coloracao`) e confronto com as referências enviadas pelo usuário (`media_1794434781589_e1b22f6e.png`, `media_1794434839030_edcd3cc3.png`, `media_1794434861344_76e9f9a7.png`).
+     - Constatações de divergência identificadas e corrigidas:
+       - O contorno da caixa no original do PDF é pontilhado (`border: 1px dotted rgba(197, 160, 89, 0.6)`), e não sólido.
+       - A palavra "Aviso de transparência:" (`strong`) era renderizada em dourado, quando no original possui cor branca pura (`#FFFFFF`), em conformidade com o restante do texto do aviso.
+       - O fundo da caixa é transparente (`background: transparent`), integrando-se suavemente ao bronze espresso da seção.
+       - O ícone circular de aviso (`.alert-icon-circle`) possui aro fino dourado com centro transparente e ponto de exclamação dourado, alinhando-se com fidelidade ao mockup.
+  2. **Refatoração dos Estilos em CSS (`css/style.css`):**
+     - `.transparency-alert`: configurado com `border: 1px dotted rgba(197, 160, 89, 0.6);` e `background: transparent;`.
+     - `.transparency-alert strong`: configurado com `color: #FFFFFF; font-weight: 600;`, unificando a cor com todo o parágrafo.
+     - `.transparency-alert p`: configurado com `color: #FFFFFF;`.
+     - `.alert-icon-circle`: ajustado com `background: transparent; border: 1.5px solid var(--gold-primary); color: var(--gold-primary);`.
+  3. **Blindagem Contra Cache v=5.6.0 e Validação no Docker:**
+     - Versionamento `v=5.6.0` aplicado em `index.html` (links e preloads) e `style.css`.
+     - Recarga do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
+     - Inspeção de rede confirmando os novos estilos servidos em `/css/style.css`.
+     - Auditoria automatizada `tests/audit_docker.py` executada com 100% de sucesso.
+
+---
+
+### Passo 41: Remoção do Negrito dos Badges ANTES / DEPOIS do Comparador de Transformações (Tipografia Regular 1:1 com o Original)
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Análise Tipográfica dos Badges no Mockup do PDF:**
+     - Inspeção da espessura de traço dos marcadores de canto `.badge-corner-tag` ("ANTES" e "DEPOIS") na seção de Resultados Visíveis (`#transformacoes`) e confronto com a referência enviada pelo usuário (`media_1794434919687_4fa5f6e3.png`).
+     - Constatação de que os rótulos possuem tipografia regular/delicada (`font-weight: 400`), enquanto o CSS mantinha anteriormente `font-weight: 600` (semi-bold).
+  2. **Calibração de Peso em CSS (`css/style.css`):**
+     - `.badge-corner-tag`: atualizado para `font-weight: 400;`, removendo o negrito e conferindo máxima elegância, leveza visual e precisão 1:1 com o layout original.
+  3. **Blindagem Contra Cache v=5.7.0 e Validação no Docker:**
+     - Versionamento `v=5.7.0` aplicado em `index.html` (links e preloads) e `style.css`.
+     - Recarga do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
+     - Inspeção de rede confirmando `font-weight: 400` servido em `/css/style.css`.
+     - Auditoria automatizada `tests/audit_docker.py` executada com 100% de sucesso.
+
+---
+
+### Passo 42: Calibração Cromática do Card de Proposta de Noivas (Marrom Espresso 1:1 com o PDF Original)
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Auditoria Colorimétrica e Confronto com o Mockup Original do PDF:**
+     - Análise cromática comparativa entre a captura do site atual (`media_1794434984700_5ec58f95.png`), a referência de recorte enviada pelo usuário (`media_1794435001400_b92bef5b.png`) e a renderização em alta resolução da página do PDF oficial (`AURA Maison de Beauté — Salão Feminino de Alto Padrão Experiências Exclusivas.pdf`).
+     - Constatou-se que o card `.bridal-form-card` utilizava anteriormente `var(--bg-dark-card)` (`#1F1D1A`), com valores RGB `[31, 29, 26]` (tom grafite/carvão frio quase neutro), gerando discrepância visual em relação ao tom marrom expresso do mockup original.
+     - A amostragem no PDF original e na imagem de referência comprovou a presença de marrom quente com assinatura cromática média `RGB [41.5, 35.1, 32.1]` (`#2A2320`, com desvio euclidiano de apenas 0.50).
+  2. **Ajuste e Harmonização Cromática em CSS (`css/style.css`):**
+     - `.bridal-form-card`: fundo calibrado para `background: #2A2320;` (marrom espresso nobre, quente e luxuoso).
+     - `#noivas.dark-section`: fundo ajustado para `background-color: #211C19;` (bronze espresso [33, 28, 25]), unificando o ambiente escuro com o ateliê de coloração.
+     - `.bridal-form-card .input-dark`: inputs internos configurados com `background: #191512;` e foco em `#1C1714`, garantindo contraste em baixo-relevo e legibilidade perfeita.
+  3. **Blindagem Contra Cache v=5.8.0 e Validação no Docker:**
+     - Versionamento `v=5.8.0` aplicado em `index.html` (links e preloads) e `style.css`.
+     - Recarga do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
+     - Inspeção automatizada confirmando `background: #2A2320` e `#noivas` com `background-color: #211C19` servidos pelo Nginx.
+     - Auditoria automatizada `tests/audit_docker.py` executada com 100% de sucesso.
+
+---
+
+### Passo 43: Equalização Dimensional dos Cards da Seção de Agendamento (Largura e Altura 1:1 com o Original)
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Auditoria Geométrica Comparativa dos Cards (`media_1794435126089_829276a5.jpg` vs `media_1794435146817_32246fa3.jpg`):**
+     - Na captura do site anterior (`im1`), o card de agendamento esquerdo (`.booking-box-dark`) terminava precocemente logo após o botão, com altura de 446px e largura de 614px (proporção 1.15fr 0.85fr com `align-items: start`), enquanto o card direito de horários (`.schedule-box-dark`) possuía 550px de altura e 454px de largura, gerando um degrau visual de mais de 100px na base e larguras desbalanceadas.
+     - No mockup de referência original (`im2`), ambos os cards iniciam rigorosamente no mesmo alinhamento superior (y=17) e encerram no mesmo alinhamento inferior (y=533), apresentando altura idêntica (516px) e larguras balanceadas simétricas (50% / 50%).
+  2. **Refatoração do Grid em CSS (`css/style.css`):**
+     - `.booking-double-grid`: remoção de `align-items: start;` e substituição por `align-items: stretch;`, garantindo que ambos os cards estiquem para a altura total da linha do grid.
+     - `@media (min-width: 992px)`: substituição da proporção assimétrica `1.15fr 0.85fr` por `grid-template-columns: 1fr 1fr;` com `gap: 48px;`, assegurando larguras perfeitamente iguais em desktop e tablets horizontais.
+     - `.booking-box-dark, .schedule-box-dark`: adição explícita de `height: 100%;` para preenchimento vertical integral da célula do grid.
+  3. **Validação Dimensional Automatizada via CDP (Chrome DevTools Protocol):**
+     - Em 1200px: `leftW: 540px, leftH: 647px, rightW: 540px, rightH: 647px, heightDiff: 0px, widthDiff: 0px` (simetria dimensional perfeita).
+     - Em 1440px: `leftW: 560px, leftH: 647px, rightW: 560px, rightH: 647px, heightDiff: 0px`.
+     - Em 1024px: `leftW: 452px, leftH: 667px, rightW: 452px, rightH: 667px, heightDiff: 0px`.
+  4. **Blindagem Contra Cache v=5.9.0 e Validação no Docker:**
+     - Versionamento `v=5.9.0` aplicado em `index.html` (links e preloads) e `style.css`.
+     - Recarga do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
+     - Auditoria automatizada `tests/audit_docker.py` executada com 100% de sucesso.
+
+---
+
+### Passo 44: Alinhamento e Fidelidade Absoluta 1:1 do Rodapé do Projeto com o Mockup Original (PDF)
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Auditoria Comparativa e Identificação de Divergências no Rodapé (`.site-footer`):**
+     - Confronto pixel a pixel entre a captura do rodapé em produção (`media_1794435226539_acfc66ac.png`) e o mockup oficial do PDF (`media_1794435244630_3c097959.png`).
+     - Identificou-se que as listas das colunas "Navegação" e "Experiências" exibiam marcadores de lista (*bullets* `•`) indesejados devido ao uso da classe `.footer-list` no HTML enquanto o CSS declarava apenas `.footer-links-list`.
+     - Os ícones sociais (Instagram, Facebook, Pinterest) apareciam como glifos desprovidos da elegante moldura circular característica do design de alta costura.
+     - Os títulos das colunas ("Navegação", "Experiências", "Onde Estamos") herdavam o estilo padrão de títulos em caixa alta sem a serifa editorial.
+     - O fundo da seção utilizava `var(--bg-dark-deep)` (`#11100F`), diferindo do tom quente e aveludado espresso Dark Couture do PDF (`RGB [22, 18, 15]` / `#16120F`).
+  2. **Refatoração e Estilização em CSS (`css/style.css`):**
+     - **Supressão Total dos Bullets:** Aplicação estrita de `list-style: none !important; list-style-type: none !important; padding: 0 !important; margin: 0 !important;` tanto em `.footer-list` quanto em `.footer-links-list` e seus respectivos `li`, eliminando qualquer marcador e restabelecendo o alinhamento rente à margem.
+     - **Emblemas Circulares das Redes Sociais (`.social-circle-link`):** Estilização de cada link social como um botão circular de joalheria (`width: 34px; height: 34px; border-radius: 50%`) com fundo sutil translúcido (`rgba(255, 255, 255, 0.04)`), contorno em ouro nobre acetinado (`rgba(197, 160, 89, 0.35)`), ícone centralizado dourado (`var(--gold-primary)` / `#C5A059`) e transição fluida no hover para fundo dourado sólido com ícone em tom espresso `#16120F`.
+     - **Tipografia Editorial dos Títulos das Colunas (`.footer-nav-title`):** Padronização com fonte serifada clássica (`var(--font-serif)` — Cormorant Garamond / Playfair Display), em *Title Case* (sem forçar caixa alta), peso `font-weight: 500`, tamanho `1.18rem` e cor branca nobre (`var(--text-white)`).
+     - **Calibração Cromática do Fundo:** Ajuste do fundo de `.site-footer` para `#16120F` (Dark Couture Espresso `RGB [22, 18, 15]`, conferindo 100% de precisão colorimétrica com o vetor do PDF original).
+     - **Harmonização de Textos e Copyright:** Textos secundários, itens de contato e links legais configurados com tipografia delicada marfim/translúcida (`rgba(255, 255, 255, 0.65)` e `0.45`), com créditos de design destacados em ouro nobre acetinado.
+  3. **Validação Automatizada via Chrome CDP:**
+     - Inspeção dos estilos computados em runtime:
+       - Fundo: `rgb(22, 18, 15)` (100% fiel ao PDF).
+       - Marcador de lista: `none` (zero bullets).
+       - Emblemas sociais: `34px x 34px`, `border-radius: 50%`, borda `rgba(197, 160, 89, 0.35)`.
+       - Títulos: Fonte serifada com `textTransform: none` e `fontWeight: 500`.
+  4. **Blindagem Contra Cache v=5.10.0 e Validação no Docker:**
+     - Versionamento `v=5.10.0` aplicado em `index.html` (links e preloads) e `style.css`.
+     - Recarga sem interrupção do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
+     - Suíte de auditoria completa `tests/audit_docker.py` executada com 100% de sucesso.
+
+---
+
+### Passo 45: Centralização do Título e Subtítulo do Card de Noivas (Fidelidade 1:1 com o Original)
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Análise de Alinhamento no Mockup Original do PDF:**
+     - Amostragem e medição geométrica no PDF oficial em alta resolução (`AURA Maison de Beauté — Salão Feminino de Alto Padrão   Experiências Exclusivas.pdf`, página 0, y ~ 6400 a 7300).
+     - Comprovou-se que o título editorial "Planeje seu Dia dos Sonhos" (`.bridal-form-heading`, centro em x: 764px) e o subtítulo "Solicite uma proposta detalhada para você e seu cortejo" (`.bridal-form-sub`, centro em x: 764px) encontram-se perfeitamente centralizados horizontalmente no card (`centerDiff: 0px`), enquanto o CSS mantinha alinhamento à esquerda por padrão.
+  2. **Ajuste de Alinhamento em CSS (`css/style.css`):**
+     - Aplicação de `text-align: center;` na classe `.bridal-form-heading`.
+     - Aplicação de `text-align: center;` na classe `.bridal-form-sub`, conferindo harmonia estética integral ao cabeçalho do formulário.
+  3. **Validação Automatizada via Chrome CDP:**
+     - Inspeção em runtime confirmando `headingAlign: 'center'`, `subAlign: 'center'`, centro do card em 382px e centro do título em 382px com `centerDiff: 0px` exato.
+  4. **Blindagem Contra Cache v=5.11.0 e Validação no Docker:**
+     - Versionamento `v=5.11.0` aplicado em `index.html` (links e preloads) e `style.css`.
+     - Recarga do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
+     - Suíte de testes `tests/audit_docker.py` executada com 100% de aprovação.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

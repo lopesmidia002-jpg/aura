@@ -968,7 +968,7 @@ button {
   font-family: var(--font-serif);
   font-size: clamp(1.4rem, 2vw, 1.7rem);
   font-weight: 400;
-  color: #D4AF67;
+  color: var(--gold-primary);
   line-height: 1;
 }
 
@@ -984,7 +984,7 @@ button {
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #DDD7CE;
+  color: var(--gold-primary);
   line-height: 1.25;
   margin-top: 4px;
 }
@@ -1476,10 +1476,10 @@ button {
   line-height: 1.55;
 }
 
-/* Caixa de Transparência */
+/* Caixa de Transparência (Contorno pontilhado e tipografia branca 1:1 com o PDF original) */
 .transparency-alert {
-  background: rgba(197, 160, 89, 0.08);
-  border: 1px solid rgba(197, 160, 89, 0.28);
+  background: transparent;
+  border: 1px dotted rgba(197, 160, 89, 0.6);
   border-radius: var(--radius-sm);
   padding: 16px 20px;
   display: flex;
@@ -1492,9 +1492,10 @@ button {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: var(--gold-primary);
-  color: #141414;
-  font-weight: 700;
+  background: transparent;
+  border: 1.5px solid var(--gold-primary);
+  color: var(--gold-primary);
+  font-weight: 600;
   font-size: 0.75rem;
   display: flex;
   align-items: center;
@@ -1504,13 +1505,14 @@ button {
 }
 
 .transparency-alert p {
-  color: var(--text-ivory);
+  color: #FFFFFF;
   font-size: 0.82rem;
   line-height: 1.55;
 }
 
 .transparency-alert strong {
-  color: var(--gold-primary);
+  color: #FFFFFF;
+  font-weight: 600;
 }
 
 #coloracao.dark-section {
@@ -1520,7 +1522,7 @@ button {
 #noivas.dark-section {
   position: relative;
   overflow: hidden;
-  background-color: #191512; /* Fundo escuro aquecido do PDF original [25, 21, 18] */
+  background-color: #211C19; /* Bronze espresso escuro do PDF original [33, 28, 25] */
 }
 
 .color-atelier-media img {
@@ -1629,7 +1631,7 @@ button {
   backdrop-filter: blur(6px);
   color: var(--text-white);
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   border-radius: 2px;
@@ -1799,11 +1801,19 @@ button {
 }
 
 .bridal-form-card {
-  background: var(--bg-dark-card);
+  background: #2A2320; /* Marrom espresso aquecido 1:1 com o PDF original [42, 35, 32] */
   border: 1px solid rgba(197, 160, 89, 0.28);
   border-radius: var(--radius-sm);
   padding: 34px 28px;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+.bridal-form-card .input-dark {
+  background: #191512;
+}
+
+.bridal-form-card .input-dark:focus {
+  background: #1C1714;
 }
 
 @media (min-width: 600px) {
@@ -1817,12 +1827,14 @@ button {
   font-size: 1.55rem;
   color: var(--text-white);
   margin-bottom: 8px;
+  text-align: center;
 }
 
 .bridal-form-sub {
   color: var(--text-light);
   font-size: 0.85rem;
   margin-bottom: 24px;
+  text-align: center;
 }
 
 /* ==========================================================================
@@ -2574,13 +2586,14 @@ button {
   display: grid;
   grid-template-columns: 1fr;
   gap: 48px;
-  align-items: start;
+  align-items: stretch;
 }
 
 @media (min-width: 992px) {
   .booking-double-grid {
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 60px;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: stretch;
   }
 }
 
@@ -2591,6 +2604,7 @@ button {
   border-radius: var(--radius-sm);
   padding: 34px 28px;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+  height: 100%;
 }
 
 @media (min-width: 600px) {
@@ -2714,6 +2728,7 @@ button {
   font-family: var(--font-serif);
   font-size: clamp(2.2rem, 5vw, 3.8rem);
   line-height: 1.18;
+  font-weight: 400;
   color: #000000;
   margin-top: 16px;
 }
@@ -2726,6 +2741,7 @@ button {
   .manifesto-huge-heading {
     font-size: clamp(1.65rem, 6.8vw, 2.2rem);
     line-height: 1.2;
+    font-weight: 400;
   }
 }
 
@@ -2851,9 +2867,9 @@ button {
    ========================================================================== */
 
 .site-footer {
-  background-color: var(--bg-dark-deep);
+  background-color: #16120F; /* Dark couture espresso [22, 18, 15] 1:1 ao PDF */
   color: var(--text-white);
-  padding: 90px 0 36px;
+  padding: 85px 0 36px;
   border-top: 1px solid rgba(197, 160, 89, 0.2);
 }
 
@@ -2879,7 +2895,7 @@ button {
 
 .footer-logo-title {
   font-family: var(--font-serif);
-  font-size: 1.8rem;
+  font-size: 1.85rem;
   letter-spacing: 0.22em;
   color: var(--text-white);
   line-height: 1;
@@ -2893,57 +2909,113 @@ button {
   text-transform: uppercase;
   margin-top: 4px;
   margin-bottom: 18px;
-}
-
-.footer-brand-desc {
-  color: var(--text-light);
-  font-size: 0.86rem;
-  line-height: 1.65;
-  margin-bottom: 22px;
-}
-
-.footer-social-row {
-  display: flex;
-  gap: 16px;
-}
-
-.footer-social-link {
-  color: var(--gold-primary);
-  font-size: 0.82rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
   font-weight: 500;
 }
 
-.footer-social-link:hover {
-  color: var(--text-white);
+.footer-manifesto-txt,
+.footer-brand-desc {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.86rem;
+  line-height: 1.65;
+  margin-bottom: 24px;
+  max-width: 320px;
+  font-weight: 300;
 }
 
-.footer-col-title {
-  font-size: 0.74rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+.footer-social-circles,
+.footer-social-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.social-circle-link,
+.footer-social-link {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: var(--gold-primary);
-  margin-bottom: 20px;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
 }
 
+.social-circle-link svg,
+.footer-social-link svg {
+  width: 15px;
+  height: 15px;
+  stroke: var(--gold-primary);
+  transition: stroke 0.25s ease, transform 0.25s ease;
+}
+
+.social-circle-link:hover,
+.footer-social-link:hover {
+  background: var(--gold-primary);
+  border-color: var(--gold-primary);
+  color: #16120F;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(197, 160, 89, 0.3);
+}
+
+.social-circle-link:hover svg,
+.footer-social-link:hover svg {
+  stroke: #16120F;
+  transform: scale(1.08);
+}
+
+.footer-nav-title,
+.footer-col-title {
+  font-family: var(--font-serif);
+  font-size: 1.18rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--text-white);
+  margin-bottom: 22px;
+  text-transform: none;
+}
+
+.footer-list,
 .footer-links-list {
+  list-style: none !important;
+  list-style-type: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
+.footer-list li,
+.footer-links-list li {
+  list-style: none !important;
+  list-style-type: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.footer-list a,
 .footer-links-list a {
-  color: var(--text-light);
+  color: rgba(255, 255, 255, 0.65);
   font-size: 0.85rem;
+  line-height: 1.4;
+  text-decoration: none;
+  font-weight: 300;
+  display: inline-block;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
+.footer-list a:hover,
 .footer-links-list a:hover {
-  color: var(--text-white);
-  padding-left: 4px;
+  color: var(--gold-primary);
+  transform: translateX(3px);
 }
 
+.footer-contact-col,
 .footer-contact-list {
   display: flex;
   flex-direction: column;
@@ -2954,14 +3026,19 @@ button {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  color: var(--text-light);
+  color: rgba(255, 255, 255, 0.65);
   font-size: 0.85rem;
   line-height: 1.5;
+  font-weight: 300;
+}
+
+.footer-contact-row span {
+  color: rgba(255, 255, 255, 0.65);
 }
 
 .contact-icon {
-  width: 18px;
-  height: 18px;
+  width: 17px;
+  height: 17px;
   stroke: var(--gold-primary);
   flex-shrink: 0;
   margin-top: 2px;
@@ -2976,8 +3053,9 @@ button {
   align-items: center;
   justify-content: space-between;
   font-size: 0.78rem;
-  color: #7A746C;
+  color: rgba(255, 255, 255, 0.45);
   text-align: center;
+  font-weight: 300;
 }
 
 @media (min-width: 768px) {
@@ -2987,13 +3065,21 @@ button {
   }
 }
 
+.footer-copyright-bar strong {
+  color: var(--gold-primary);
+  font-weight: 500;
+}
+
 .footer-policy-row {
   display: flex;
   gap: 20px;
 }
 
 .footer-policy-row a {
-  color: #7A746C;
+  color: rgba(255, 255, 255, 0.45);
+  text-decoration: none;
+  font-size: 0.78rem;
+  transition: color 0.2s ease;
 }
 
 .footer-policy-row a:hover {
