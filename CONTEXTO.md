@@ -96,6 +96,7 @@
   - Título editorial do Manifesto AURA (`#manifesto`) calibrado para preto puro `#000000` (`rgb(0, 0, 0)`), com cache `v=4.8.0`.
   - Títulos dos cards de Colorimetria (`#coloracao`) em branco nobre `#FFFFFF` e marca d'água monumental "HAIR" posicionada fielmente sob o grid técnico, com cache `v=4.9.0`.
   - Sequência de fotos dos Especialistas (`#especialistas`) corrigida 1:1 com o original (Camila com iluminação azul/púrpura e Beatriz com coque despojado), botão "CONHECER TODO O CORPO ARTÍSTICO" justificado à esquerda e efeito hover com fundo preto `#11100F`, fonte branca `#FFFFFF` e borda em ouro nobre `#C5A059`, com cache `v=5.0.0`.
+  - Seletor de idiomas da barra superior (`.lang-switch`) calibrado 1:1 com o PDF original: idioma ativo `PT` em ouro nobre acetinado (`var(--gold-primary)` / `#C5A059`), barras divisórias `/` em tom claro neutro translúcido `rgba(255, 255, 255, 0.45)`, idiomas inativos em taupe `#AAA397` com hover branco e chaveamento reativo via JavaScript, com cache `v=5.1.0`.
 - **Ambiente Local Ativo:** Container `aura-maison-web` em execução no Docker na porta `3000` (`http://localhost:3000`).
 - **Prontidão de Produção:** `docker-compose.prod.yml`, `nginx.prod.conf`, `.env.example` e scripts de deploy prontos para publicação em VPS/Cloud.
 - **Auditoria de Integridade:** 100% dos testes de carregamento, API e assets validados via script automatizado (`tests/audit_docker.py`).

@@ -536,23 +536,44 @@ button {
 .lang-switch {
   display: none;
   font-size: 0.68rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   color: #AAA397;
   font-weight: 500;
   white-space: nowrap !important;
   align-items: center;
   flex-shrink: 0;
+  user-select: none;
 }
 
 @media (min-width: 960px) {
   .lang-switch {
     display: inline-flex;
+    align-items: center;
   }
 }
 
-.lang-divider {
+.lang-item {
+  color: #AAA397;
+  font-weight: 500;
+  transition: color var(--transition-fast, 0.25s ease);
+  cursor: pointer;
+  padding: 2px 1px;
+}
+
+.lang-item:hover {
+  color: #FFFFFF;
+}
+
+.lang-item.active {
   color: var(--gold-primary);
-  margin: 0 3px;
+  font-weight: 600;
+}
+
+.lang-divider {
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0 4px;
+  font-weight: 400;
+  user-select: none;
 }
 
 .btn-header {

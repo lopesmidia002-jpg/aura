@@ -545,6 +545,27 @@
      - Recarga sem interrupção do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
      - Validação completa com 100% de aprovação na suíte `tests/audit_docker.py`.
 
+---
+
+### Passo 35: Calibração Cromática 1:1 do Seletor de Idiomas da Barra Superior (PT Dourado e Barras Neutras)
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Análise Cromática do Mockup Oficial do PDF:**
+     - Amostragem pixel-perfect no PDF oficial (`RGB [198, 161, 91]`) e confronto com a referência enviada pelo usuário (`media_1794432274118_ab093f4d.png`).
+     - Constatação de que o idioma ativo `PT` é destacado em ouro nobre acetinado (`var(--gold-primary)` / `#C5A059`), enquanto as barras divisórias `/` e os idiomas inativos `EN` e `ES` possuem tonalidade clara neutra/taupe aristocrática (`rgba(255, 255, 255, 0.45)` e `#AAA397`).
+  2. **Refatoração Semântica e Acessibilidade (`index.html`):**
+     - Estruturação semântica com elementos `.lang-item` individuais e acessibilidade completa (`aria-label="Seletor de idioma"`, `aria-current="true"`, `role="button"`, `tabindex="0"`).
+  3. **Estilização em Alta Fidelidade (`css/style.css`):**
+     - `.lang-item.active` configurado com `color: var(--gold-primary)` e `font-weight: 600`.
+     - `.lang-item` padrão com cor taupe `#AAA397` e transição para branco no hover.
+     - `.lang-divider` ajustado para branco translúcido sutil `rgba(255, 255, 255, 0.45)` com espaçamento simétrico (`margin: 0 4px`).
+  4. **Interatividade Fluida (`js/main.js`):**
+     - Função `initLanguageSwitcher()` implementando chaveamento reativo de idioma com suporte a clique e navegação por teclado (Enter / Espaço).
+  5. **Blindagem Contra Cache v=5.1.0 e Validação no Docker:**
+     - Versionamento `v=5.1.0` aplicado em `index.html` e `style.css`.
+     - Recarga do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
+     - Auditoria automatizada `tests/audit_docker.py` executada com 100% de sucesso.
+
 
 
 

@@ -6,6 +6,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initHeaderScroll();
   initMobileMenu();
+  initLanguageSwitcher();
   initBeforeAfterSlider();
   initRitualsFilter();
   initTestimonialsCarousel();
@@ -860,6 +861,33 @@ function initStepsTimeline() {
           b.querySelector('.step-circle-badge')?.classList.remove('is-active');
         });
         box.querySelector('.step-circle-badge')?.classList.add('is-active');
+      }
+    });
+  });
+}
+
+/* ==========================================================================
+   14. SELETOR DE IDIOMAS (PT / EN / ES)
+   ========================================================================== */
+function initLanguageSwitcher() {
+  const langItems = document.querySelectorAll('.lang-switch .lang-item');
+  if (!langItems.length) return;
+
+  langItems.forEach((item) => {
+    const activate = () => {
+      langItems.forEach(i => {
+        i.classList.remove('active');
+        i.removeAttribute('aria-current');
+      });
+      item.classList.add('active');
+      item.setAttribute('aria-current', 'true');
+    };
+
+    item.addEventListener('click', activate);
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        activate();
       }
     });
   });
