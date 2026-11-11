@@ -49,3 +49,4 @@ temp/
 # Arquivos binários pesados de briefing / mockups (opcional para manter repositório leve)
 *.pdf
 
+pdf_slices/

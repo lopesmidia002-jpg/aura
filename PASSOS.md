@@ -62,3 +62,31 @@
   4. **Scripts de Deploy:** Criação de `deploy.sh` (Linux) e `deploy.ps1` (Windows) para automação de deploy com zero downtime.
   5. **Criação do README.md Oficial:** Documento institucional completo com tabela do Design System, comandos de Docker, endpoints de API e contatos.
   6. **Atualização da Documentação:** `DOCUMENTACAO.md`, `PASSOS.md` e `CONTEXTO.md` finalizados com distinção.
+
+---
+
+### Passo 6: Alinhamento Visual, Estrutural e Tipográfico 1:1 com o Mockup Oficial do PDF (17 Seções Editoriais)
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. Extração analítica e fatiamento em alta resolução do PDF oficial (`pdf_slices/`) cobrindo as duas páginas e os 14.400px de altura vertical do layout.
+  2. Reescrita e estruturação completa do `index.html` contemplando todas as 17 seções do mockup:
+     - Header fixo com glassmorphism, menu de 8 links e seletor de idiomas (PT/EN/ES).
+     - Hero panorâmico com foto imersiva do salão, dark overlay e headline em 3 linhas.
+     - Citação editorial com aspas e tipografia clássica.
+     - Seção O Salão com badge circular sobreposto `10+ ANOS DE EXCELÊNCIA`, imagem de pincéis e métricas.
+     - Experiências & Rituais com pílulas de filtro, 6 cards oficiais com preços e botões `AGENDAR —` / `AVALIAR —`.
+     - Atelier Dark de Colorimetria com pilares 2x2, alerta de transparência e foto do processo de styling.
+     - Comparador Antes / Depois responsivo com badges de canto e manopla central dourada.
+     - Suíte Nupcial de Prestígio com benefícios exclusivos e formulário de orçamento de noivas.
+     - Seção de Mestres & Especialistas com 4 cards em foto portrait e dados de contato.
+     - Galeria Mosaico de Arte Viva com 6 fotografias de transformações reais.
+     - Linha do tempo em 5 passos horizontais conectados (Consulta, Avaliação, Personalização, Experiência, Finalização).
+     - Depoimentos em card branco com estrelas douradas, carrossel interativo e pílula Google Reviews 4.9★.
+     - Módulo de Reserva e Quadro de Horários de Atendimento com status `● ABERTO AGORA`.
+     - Banner panorâmico do Manifesto AURA em foto inteira.
+     - Grid do feed de Instagram e Newsletter limpa.
+     - Rodapé de 4 colunas com crédito oficial `Design by Leccorside`.
+     - Botão flutuante oficial do WhatsApp VIP.
+  3. Folha de estilo `css/style.css` completamente harmonizada com o Design System de luxo, variáveis CSS padronizadas, suporte a mobile-first, tablet e desktop.
+  4. Script `js/main.js` atualizado para controle do comparador antes/depois, filtros de categoria, carrossel de depoimentos, modal bottom sheet, máscaras de formulário e envio assíncrono para os endpoints do Nginx com redirecionamento ao Concierge WhatsApp.
+  5. Validação com 100% de sucesso no script de auditoria conteinerizado no Docker (`tests/audit_docker.py`).

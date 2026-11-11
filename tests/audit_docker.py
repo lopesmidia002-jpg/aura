@@ -53,7 +53,7 @@ def run_full_audit():
     
     html = index_res.get("content", "")
     assert "AURA Maison de Beauté" in html, "Título da marca não encontrado"
-    assert "BELEZA QUE REVELA A SUA" in html, "Headline Hero não encontrada"
+    assert "BELEZA QUE REVELA" in html and "A SUA MELHOR" in html, "Headline Hero não encontrada"
     assert "application/ld+json" in html, "Schema.org JSON-LD não encontrado"
     assert "og:image" in html, "Open Graph não configurado"
     print("  -> Validações de conteúdo, SEO e Schema.org: APROVADAS")

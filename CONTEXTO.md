@@ -11,8 +11,8 @@
 ## 2. Stack Tecnológica & Arquitetura
 - **Frontend:**
   - HTML5 semântico, acessível e otimizado para SEO local e mobile com dados estruturados **Schema.org JSON-LD** e **Open Graph**.
-  - CSS3 puro com arquitetura estritamente **Mobile-First**, tipografia fluida via `clamp()`, suporte a *Safe Area Insets* de smartphones modernos, glassmorphism e paleta de cores de luxo.
-  - JavaScript ES6+ modular com suporte a interações touch, controle gestual de bottom sheet, slider antes/depois arrastável, máscaras dinâmicas de telefone, integração com API REST e notificações toast.
+  - CSS3 puro com arquitetura **Mobile-First**, Design System editorial (Champagne `#FBF9F5`, Ouro `#C5A059`, Dark Couture `#161413`, Ébano `#141414`), tipografia editorial Playfair Display/Cormorant Garamond/Montserrat e glassmorphism refinado.
+  - JavaScript ES6+ modular com suporte a interações touch, controle gestual de bottom sheet, comparador antes/depois arrastável, carrossel de depoimentos, máscaras dinâmicas de telefone, integração com API REST e notificações toast de joalheria.
 - **Assets Visuais:**
   - Imagens em formato `.avif` de alta definição, leves e com renderização de alta fidelidade cromática.
 - **Infraestrutura, API & Docker (100% no Docker):**
@@ -35,7 +35,8 @@
 ---
 
 ## 4. Estado Atual do Projeto
-- **Status das Fases:** Passos 1, 2, 3, 4 e 5 (**TODOS CONCLUÍDOS** ✅).
+- **Status das Fases:** Passos 1, 2, 3, 4, 5 e 6 (**TODOS CONCLUÍDOS** ✅).
+- **Fidelidade Visual do PDF:** 100% alinhado com o arquivo `AURA Maison de Beauté — Salão Feminino de Alto Padrão   Experiências Exclusivas.pdf` em todas as suas 17 seções, textos, imagens e hierarquia.
 - **Ambiente Local Ativo:** Container `aura-maison-web` em execução no Docker na porta `3000` (`http://localhost:3000`).
 - **Prontidão de Produção:** `docker-compose.prod.yml`, `nginx.prod.conf`, `.env.example` e scripts de deploy prontos para publicação em VPS/Cloud.
-- **Auditoria de Integridade:** 100% dos testes de carregamento, API e assets validados via script automatizado.
+- **Auditoria de Integridade:** 100% dos testes de carregamento, API e assets validados via script automatizado (`tests/audit_docker.py`).

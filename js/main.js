@@ -1,6 +1,6 @@
 /**
  * AURA MAISON DE BEAUTÉ — MAIN JAVASCRIPT
- * Interatividades Touch-First, Mobile Sheet, Comparador, API Concierge & CRM
+ * Interatividades Touch-First, Mobile Sheet, Comparador, Carrossel & Concierge VIP
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initBeforeAfterSlider();
   initRitualsFilter();
+  initTestimonialsCarousel();
   initBookingModal();
   initFormsAndConcierge();
   initActiveNavOnScroll();
@@ -40,7 +41,6 @@ function initHeaderScroll() {
    ========================================================================== */
 function initMobileMenu() {
   const toggleBtn = document.querySelector('#menu-toggle-btn');
-  const bottomBarMenuBtn = document.querySelector('#bottom-bar-menu-btn');
   const drawer = document.querySelector('#mobile-drawer');
   const overlay = document.querySelector('#mobile-drawer-overlay');
   const closeBtn = document.querySelector('#mobile-drawer-close');
@@ -79,13 +79,6 @@ function initMobileMenu() {
     });
   }
 
-  if (bottomBarMenuBtn) {
-    bottomBarMenuBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      openDrawer();
-    });
-  }
-
   if (closeBtn) {
     closeBtn.addEventListener('click', closeDrawer);
   }
@@ -120,10 +113,10 @@ function initMobileMenu() {
    3. BEFORE / AFTER COMPARISON SLIDER (TOUCH & DRAG OTIMIZADO)
    ========================================================================== */
 function initBeforeAfterSlider() {
-  const comparisonCard = document.querySelector('.comparison-card');
-  const sliderRange = document.querySelector('.comparison-slider-range');
-  const afterImageWrap = document.querySelector('.comparison-after');
-  const handle = document.querySelector('.comparison-handle');
+  const comparisonCard = document.querySelector('#slider-viewport') || document.querySelector('.comparison-card');
+  const sliderRange = document.querySelector('#slider-invisible-range') || document.querySelector('.comparison-slider-range');
+  const afterImageWrap = document.querySelector('#slider-after-pane') || document.querySelector('.comparison-after');
+  const handle = document.querySelector('#slider-divider') || document.querySelector('.comparison-handle');
 
   if (!comparisonCard || !sliderRange || !afterImageWrap || !handle) return;
 
@@ -137,15 +130,15 @@ function initBeforeAfterSlider() {
     setPosition(e.target.value);
   });
 
-  // Eventos de Toque e Mouse Diretos no Card
   let isDragging = false;
 
   const handlePointerMove = (clientX) => {
     const rect = comparisonCard.getBoundingClientRect();
     const x = clientX - rect.left;
     const percentage = (x / rect.width) * 100;
-    setPosition(percentage);
-    sliderRange.value = Math.max(0, Math.min(100, percentage));
+    const clamped = Math.max(0, Math.min(100, percentage));
+    setPosition(clamped);
+    sliderRange.value = clamped;
   };
 
   comparisonCard.addEventListener('mousedown', (e) => {
@@ -162,7 +155,6 @@ function initBeforeAfterSlider() {
     handlePointerMove(e.clientX);
   });
 
-  // Suporte Touch Nativo (pan-y preservando rolagem vertical suave)
   comparisonCard.addEventListener('touchstart', (e) => {
     if (e.touches.length > 0) {
       handlePointerMove(e.touches[0].clientX);
@@ -170,11 +162,11 @@ function initBeforeAfterSlider() {
   }, { passive: true });
 
   comparisonCard.addEventListener('touchmove', (e) => {
-    if (!isDragging || e.touches.length === 0) return;
-    handlePointerMove(e.touches[0].clientX);
+    if (e.touches.length > 0) {
+      handlePointerMove(e.touches[0].clientX);
+    }
   }, { passive: true });
 
-  // Posição inicial: 50%
   setPosition(50);
 }
 
@@ -182,18 +174,16 @@ function initBeforeAfterSlider() {
    4. RITUALS CATEGORY FILTER (TOUCH & DESKTOP)
    ========================================================================== */
 function initRitualsFilter() {
-  const filterButtons = document.querySelectorAll('.ritual-filter-btn');
+  const filterButtons = document.querySelectorAll('.pill-btn, .ritual-filter-btn');
   const ritualCards = document.querySelectorAll('.ritual-card');
 
   if (!filterButtons.length || !ritualCards.length) return;
 
   filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      // Atualiza botão ativo
       filterButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
-      // Rola suavemente o botão selecionado para o centro da rolagem horizontal no mobile
       btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
 
       const filterCategory = btn.getAttribute('data-filter');
@@ -218,7 +208,82 @@ function initRitualsFilter() {
 }
 
 /* ==========================================================================
-   5. BOOKING MODAL (BOTTOM SHEET MOBILE & DESKTOP DIALOG)
+   5. CARROSSEL DE DEPOIMENTOS (EDITORIAL SPOTLIGHT)
+   ========================================================================== */
+function initTestimonialsCarousel() {
+  const testimonials = [
+    {
+      quote: "“Fiz meu Dia da Noiva no AURA e não tenho palavras para agradecer o carinho de toda a equipe. O ambiente é calmo, refinado e o penteado permaneceu intacto a festa inteira!”",
+      author: "ISABELA FONTES GUIMARÃES",
+      tag: "Morena Iluminada Toffee"
+    },
+    {
+      quote: "“O visagismo da Camila Ferraz transformou completamente a harmonia do meu rosto. Já sou cliente há 4 anos e não troco o corte por nenhum outro em São Paulo.”",
+      author: "MARIANA CARDOSO LINS",
+      tag: "Corte com Visagismo & Escova"
+    },
+    {
+      quote: "“O loiro sublime da Ana Martins é uma verdadeira obra de arte. Clareamento saudável, textura macia e um brilho espelhado que impressiona a todos.”",
+      author: "HELENA DE ALBUQUERQUE",
+      tag: "Loiro Sublime Signature"
+    },
+    {
+      quote: "“Atendimento impecável desde o café de boas-vindas até a finalização. O protocolo Fusio-Dose recuperou a saúde dos meus fios após anos de processos químicos.”",
+      author: "CAROLINA MENDES BASTOS",
+      tag: "Protocolo Fusio-Dose & Spa"
+    },
+    {
+      quote: "“A maquiagem para o baile de gala durou a madrugada inteira com acabamento acetinado natural. A Beatriz Alencar é uma artista incomparável.”",
+      author: "VALENTINA SGARBI",
+      tag: "Haute Makeup"
+    }
+  ];
+
+  const card = document.querySelector('.testimonial-spotlight-card');
+  if (!card) return;
+
+  const quoteEl = card.querySelector('.spotlight-quote-txt');
+  const authorEl = card.querySelector('.spotlight-author-name');
+  const tagEl = card.querySelector('.spotlight-author-tag');
+  const dots = card.querySelectorAll('.dot');
+  const prevBtn = card.querySelector('.carousel-nav-btn[aria-label="Depoimento Anterior"]');
+  const nextBtn = card.querySelector('.carousel-nav-btn[aria-label="Próximo Depoimento"]');
+
+  let currentIndex = 0;
+
+  const updateTestimonial = (index) => {
+    currentIndex = (index + testimonials.length) % testimonials.length;
+
+    if (quoteEl) {
+      quoteEl.style.opacity = '0';
+      setTimeout(() => {
+        quoteEl.textContent = testimonials[currentIndex].quote;
+        if (authorEl) authorEl.textContent = testimonials[currentIndex].author;
+        if (tagEl) tagEl.textContent = testimonials[currentIndex].tag;
+        quoteEl.style.transition = 'opacity 0.3s ease';
+        quoteEl.style.opacity = '1';
+      }, 150);
+    }
+
+    dots.forEach((dot, i) => {
+      if (i === currentIndex) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+  };
+
+  if (prevBtn) prevBtn.addEventListener('click', () => updateTestimonial(currentIndex - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => updateTestimonial(currentIndex + 1));
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => updateTestimonial(i));
+  });
+}
+
+/* ==========================================================================
+   6. BOOKING MODAL (BOTTOM SHEET MOBILE & DESKTOP DIALOG)
    ========================================================================== */
 function initBookingModal() {
   const modalBackdrop = document.querySelector('#booking-modal-backdrop');
@@ -234,7 +299,6 @@ function initBookingModal() {
     modalBackdrop.classList.add('active');
     document.body.style.overflow = 'hidden';
 
-    // Pré-seleção do ritual no select se informado
     if (ritualSelect && ritualName) {
       for (let option of ritualSelect.options) {
         if (option.text.toLowerCase().includes(ritualName.toLowerCase())) {
@@ -244,7 +308,6 @@ function initBookingModal() {
       }
     }
 
-    // Foco no primeiro campo após abertura
     setTimeout(() => {
       const firstInput = modalBackdrop.querySelector('input');
       if (firstInput) firstInput.focus();
@@ -280,7 +343,6 @@ function initBookingModal() {
     }
   });
 
-  // Swipe para baixo na barra superior fecha o bottom sheet no mobile
   if (grabBar && modalContent) {
     let touchStartY = 0;
     grabBar.addEventListener('touchstart', (e) => {
@@ -300,27 +362,24 @@ function initBookingModal() {
 }
 
 /* ==========================================================================
-   6. CONCIERGE WHATSAPP & CRM AUTOMATIZADO (PASSOS E INTEGRAÇÃO)
+   7. CONCIERGE WHATSAPP & CRM AUTOMATIZADO
    ========================================================================== */
 function initFormsAndConcierge() {
-  const WHATSAPP_CONCIERGE_NUMBER = '551130889900'; // Telefone Oficial AURA Jardins
+  const WHATSAPP_CONCIERGE_NUMBER = '551130889900';
 
-  // Gerador de Protocolo de Alto Padrão
-  const generateProtocol = () => {
+  const generateProtocol = (prefix = 'AURA-VIP') => {
     const randomCode = Math.floor(1000 + Math.random() * 9000);
-    return `AURA-VIP-${randomCode}`;
+    return `${prefix}-${randomCode}`;
   };
 
-  // Processador Central de Agendamentos VIP
   const handleBookingSubmit = async (formElement, formData) => {
     const submitBtn = formElement.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
     submitBtn.innerHTML = '<span>Processando com Concierge...</span>';
     submitBtn.disabled = true;
 
-    const protocol = generateProtocol();
+    const protocol = generateProtocol('AURA-VIP');
 
-    // 1. Envio assíncrono para o endpoint CRM local no Docker
     try {
       await fetch('/api/agendamentos', {
         method: 'POST',
@@ -334,6 +393,8 @@ function initFormsAndConcierge() {
           phone: formData.phone,
           ritual: formData.ritualText,
           date: formData.date,
+          specialist: formData.specialist || 'Sem preferência',
+          time: formData.time || '',
           notes: formData.notes || '',
           timestamp: new Date().toISOString()
         })
@@ -342,8 +403,9 @@ function initFormsAndConcierge() {
       console.warn('API local indisponível, prosseguindo com Concierge direto via WhatsApp:', err);
     }
 
-    // 2. Construção da Mensagem Elegante para o WhatsApp do Concierge
     const dateFormatted = formData.date ? formData.date.split('-').reverse().join('/') : 'A combinar';
+    const specText = formData.specialist && formData.specialist !== 'qualquer' ? `\n✦ Profissional: ${formData.specialist}` : '';
+    const timeText = formData.time ? `\n✦ Horário: ${formData.time}` : '';
     const notesText = formData.notes ? `\n✦ Observações: ${formData.notes}` : '';
 
     const whatsappMessage = encodeURIComponent(
@@ -353,13 +415,15 @@ function initFormsAndConcierge() {
       `✦ Nome: ${formData.name}\n` +
       `✦ Ritual Desejado: ${formData.ritualText}\n` +
       `✦ Data Preferencial: ${dateFormatted}\n` +
-      `✦ WhatsApp: ${formData.phone}${notesText}\n\n` +
-      `Aguardo as opções de horários privativos disponíveis nos Jardins. Muito obrigada!`
+      `✦ WhatsApp: ${formData.phone}` +
+      specText +
+      timeText +
+      notesText +
+      `\n\nAguardo as opções de horários privativos disponíveis nos Jardins. Muito obrigada!`
     );
 
     const whatsappUrl = `https://wa.me/${WHATSAPP_CONCIERGE_NUMBER}?text=${whatsappMessage}`;
 
-    // 3. Feedback visual com Toast e fechamento suave
     setTimeout(() => {
       submitBtn.innerHTML = originalText;
       submitBtn.disabled = false;
@@ -369,14 +433,13 @@ function initFormsAndConcierge() {
 
       showToast(`Protocolo ${protocol} gerado com distinção! Conectando ao Concierge VIP...`);
 
-      // 4. Redirecionamento amigável para o WhatsApp Oficial
       setTimeout(() => {
         window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
       }, 1000);
-    }, 850);
+    }, 750);
   };
 
-  // Formulário do Modal de Agendamento
+  // Formulário do Modal
   const modalBookingForm = document.querySelector('#modal-booking-form');
   if (modalBookingForm) {
     modalBookingForm.addEventListener('submit', (e) => {
@@ -399,16 +462,72 @@ function initFormsAndConcierge() {
   if (sectionBookingForm) {
     sectionBookingForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const select = sectionBookingForm.querySelector('#book-ritual');
+      const selectRitual = sectionBookingForm.querySelector('#book-ritual');
+      const selectPro = sectionBookingForm.querySelector('#book-pro');
+      const selectTime = sectionBookingForm.querySelector('#book-time');
       const formData = {
         name: sectionBookingForm.querySelector('#book-name').value.trim(),
         phone: sectionBookingForm.querySelector('#book-phone').value.trim(),
-        ritualValue: select.value,
-        ritualText: select.options[select.selectedIndex]?.text || select.value,
+        email: sectionBookingForm.querySelector('#book-email')?.value.trim() || '',
+        ritualValue: selectRitual.value,
+        ritualText: selectRitual.options[selectRitual.selectedIndex]?.text || selectRitual.value,
+        specialist: selectPro ? selectPro.options[selectPro.selectedIndex]?.text : '',
+        time: selectTime ? selectTime.options[selectTime.selectedIndex]?.text : '',
         date: sectionBookingForm.querySelector('#book-date').value,
         notes: sectionBookingForm.querySelector('#book-notes')?.value.trim() || ''
       };
       handleBookingSubmit(sectionBookingForm, formData);
+    });
+  }
+
+  // Formulário de Proposta de Noivas
+  const bridalForm = document.querySelector('#bridal-proposal-form');
+  if (bridalForm) {
+    bridalForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const submitBtn = bridalForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<span>Processando com Concierge de Noivas...</span>';
+      submitBtn.disabled = true;
+
+      const nameInput = bridalForm.querySelector('input[type="text"]');
+      const phoneInput = bridalForm.querySelector('input[type="tel"]');
+      const dateInput = bridalForm.querySelector('input[type="date"]');
+      const selectPpl = bridalForm.querySelector('select');
+      const notesInput = bridalForm.querySelector('textarea');
+
+      const brideName = nameInput ? nameInput.value.trim() : 'Noiva VIP';
+      const bridePhone = phoneInput ? phoneInput.value.trim() : '';
+      const weddingDate = dateInput ? dateInput.value : '';
+      const peopleText = selectPpl ? selectPpl.options[selectPpl.selectedIndex]?.text : 'Somente a Noiva';
+      const notes = notesInput ? notesInput.value.trim() : '';
+
+      const protocol = generateProtocol('AURA-NOIVA');
+      const dateFormatted = weddingDate ? weddingDate.split('-').reverse().join('/') : 'A definir';
+
+      const whatsappMessage = encodeURIComponent(
+        `Olá, Concierge de Noivas da AURA Maison de Beauté! 👰✨\n\n` +
+        `Gostaria de solicitar uma proposta para o meu Dia da Noiva:\n` +
+        `✦ Protocolo: ${protocol}\n` +
+        `✦ Noiva: ${brideName}\n` +
+        `✦ WhatsApp: ${bridePhone}\n` +
+        `✦ Data do Casamento: ${dateFormatted}\n` +
+        `✦ Cortejo: ${peopleText}\n` +
+        (notes ? `✦ Observações: ${notes}\n\n` : `\n`) +
+        `Aguardo apresentação do cardápio de experiências para Noivas VIP da Maison. Muito obrigada!`
+      );
+
+      const whatsappUrl = `https://wa.me/${WHATSAPP_CONCIERGE_NUMBER}?text=${whatsappMessage}`;
+
+      setTimeout(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+        bridalForm.reset();
+        showToast(`Proposta ${protocol} registrada! Conectando ao Concierge de Noivas...`);
+        setTimeout(() => {
+          window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        }, 1000);
+      }, 750);
     });
   }
 
@@ -444,7 +563,7 @@ function initFormsAndConcierge() {
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
         newsletterForm.reset();
-        showToast('Bem-vinda ao Círculo AURA Privilège. Seu convite de boas-vindas foi despachado ao seu e-mail.');
+        showToast('Bem-vinda ao Círculo AURA Privilège. Seu convite exclusivo foi enviado ao seu e-mail.');
       }, 700);
     });
   }
@@ -486,7 +605,7 @@ function showToast(message) {
 }
 
 /* ==========================================================================
-   7. ACTIVE NAV ON SCROLL
+   8. ACTIVE NAV ON SCROLL
    ========================================================================== */
 function initActiveNavOnScroll() {
   const sections = document.querySelectorAll('section[id]');
@@ -515,14 +634,14 @@ function initActiveNavOnScroll() {
 }
 
 /* ==========================================================================
-   8. MÁSCARA DINÂMICA DE TELEFONE CELULAR (11) 99999-9999
+   9. MÁSCARA DINÂMICA DE TELEFONE CELULAR (11) 99999-9999
    ========================================================================== */
 function initPhoneMasks() {
   const phoneInputs = document.querySelectorAll('input[type="tel"]');
 
   phoneInputs.forEach(input => {
     input.addEventListener('input', (e) => {
-      let value = e.target.value.replace(/\D/g, ''); // Apenas números
+      let value = e.target.value.replace(/\D/g, '');
       if (value.length > 11) value = value.slice(0, 11);
 
       if (value.length <= 2) {
@@ -539,7 +658,7 @@ function initPhoneMasks() {
 }
 
 /* ==========================================================================
-   9. DATA MÍNIMA PARA AGENDAMENTOS (A PARTIR DE HOJE)
+   10. DATA MÍNIMA PARA AGENDAMENTOS (A PARTIR DE HOJE)
    ========================================================================== */
 function initMinDates() {
   const dateInputs = document.querySelectorAll('input[type="date"]');
@@ -551,7 +670,7 @@ function initMinDates() {
 }
 
 /* ==========================================================================
-   10. SCROLL REVEAL ANIMATIONS (INTERSECTION OBSERVER)
+   11. SCROLL REVEAL ANIMATIONS (INTERSECTION OBSERVER)
    ========================================================================== */
 function initScrollReveal() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
