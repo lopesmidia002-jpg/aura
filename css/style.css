@@ -1614,6 +1614,50 @@ button {
   border-color: var(--gold-primary);
 }
 
+.bridal-action-wrap {
+  margin-top: 14px;
+}
+
+@media (max-width: 991px) {
+  .bridal-action-wrap {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+  }
+
+  .bridal-cta-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .bridal-action-wrap {
+    margin-top: 8px;
+    margin-bottom: 12px;
+  }
+
+  .bridal-cta-btn {
+    width: 100%;
+    max-width: 340px;
+    padding: 0 16px;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+  }
+}
+
+@media (max-width: 360px) {
+  .bridal-cta-btn {
+    font-size: 0.60rem;
+    padding: 0 10px;
+    letter-spacing: 0.05em;
+  }
+}
+
 .bridal-form-card {
   background: var(--bg-dark-card);
   border: 1px solid rgba(197, 160, 89, 0.28);

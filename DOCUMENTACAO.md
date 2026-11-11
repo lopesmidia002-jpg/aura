@@ -155,3 +155,4 @@ Para garantir excelência absoluta de visualização em qualquer dispositivo, o 
 5. **Tipografia Fluida:** Títulos e subtítulos calibrados via `clamp()` para impedir recortes ou quebras órfãs.
 6. **Comparador Antes/Depois Fluido:** Escala da imagem clipada ajustada dinamicamente via `calc(100vw - 40px)` para acompanhamento milimétrico da viewport.
 7. **Restauração Cromática `--color-gold`:** Variáveis de paleta oficial unificadas no `:root`, garantindo nitidez e fidelidade cromática em todos os estados da interface.
+8. **Centralização do CTA de Noivas no Mobile:** O botão dourado "Falar com Concierge de Noivas" (`.bridal-cta-btn`) conta com container `.bridal-action-wrap`, permanecendo alinhado à esquerda no desktop e assumindo centralização matemática horizontal no mobile/tablet (`<= 991px`) com respiro simétrico perfeito.

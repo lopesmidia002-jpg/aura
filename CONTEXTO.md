@@ -35,7 +35,11 @@
 ---
 
 ## 4. Estado Atual do Projeto
-- **Status das Fases:** Passos 1 a 26 (**TODOS CONCLUÍDOS** ✅).
+- **Status das Fases:** Passos 1 a 27 (**TODOS CONCLUÍDOS** ✅).
+- **Centralização do Botão "Falar com Concierge de Noivas" no Mobile (Passo 27):**
+  - Wrapper `.bridal-action-wrap` e classe dedicada `.bridal-cta-btn` implementados em `index.html` e `style.css`.
+  - No desktop (> 991px), preserva alinhamento à esquerda junto ao texto editorial; no mobile/tablet (<= 991px), o botão é perfeitamente centralizado com `margin: 0 auto;`, `display: flex; justify-content: center;`, `max-width: 340px` e respiro simétrico perfeito.
+  - Blindagem de cache `?v=4.3.0` no HTML e CSS.
 - **Auditoria e Alinhamento Mobile Integral (Passo 26):**
   - Validação automatizada multiplataforma via Chrome CDP em viewports 320px, 360px, 375px, 390px, 414px, 480px e 768px: ZERO overflow horizontal (`scrollWidth == innerWidth`).
   - Remoção dos estilos inline rígidos de `.concept-inset-img-box` que travavam o card na lateral direita no mobile, migrando toda a lógica para regras fluidas no CSS (desktop 60% com proporção 1:1, tablet 55%, mobile 54% a 52% contido nas margens da tela).

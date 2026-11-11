@@ -396,3 +396,21 @@
   8. **Blindagem Contra Cache v=4.2.0 e Validação no Docker:**
      - Versionamento `v=4.2.0` aplicado em `index.html` e `style.css`.
      - Testes automatizados executados e 100% aprovados no Docker (`aura-maison-web` na porta 3000) via `tests/audit_docker.py`.
+
+
+---
+
+### Passo 27: Centralização Responsiva do Botão "Falar com Concierge de Noivas" no Modo Mobile
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Estruturação de Wrapper Semântico (`.bridal-action-wrap`):**
+     - Criação do container responsivo `.bridal-action-wrap` envolvendo o botão de ação na coluna editorial da seção Noivas (`#noivas`) em `index.html`.
+     - Atribuição da classe dedicada `.bridal-cta-btn` ao elemento `<a>`.
+  2. **Centralização Matemática e Estilização Fluida no Mobile:**
+     - No desktop (> 991px), o botão preserva o alinhamento clássico à esquerda junto ao texto editorial da seção.
+     - No tablet e mobile (<= 991px), quando o grid se transforma em 1 coluna única, o container ativa `display: flex; justify-content: center; width: 100%; text-align: center;` e o botão aplica `margin: 0 auto;`.
+     - Em smartphones (<= 480px e <= 360px), o botão assume largura fluida com `max-width: 340px`, paddings laterais adaptativos (12px a 16px) e tipografia refinada, mantendo centralização matemática absoluta (`centerOffset: 0`) com respiro simétrico perfeito em relação às bordas da tela.
+  3. **Blindagem Contra Cache v=4.3.0 e Validação no Docker:**
+     - Atualização do versionamento de cache para `v=4.3.0` em `index.html` e `style.css`.
+     - Verificação visual e métrica automatizada via Chrome CDP (`tests/screenshots/mobile_bridal_button_centered.png`).
+     - 100% de sucesso nos testes automatizados no Docker (`aura-maison-web` na porta 3000) via `tests/audit_docker.py`.
