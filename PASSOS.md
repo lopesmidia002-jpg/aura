@@ -525,6 +525,26 @@
      - Inspeção via Chrome CDP confirmando cor computada `rgb(255, 255, 255)` para todos os 4 títulos e correspondência visual 1:1 da marca d'água.
      - Auditoria multi-viewport via Chrome CDP e suíte `tests/audit_docker.py` executada com 100% de aprovação.
 
+---
+
+### Passo 34: Reordenação das Fotos de Especialistas, Alinhamento à Esquerda e Efeito Hover Nobre do Botão
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Ajuste da Sequência de Imagens da Seção de Especialistas (`#especialistas`):**
+     - Alinhamento rigoroso 1:1 com o layout original de referência, trocando exclusivamente os retratos dos Cards 2 e 3 e preservando integralmente textos, nomes, cargos, descrições e links de agendamento:
+       - **Card 2 (Camila Ferraz — Visagista & Cut Specialist):** Imagem com iluminação e fundo azul/púrpura (`photo-1534528741775-53994a69daeb_Po4W.avif`).
+       - **Card 3 (Beatriz Alencar — Head of Makeup):** Imagem com coque despojado e fundo claro (`photo-1580489944761-15a19d654956_Po4W.avif`).
+  2. **Alinhamento do Botão de Ação à Esquerda:**
+     - Substituição do wrapper centralizador anterior pela classe `.specialists-action` com `display: flex; justify-content: flex-start;`, garantindo alinhamento rente à margem esquerda do grid de 4 especialistas.
+  3. **Estilização Nobre do Efeito Hover no Botão:**
+     - Botão "CONHECER TODO O CORPO ARTÍSTICO →" (`#especialistas .btn-outline-dark`) estilizado com transição aveludada:
+       - Fundo padrão transparente com borda e texto escuro `#262320`.
+       - Estado `:hover` e `:focus-visible` com fundo preto ébano nobre (`#11100F !important`), tipografia e ícone em branco puro (`#FFFFFF !important`), contorno em ouro nobre acetinado (`var(--gold-primary)` / `#C5A059 !important`) e elevação suave (`transform: translateY(-2px)` com sombra difusa).
+  4. **Blindagem Contra Cache v=5.0.0 e Validação no Docker:**
+     - Versionamento `v=5.0.0` aplicado em `index.html` e `style.css`.
+     - Recarga sem interrupção do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
+     - Validação completa com 100% de aprovação na suíte `tests/audit_docker.py`.
+
 
 
 

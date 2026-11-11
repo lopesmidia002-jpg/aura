@@ -93,6 +93,9 @@
   - Marca d'água tipográfica de fundo "HAIR" restaurada na seção Colorimetria de Alta Costura (`#coloracao`), posicionada com precisão entre as colunas editoriais e estendendo-se sob a fotografia panorâmica, em ouro nobre sutil (`rgba(197, 160, 89, 0.09)`).
   - Tipografia dos badges "ANTES" e "DEPOIS" (`.badge-corner-tag`) do comparador de transformações calibrada para branco puro (`#FFFFFF` / `var(--text-white)`), em conformidade 1:1 com o PDF original.
   - Marca d'água tipográfica de fundo "BRIDE" restaurada na seção Suíte Nupcial (`#noivas`), centralizada simetricamente sob os 4 cards translúcidos de benefícios (`.pillar-card-dark`), em ouro nobre sutil (`rgba(197, 160, 89, 0.08)`), com cache atualizado para `v=4.7.0`.
+  - Título editorial do Manifesto AURA (`#manifesto`) calibrado para preto puro `#000000` (`rgb(0, 0, 0)`), com cache `v=4.8.0`.
+  - Títulos dos cards de Colorimetria (`#coloracao`) em branco nobre `#FFFFFF` e marca d'água monumental "HAIR" posicionada fielmente sob o grid técnico, com cache `v=4.9.0`.
+  - Sequência de fotos dos Especialistas (`#especialistas`) corrigida 1:1 com o original (Camila com iluminação azul/púrpura e Beatriz com coque despojado), botão "CONHECER TODO O CORPO ARTÍSTICO" justificado à esquerda e efeito hover com fundo preto `#11100F`, fonte branca `#FFFFFF` e borda em ouro nobre `#C5A059`, com cache `v=5.0.0`.
 - **Ambiente Local Ativo:** Container `aura-maison-web` em execução no Docker na porta `3000` (`http://localhost:3000`).
 - **Prontidão de Produção:** `docker-compose.prod.yml`, `nginx.prod.conf`, `.env.example` e scripts de deploy prontos para publicação em VPS/Cloud.
 - **Auditoria de Integridade:** 100% dos testes de carregamento, API e assets validados via script automatizado (`tests/audit_docker.py`).

@@ -1879,6 +1879,33 @@ button {
   font-size: 0.72rem;
 }
 
+.specialists-action {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 45px;
+}
+
+#especialistas .btn-outline-dark {
+  border-color: #262320;
+  color: #262320;
+}
+
+#especialistas .btn-outline-dark:hover,
+#especialistas .btn-outline-dark:focus-visible {
+  background: #11100F !important;
+  color: #FFFFFF !important;
+  border-color: var(--gold-primary) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+}
+
+#especialistas .btn-outline-dark:hover span,
+#especialistas .btn-outline-dark:focus-visible span,
+#especialistas .btn-outline-dark:hover .arrow-right,
+#especialistas .btn-outline-dark:focus-visible .arrow-right {
+  color: #FFFFFF !important;
+}
+
 /* ==========================================================================
    9. GALERIA DE ARTE VIVA / MOSAICO (SLICE 08)
    ========================================================================== */
