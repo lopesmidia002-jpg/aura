@@ -247,25 +247,52 @@ button {
   background: transparent;
   color: var(--text-white);
   border: 1px solid rgba(255, 255, 255, 0.65);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.btn-hero-outline:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--gold-primary);
-  color: var(--gold-primary);
+.btn-hero-outline span {
+  color: var(--text-white);
+  transition: color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-hero-outline:hover,
+.btn-hero-outline:focus-visible {
+  background: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+  color: #141414 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
   transform: translateY(-2px);
+}
+
+.btn-hero-outline:hover span,
+.btn-hero-outline:focus-visible span {
+  color: #141414 !important;
 }
 
 .btn-outline-dark {
   background: transparent;
   color: var(--text-ebony);
   border: 1px solid var(--text-ebony);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.btn-outline-dark:hover {
-  background: var(--text-ebony);
-  color: var(--text-white);
+.btn-outline-dark span {
+  color: var(--text-ebony);
+  transition: color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-outline-dark:hover,
+.btn-outline-dark:focus-visible {
+  background: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+  color: #141414 !important;
+  box-shadow: 0 8px 24px rgba(20, 16, 12, 0.12);
   transform: translateY(-2px);
+}
+
+.btn-outline-dark:hover span,
+.btn-outline-dark:focus-visible span {
+  color: #141414 !important;
 }
 
 .btn-full {
@@ -948,11 +975,18 @@ button {
   transition: var(--transition-fast);
 }
 
-.concept-action .btn-outline-dark:hover {
-  border-color: var(--gold-primary);
-  background: transparent;
-  color: var(--gold-primary);
+.concept-action .btn-outline-dark:hover,
+.concept-action .btn-outline-dark:focus-visible {
+  border-color: #FFFFFF !important;
+  background: #FFFFFF !important;
+  color: #141414 !important;
+  box-shadow: 0 8px 24px rgba(20, 16, 12, 0.12);
   transform: translateY(-2px);
+}
+
+.concept-action .btn-outline-dark:hover span,
+.concept-action .btn-outline-dark:focus-visible span {
+  color: #141414 !important;
 }
 
 /* Métricas em Linha (Sem borda superior, espaçamento orgânico) */

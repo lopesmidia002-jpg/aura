@@ -147,3 +147,14 @@
   3. **Extensão Universal a Todos os Botões Dourados:** Efeito aplicado uniformemente em `.btn-gold`, `.btn-header`, botões de modal, formulário de noivas, agendamento principal, atelier de colorimetria e newsletter.
   4. **Transições Aveludadas:** Curva de transição `cubic-bezier(0.16, 1, 0.3, 1)` com elevação sutil `translateY(-2px)` e sombra difusa luxuosa (`0 8px 24px rgba(0, 0, 0, 0.35)`).
   5. **Auditoria de Integridade no Docker:** 100% dos testes validados com sucesso via `tests/audit_docker.py`.
+
+---
+
+### Passo 12: Efeito Hover com Fundo Branco Puro nos Botões Transparentes e Outline
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Transição de Alto Contraste em Botões Transparentes:** Configuração do comportamento hover nos botões com fundo transparente (`.btn-hero-outline`, `.btn-outline-dark`) para que assumam fundo branco puro sólido (`background: #FFFFFF !important; border-color: #FFFFFF !important;`) ao passar o mouse.
+  2. **Inversão Cromática da Tipografia:** Tipografia com transição suave para preto ébano (`color: #141414 !important;`), garantindo contraste legível e sofisticado conforme o mockup de referência do botão "CONHECER O SALÃO".
+  3. **Sombra e Elevação Suave:** Aplicação de sombra aveludada (`box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25)`) e elevação ergonômica `translateY(-2px)`.
+  4. **Extensão a Todos os Botões Transparentes:** Efeito aplicado no Hero ("CONHECER O SALÃO"), no conceito ("CONHECER RITUAIS EXCLUSIVOS"), no catálogo de rituais ("VER TABELA COMPLETA DE RITUAIS & PREÇOS"), no corpo artístico ("CONHECER TODO O CORPO ARTÍSTICO") e no Instagram ("SEGUIR NO INSTAGRAM").
+  5. **Auditoria de Integridade no Docker:** 100% dos testes de carregamento, API e assets validados via `tests/audit_docker.py`.
