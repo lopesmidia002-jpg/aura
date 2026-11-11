@@ -368,3 +368,31 @@
      - Atualização do versionamento de cache para `v=4.1.0` em `index.html` e `style.css`.
   4. **Auditoria de Integridade no Docker:**
      - Validação conteinerizada com 100% de sucesso via `tests/audit_docker.py` (HTML, CSS, JS, 21 imagens e rotas da API).
+
+
+---
+
+### Passo 26: Auditoria Completa de Responsividade e Alinhamento no Modo Mobile em Múltiplos Viewports
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Auditoria Automatizada Multi-Viewport com Chrome CDP (320px, 360px, 375px, 390px, 414px, 480px e 768px):**
+     - Criação da suíte de testes de emulação mobile real (`tests/cdp_mobile_auditor.py` e `tests/mobile_comprehensive_audit.py`).
+     - Constatação e resolução de 100% dos transbordos laterais (`scrollWidth == innerWidth`), garantindo zero overflow horizontal em qualquer tela.
+  2. **Eliminação de Estilos Inline e Correção do Card de Ferramentas (`.concept-inset-img-box`):**
+     - Remoção dos estilos inline rígidos (`right: -42px !important;`) em `index.html` que impediam a aplicação das media queries mobile.
+     - Implementação de regras fluidas em `css/style.css`: desktop preserva a proporção 1:1 rigorosa com 60% de largura (`bottom: -18px; right: -42px; width: 60%; max-width: 280px;`); tablet utiliza `right: -12px; width: 55%; max-width: 240px;`; mobile (<= 576px) utiliza `right: -8px; width: 54%; max-width: 200px; border-width: 6px;`; mobile estreito (<= 380px) utiliza `right: -4px; width: 52%; max-width: 175px; border-width: 5px;`.
+  3. **Ajuste Fino do Selo Circular de Excelência (`.badge-excellence-circle`):**
+     - Ajuste para `top: -12px; right: -6px; width: 76px; height: 76px;` em viewports <= 576px, mantendo o selo contido na margem de respiro lateral da viewport.
+  4. **Harmonização do Header e Botão de Agendamento em Smartphones Estreitos:**
+     - Ajuste responsivo para telas <= 480px e <= 360px: padding lateral do container reduzido para 12px/16px, tipografia da marca proporcional (`1.15rem` / `1.25rem`) e botão `.btn-header` compacto com padding adaptativo (8px/12px) e altura de 30px, prevenindo qualquer corte ou aproximação da borda da tela.
+  5. **Otimização Tipográfica e de Botões no Hero (`#hero`):**
+     - Aplicação de `font-size: clamp(1.85rem, 8vw, 2.35rem)` e `line-height: 1.12` no título principal serifado, evitando quebras truncadas em telas estreitas.
+     - Tag superior com `letter-spacing: 0.16em` e botões de ação ocupando 100% da largura útil (`max-width: 320px`), centralizados e com áreas de toque acessíveis.
+  6. **Calibração do Comparador Antes/Depois (`#transformacoes`) e Manifesto:**
+     - Ajuste da escala da imagem clipada (`width: calc(100vw - 40px)` / `calc(100vw - 32px)`) e altura do viewport (`height: 300px` e `250px` em telas <= 380px) para proporção estética impecável.
+     - Título do banner do manifesto redimensionado para `clamp(1.65rem, 6.8vw, 2.2rem)`.
+  7. **Restauração das Variáveis de Dourado Nobre (`--color-gold`):**
+     - Definição explícita de `--color-gold: #C5A059;` e `--color-gold-light: #E5CA8F;` no `:root` de `css/style.css`, restaurando os anéis dourados nítidos na Timeline de 5 passos e elementos da galeria.
+  8. **Blindagem Contra Cache v=4.2.0 e Validação no Docker:**
+     - Versionamento `v=4.2.0` aplicado em `index.html` e `style.css`.
+     - Testes automatizados executados e 100% aprovados no Docker (`aura-maison-web` na porta 3000) via `tests/audit_docker.py`.

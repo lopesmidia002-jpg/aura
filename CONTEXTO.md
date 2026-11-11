@@ -35,7 +35,15 @@
 ---
 
 ## 4. Estado Atual do Projeto
-- **Status das Fases:** Passos 1 a 25 (**TODOS CONCLUÍDOS** ✅).
+- **Status das Fases:** Passos 1 a 26 (**TODOS CONCLUÍDOS** ✅).
+- **Auditoria e Alinhamento Mobile Integral (Passo 26):**
+  - Validação automatizada multiplataforma via Chrome CDP em viewports 320px, 360px, 375px, 390px, 414px, 480px e 768px: ZERO overflow horizontal (`scrollWidth == innerWidth`).
+  - Remoção dos estilos inline rígidos de `.concept-inset-img-box` que travavam o card na lateral direita no mobile, migrando toda a lógica para regras fluidas no CSS (desktop 60% com proporção 1:1, tablet 55%, mobile 54% a 52% contido nas margens da tela).
+  - Selo circular de 10+ anos reposicionado e contido com respiro de segurança (`top: -12px; right: -6px; width: 76px; height: 76px`).
+  - Barra superior mobile refinada: logotipo proporcional e botão de agendamento dourado `.btn-header` com respiro lateral e padding adaptativo, prevenindo qualquer recorte.
+  - Tipografia de headlines no Hero e Manifesto com `clamp()` otimizado para celulares pequenos.
+  - Restauração das variáveis `--color-gold: #C5A059` e `--color-gold-light: #E5CA8F` no `:root`, assegurando nitidez dourada nos anéis da timeline de 5 passos e elementos da galeria.
+  - Blindagem contra cache `?v=4.2.0` no HTML e CSS.
 - **Barra Superior Mobile — Remoção do Menu Sanduíche (Passo 25):**
   - Remoção completa do botão de menu sanduíche (`.btn-mobile-toggle`) da barra superior no modo mobile, eliminando a poluição visual e mantendo o cabeçalho estritamente minimalista e aristocrático com a Marca AURA à esquerda e o botão de agendamento à direita (`display: inline-flex`).
   - Cache-busting imediato `?v=4.1.0` nas chamadas de CSS e preload no HTML.

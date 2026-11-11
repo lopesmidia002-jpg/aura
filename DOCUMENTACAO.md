@@ -130,3 +130,28 @@ A landing page reproduz fidedignamente cada uma das seções identificadas nas p
   - Status HTTP 200 e tipo MIME `image/avif` para as **14 imagens AVIF** presentes no salão.
   - Validação dos endpoints `POST /api/agendamentos` e `POST /api/newsletter`.
   - Validação de 100% dos blocos e textos do PDF.
+
+
+---
+
+## 8. Engenharia de Responsividade & Auditoria Mobile Multi-Viewport
+
+Para garantir excelência absoluta de visualização em qualquer dispositivo, o projeto foi submetido a uma rigorosa auditoria automatizada em múltiplos viewports mobile reais via **Chrome DevTools Protocol (CDP)** (`tests/cdp_mobile_auditor.py`):
+
+### 8.1. Matriz de Viewports Validados
+- **320 x 568 px (DPR 2.0):** iPhone SE 1ª Geração / telas ultra-estreitas.
+- **360 x 780 px (DPR 2.0):** Padrão dominante Android (Samsung Galaxy A/S).
+- **375 x 812 px (DPR 2.0):** iPhone SE 2/3, iPhone X, XS, 11 Pro, 12 Mini, 13 Mini.
+- **390 x 844 px (DPR 3.0):** iPhone 12, 13, 14, 15 padrão.
+- **414 x 896 px (DPR 3.0):** iPhone XR, 11, Plus e Max.
+- **480 x 854 px (DPR 2.0):** Phablets e smartphones em alta densidade.
+- **768 x 1024 px (DPR 2.0):** Tablets (iPad portrait).
+
+### 8.2. Critérios de Conformidade Aprovados (100% de Sucesso)
+1. **Zero Overflow Horizontal:** Em todos os viewports testados, `scrollWidth == innerWidth` com 0px de desvio lateral, eliminando qualquer rolagem indesejada ou salto de tela.
+2. **Segurança no Nível Raiz:** Regra `overflow-x: hidden;` unificada em `html` e `body` com `box-sizing: border-box`.
+3. **Barra Superior Minimalista:** Logotipo proporcional e botão de agendamento dourado `.btn-header` com paddings adaptativos (8px a 12px) e respiro lateral de segurança (12px a 16px), sem menu sanduíche.
+4. **Composição da Seção Conceito:** Regras responsivas fluidas no CSS governando o card sobreposto de ferramentas (60% no desktop, 55% no tablet, 54% no mobile padrão e 52% em telas <= 380px) e o selo 10+ anos, contidos nas margens da tela.
+5. **Tipografia Fluida:** Títulos e subtítulos calibrados via `clamp()` para impedir recortes ou quebras órfãs.
+6. **Comparador Antes/Depois Fluido:** Escala da imagem clipada ajustada dinamicamente via `calc(100vw - 40px)` para acompanhamento milimétrico da viewport.
+7. **Restauração Cromática `--color-gold`:** Variáveis de paleta oficial unificadas no `:root`, garantindo nitidez e fidelidade cromática em todos os estados da interface.

@@ -40,11 +40,12 @@ Thumbs.db
 *.sln
 *.sw?
 
-# Arquivos temporários & de build
-dist/
-build/
-tmp/
+# Python & Auditoria
+__pycache__/
+*.pyc
+tests/screenshots/
 temp/
+tmp/
 
 # Arquivos binários pesados de briefing / mockups (opcional para manter repositório leve)
 *.pdf

@@ -13,6 +13,8 @@
 
   /* Dourado Nobre Acetinado */
   --gold-primary: #C5A059;
+  --color-gold: #C5A059;
+  --color-gold-light: #E5CA8F;
   --gold-light: #E5CA8F;
   --gold-sheen: #EED7A1;
   --gold-dark: #A37E36;
@@ -73,6 +75,7 @@ html {
   scroll-behavior: smooth;
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -582,12 +585,45 @@ button {
 }
 
 @media (max-width: 480px) {
+  .site-header {
+    height: 60px;
+  }
+  .header-container {
+    padding: 0 16px;
+  }
+  .brand-logo .brand-name {
+    font-size: 1.25rem;
+    letter-spacing: 0.16em;
+  }
+  .brand-logo .brand-tagline {
+    font-size: 0.44rem;
+    letter-spacing: 0.18em;
+  }
   .btn-header {
     padding: 0 12px !important;
     font-size: 0.62rem !important;
     min-height: 30px !important;
     height: 30px;
     letter-spacing: 0.08em;
+  }
+}
+
+@media (max-width: 360px) {
+  .header-container {
+    padding: 0 12px;
+  }
+  .brand-logo .brand-name {
+    font-size: 1.15rem;
+    letter-spacing: 0.14em;
+  }
+  .brand-logo .brand-tagline {
+    font-size: 0.40rem;
+    letter-spacing: 0.14em;
+  }
+  .btn-header {
+    padding: 0 8px !important;
+    font-size: 0.58rem !important;
+    letter-spacing: 0.05em;
   }
 }
 
@@ -756,6 +792,36 @@ button {
   gap: 14px;
 }
 
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 100px 16px 60px;
+    min-height: 85vh;
+    min-height: 85dvh;
+  }
+  .hero-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    margin-bottom: 14px;
+  }
+  .hero-title {
+    font-size: clamp(1.85rem, 8vw, 2.35rem);
+    line-height: 1.12;
+    margin-bottom: 16px;
+  }
+  .hero-subtitle {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin-bottom: 26px;
+  }
+  .hero-buttons {
+    width: 100%;
+  }
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
 @media (min-width: 540px) {
   .hero-buttons {
     flex-direction: row;
@@ -866,12 +932,27 @@ button {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
 }
 
+@media (max-width: 576px) {
+  .badge-excellence-circle {
+    top: -12px;
+    right: -6px;
+    width: 76px;
+    height: 76px;
+  }
+}
+
 .badge-num {
   font-family: var(--font-serif);
   font-size: clamp(1.4rem, 2vw, 1.7rem);
   font-weight: 400;
   color: #D4AF67;
   line-height: 1;
+}
+
+@media (max-width: 576px) {
+  .badge-num {
+    font-size: 1.25rem;
+  }
 }
 
 .badge-txt {
@@ -883,6 +964,12 @@ button {
   color: #DDD7CE;
   line-height: 1.25;
   margin-top: 4px;
+}
+
+@media (max-width: 576px) {
+  .badge-txt {
+    font-size: 0.44rem;
+  }
 }
 
 /* Imagem Sobreposta de Ferramentas / Pincéis (Moldura branca pura quadrada 1:1 com enquadramento idêntico ao original do PDF) */
@@ -916,13 +1003,35 @@ button {
   display: block;
 }
 
+@media (max-width: 991px) {
+  .concept-inset-img-box {
+    right: -12px;
+    bottom: -14px;
+    width: 55%;
+    max-width: 240px;
+    border-width: 7px;
+  }
+}
+
 @media (max-width: 576px) {
   .concept-inset-img-box {
-    width: 58%;
-    bottom: -12px;
-    right: -16px;
+    width: 54%;
+    bottom: -10px;
+    right: -8px;
     border-width: 6px;
     aspect-ratio: 1 / 1;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 380px) {
+  .concept-inset-img-box {
+    width: 52%;
+    bottom: -8px;
+    right: -4px;
+    border-width: 5px;
+    aspect-ratio: 1 / 1;
+    max-width: 175px;
   }
 }
 
@@ -1341,7 +1450,13 @@ button {
 
 @media (max-width: 600px) {
   .slider-viewport {
-    height: 360px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 380px) {
+  .slider-viewport {
+    height: 250px;
   }
 }
 
@@ -1383,7 +1498,15 @@ button {
 @media (max-width: 992px) {
   .slider-clip-pane img,
   .slider-after-pane img {
-    width: 100vw;
+    width: calc(100vw - 40px);
+    max-width: 960px;
+  }
+}
+
+@media (max-width: 480px) {
+  .slider-clip-pane img,
+  .slider-after-pane img {
+    width: calc(100vw - 32px);
   }
 }
 
@@ -1401,6 +1524,14 @@ button {
   text-transform: uppercase;
   border-radius: 2px;
   z-index: 5;
+}
+
+@media (max-width: 480px) {
+  .badge-corner-tag {
+    padding: 6px 12px;
+    font-size: 0.62rem;
+    bottom: 12px;
+  }
 }
 
 .badge-left {
@@ -2374,6 +2505,17 @@ button {
   line-height: 1.18;
   color: var(--text-white);
   margin-top: 16px;
+}
+
+@media (max-width: 480px) {
+  .manifesto-banner-section {
+    padding: 70px 16px;
+    min-height: 380px;
+  }
+  .manifesto-huge-heading {
+    font-size: clamp(1.65rem, 6.8vw, 2.2rem);
+    line-height: 1.2;
+  }
 }
 
 /* ==========================================================================
