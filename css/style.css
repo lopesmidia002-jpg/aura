@@ -1054,7 +1054,7 @@ button {
    ========================================================================== */
 
 .rituals-section {
-  background-color: var(--bg-champagne-alt);
+  background-color: #EEE5DC; /* Linho quente do PDF original [238, 229, 220] */
   padding: 95px 0;
 }
 
@@ -1131,6 +1131,12 @@ button {
   position: relative;
   aspect-ratio: 16 / 10;
   overflow: hidden;
+}
+
+.ritual-card-thumb picture {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .ritual-card-thumb img {
@@ -1293,12 +1299,20 @@ button {
   color: var(--gold-primary);
 }
 
+#coloracao.dark-section {
+  background-color: #211C19; /* Bronze espresso escuro do PDF original [33, 28, 25] */
+}
+
+#noivas.dark-section {
+  background-color: #191512; /* Fundo escuro aquecido do PDF original [25, 21, 18] */
+}
+
 .color-atelier-media img {
   border-radius: var(--radius-sm);
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(197, 160, 89, 0.22);
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 2; /* Formato panorâmico retangular do PDF original */
   object-fit: cover;
 }
 
@@ -1307,7 +1321,7 @@ button {
    ========================================================================== */
 
 .results-slider-section {
-  background-color: var(--bg-champagne);
+  background-color: #FAF7F2; /* Creme suave do PDF original [250, 247, 242] */
   padding: 95px 0;
 }
 
@@ -1347,16 +1361,19 @@ button {
   object-fit: cover;
 }
 
+.slider-base-pane,
 .slider-before-pane {
   z-index: 1;
 }
 
+.slider-clip-pane,
 .slider-after-pane {
   z-index: 2;
   width: 50%;
   overflow: hidden;
 }
 
+.slider-clip-pane img,
 .slider-after-pane img {
   position: absolute;
   top: 0;
@@ -1367,6 +1384,7 @@ button {
 }
 
 @media (max-width: 992px) {
+  .slider-clip-pane img,
   .slider-after-pane img {
     width: 100vw;
   }

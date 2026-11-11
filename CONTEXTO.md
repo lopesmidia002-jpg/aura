@@ -35,7 +35,11 @@
 ---
 
 ## 4. Estado Atual do Projeto
-- **Status das Fases:** Passos 1 a 17 (**TODOS CONCLUÍDOS** ✅).
+- **Status das Fases:** Passos 1 a 18 (**TODOS CONCLUÍDOS** ✅).
+- **Fidelidade Cromática e Mapeamento de Imagens (Passo 18):**
+  - Seção Rituais & Procedimentos calibrada com fundo Linho Quente (#EEE5DC) com Card 1 contendo o asset de corte/visagismo original extraído do PDF (photo-corte-visagismo.avif/.jpg), Card 3 com hairstylist modelando loiro (photo-1580618672591), e Card 5 com gorro de inverno (photo-1487412720).
+  - Seção Colorimetria de Alta Costura ajustada para fundo Dark Bronze/Espresso (#211C19) e imagem panorâmica 3:2 landscape da hairstylist em frente à janela (photo-1562322140).
+  - Seção Resultados Visíveis (Antes/Depois) alinhada para fundo Creme Suave (#FAF7F2), painel Antes com modelo em fundo rosa e painel Depois com styling profissional em salão.
 - **Fidelidade Visual do PDF & Micro-interações:** 100% alinhado com o arquivo `AURA Maison de Beauté — Salão Feminino de Alto Padrão   Experiências Exclusivas.pdf` em todas as suas seções, incluindo:
   - Barra superior em linha única contínua sem quebras indesejadas, tipografia branca nobre no botão e transparência total sobre a hero section.
   - Seção de Citação Editorial (Manifesto) calibrada com fundo linho quente exato (`#EEE5DC`), quebra natural em duas linhas e subtítulo em tom neutro suave/taupe aristocrático (`#8C827A`).

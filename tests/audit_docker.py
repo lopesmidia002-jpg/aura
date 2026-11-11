@@ -66,8 +66,10 @@ def run_full_audit():
     assert css_res.get("status") == 200
     assert js_res.get("status") == 200
 
-    # 3. Teste das 14 Imagens AVIF
+    # 3. Teste das Imagens AVIF e JPG
     images = [
+        "photo-corte-visagismo.avif",
+        "photo-corte-visagismo.jpg",
         "photo-1487412720507-e7ab37603c6f_002_Po4W.avif",
         "photo-1519699047748-de8e457a634e_Po4W.avif",
         "photo-1519741497674-611481863552_002_Po4W.avif",
@@ -84,7 +86,7 @@ def run_full_audit():
         "photo-1595476108010-b4d1f102b1b1_002_Po4W.avif"
     ]
 
-    print(f"\n[ASSETS] Verificando {len(images)} imagens AVIF no Docker:")
+    print(f"\n[ASSETS] Verificando {len(images)} imagens no Docker:")
     for img in images:
         img_res = test_endpoint(f"/imagens/{img}")
         assert img_res.get("status") == 200, f"Falha na imagem {img}"

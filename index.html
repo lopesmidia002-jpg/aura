@@ -300,7 +300,10 @@
         <article class="ritual-card" data-category="cabelo">
           <div class="ritual-card-thumb">
             <span class="ritual-tag-top">CABELO</span>
-            <img src="./imagens/photo-1562322140-8baeececf3df_Po4W.avif" alt="Corte com Visagismo" loading="lazy">
+            <picture>
+              <source srcset="./imagens/photo-corte-visagismo.avif" type="image/avif">
+              <img src="./imagens/photo-corte-visagismo.jpg" alt="Corte com Visagismo" loading="lazy">
+            </picture>
           </div>
           <div class="ritual-card-info">
             <h3 class="ritual-title">Corte com Visagismo</h3>
@@ -336,7 +339,7 @@
         <article class="ritual-card" data-category="coloracao">
           <div class="ritual-card-thumb">
             <span class="ritual-tag-top">COLORAÇÃO & MECHAS</span>
-            <img src="./imagens/photo-1487412720507-e7ab37603c6f_002_Po4W.avif" alt="Loiro Sublime Signature" loading="lazy">
+            <img src="./imagens/photo-1580618672591-eb180b1a973f_003_Po4W.avif" alt="Loiro Sublime Signature" loading="lazy">
           </div>
           <div class="ritual-card-info">
             <h3 class="ritual-title">Loiro Sublime Signature</h3>
@@ -372,7 +375,7 @@
         <article class="ritual-card" data-category="make">
           <div class="ritual-card-thumb">
             <span class="ritual-tag-top">MAKE & SOBRANCELHAS</span>
-            <img src="./imagens/photo-1595476108010-b4d1f102b1b1_002_Po4W.avif" alt="Haute Makeup" loading="lazy">
+            <img src="./imagens/photo-1487412720507-e7ab37603c6f_002_Po4W.avif" alt="Haute Makeup" loading="lazy">
           </div>
           <div class="ritual-card-info">
             <h3 class="ritual-title">Haute Makeup</h3>
@@ -465,7 +468,7 @@
         </div>
 
         <div class="color-atelier-media">
-          <img src="./imagens/photo-1580618672591-eb180b1a973f_003_Po4W.avif" alt="Mestre colorista AURA em processo de styling" loading="lazy">
+          <img src="./imagens/photo-1562322140-8baeececf3df_Po4W.avif" alt="Mestre colorista AURA em processo de styling" loading="lazy">
         </div>
       </div>
     </div>
@@ -486,17 +489,19 @@
 
       <div class="slider-comparison-box">
         <div class="slider-viewport" id="slider-viewport">
-          <!-- Imagem Antes (Base) -->
-          <div class="slider-pane slider-before-pane">
-            <img src="./imagens/photo-1522337360788-8b13dee7a37e_Po4W.avif" alt="Antes da transformação capilar">
-            <span class="badge-corner-tag badge-left">ANTES</span>
+          <!-- Imagem Depois (Base de fundo à direita) -->
+          <div class="slider-pane slider-base-pane">
+            <img src="./imagens/photo-1580618672591-eb180b1a973f_003_Po4W.avif" alt="Depois da transformação capilar">
           </div>
 
-          <!-- Imagem Depois (Sobreposta com largura controlada) -->
-          <div class="slider-pane slider-after-pane" id="slider-after-pane">
-            <img src="./imagens/photo-1487412720507-e7ab37603c6f_002_Po4W.avif" alt="Depois da transformação capilar">
-            <span class="badge-corner-tag badge-right">DEPOIS</span>
+          <!-- Imagem Antes (Sobreposta à esquerda com controle de largura) -->
+          <div class="slider-pane slider-clip-pane" id="slider-after-pane">
+            <img src="./imagens/photo-1522337360788-8b13dee7a37e_Po4W.avif" alt="Antes da transformação capilar">
           </div>
+
+          <!-- Badges Padrão PDF nos cantos -->
+          <span class="badge-corner-tag badge-left">ANTES</span>
+          <span class="badge-corner-tag badge-right">DEPOIS</span>
 
           <!-- Divisor Vertical Dourado com Círculo Central -->
           <div class="slider-divider" id="slider-divider">

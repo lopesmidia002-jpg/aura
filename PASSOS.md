@@ -218,3 +218,28 @@
      - Posicionamento proporcional com 84% de largura da imagem principal, 51px de transbordo à direita e 54px abaixo, recriando perfeitamente a sobreposição luxuosa do PDF original.
   5. **Auditoria de Integridade no Docker:**
      - 100% de sucesso nos testes automatizados (`tests/audit_docker.py`), validação de HTTP 200 para todos os endpoints, rotas e assets (AVIF e JPEG).
+
+---
+
+### Passo 18: Correção Fidedigna dos Fundos e Mapeamento Rigoroso de Imagens das Seções Rituais, Colorimetria e Antes/Depois
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Harmonização Cromática 1:1 com o PDF Original:**
+     - **Seção Rituais & Procedimentos (#experiencias):** Correção do fundo de #F7F3EC para #EEE5DC (Linho Quente, RGB [238, 229, 220]), exatamente idêntico ao fundo da seção Manifesto/Citação, conferindo o contraste e destaque perfeitos aos cards de procedimentos com fundo branco puro.
+     - **Seção Colorimetria de Alta Costura (#coloracao):** Ajuste do fundo para #211C19 (Dark Bronze/Espresso, RGB [33, 28, 25]), substituindo o tom acinzentado genérico anterior por um tom marrom escuro acolhedor de alta costura.
+     - **Seção Resultados Visíveis / Antes & Depois (#transformacoes):** Correção do plano de fundo para #FAF7F2 (Creme Suave, RGB [250, 247, 242]), alinhando harmonicamente com a transição editorial do PDF original.
+     - **Seção Suíte Nupcial (#noivas):** Calibração do fundo para #191512 (Dark Nupcial, RGB [25, 21, 18]).
+  2. **Extração e Calibração do Card 1 ("Corte com Visagismo"):**
+     - Extração e calibragem direta do asset original de corte/styling em salão a partir da fatia em alta resolução do PDF (pdf_slices/slice_03_2400_3600.jpg), gerando imagens/photo-corte-visagismo.avif (28.6 KB) e imagens/photo-corte-visagismo.jpg (31.8 KB).
+     - Implementação com <picture> responsivo e fallback universal JPEG no Card 1.
+  3. **Mapeamento Corrigido de Imagens em Todas as 4 Seções:**
+     - **Card 3 ("Loiro Sublime Signature"):** Mapeado para photo-1580618672591-eb180b1a973f_003_Po4W.avif (hair stylist secando e modelando cabelo loiro visto de cima).
+     - **Card 5 ("Haute Makeup"):** Mapeado para photo-1487412720507-e7ab37603c6f_002_Po4W.avif (rosto sorridente com gorro de inverno).
+     - **Seção 5 ("Colorimetria de Alta Costura"):** Imagem atualizada para photo-1562322140-8baeececf3df_Po4W.avif (cabeleireira em frente à grande janela ampla com secador de cabelo) com proporção retangular panorâmica aspect-ratio: 3 / 2 (landscape ~1.48:1).
+     - **Seção 6 ("Resultados que falam por si" - Antes / Depois):**
+       - Lado esquerdo ("ANTES"): photo-1522337360788-8b13dee7a37e_Po4W.avif (mulher tocando os cabelos em fundo rosa).
+       - Lado direito ("DEPOIS"): photo-1580618672591-eb180b1a973f_003_Po4W.avif (styling em salão com escova redonda e secador).
+       - Badges fixadas nos cantos inferiores correspondentes de cada painel sem sobreposição de textos.
+  4. **Auditoria de Integridade no Docker:**
+     - Inclusão dos novos assets (photo-corte-visagismo.avif e photo-corte-visagismo.jpg) no script de auditoria tests/audit_docker.py.
+     - 100% de sucesso na validação conteinerizada (HTML, CSS, JS, 16 imagens e rotas de API com status HTTP 200).
