@@ -35,7 +35,11 @@
 ---
 
 ## 4. Estado Atual do Projeto
-- **Status das Fases:** Passos 1 a 32 (**TODOS CONCLUÍDOS** ✅).
+- **Status das Fases:** Passos 1 a 33 (**TODOS CONCLUÍDOS** ✅).
+- **Títulos Brancos e Calibração Fiel da Marca d'Água "HAIR" na Colorimetria (Passo 33):**
+  - Títulos dos cards técnicos (`#coloracao .pillar-title` — "Balayage Francesa", "Morena Iluminada", "Blonde Couture" e "Correção de Cor") atualizados de dourado para branco puro `#FFFFFF` (`rgb(255, 255, 255)`).
+  - Marca d'água monumental `.color-watermark` ("HAIR") reposicionada diretamente dentro de `.pillars-2col.color-pillars-grid` com `letter-spacing: 0.06em`, alinhando a letra "H" no vão central das duas colunas, a letra "A" sob a segunda coluna e a letra "I" perfeitamente visível à direita antes da fotografia, em tom ouro suave translúcido (`rgba(197, 160, 89, 0.08)`).
+  - Blindagem de cache `?v=4.9.0` no HTML e CSS, validado via Chrome CDP e auditoria Docker 100% aprovada.
 - **Cor da Tipografia do Título do Manifesto para Preto Nobre (Passo 32):**
   - O título principal da seção `#manifesto` (`.manifesto-huge-heading`), *"Beleza não é sobre mudar quem você é. É sobre revelar."*, foi alterado de branco (`var(--text-white)`) para preto puro `#000000` (`rgb(0, 0, 0)`), correspondendo com exatidão matemática 1:1 ao design original do PDF oficial.
   - Blindagem de cache `?v=4.8.0` no HTML e CSS, validado via Chrome CDP e auditoria Docker 100% aprovada.

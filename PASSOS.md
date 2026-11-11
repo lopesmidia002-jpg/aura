@@ -507,6 +507,24 @@
      - Inspeção via Chrome CDP confirmando cor computada exatamente como `rgb(0, 0, 0)` na classe `.manifesto-huge-heading`.
      - Auditoria completa `tests/audit_docker.py` executada com 100% de aprovação.
 
+---
+
+### Passo 33: Correção Cromática dos Títulos de Colorimetria (Branco Puro) e Calibração Fiel da Marca d'Água "HAIR"
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Correção da Cor dos Títulos dos 4 Cards Técnicos de Colorimetria:**
+     - Amostragem minuciosa no PDF oficial e imagem de referência (`media_1794429588725_a805a5ef.png`).
+     - Títulos "Balayage Francesa", "Morena Iluminada", "Blonde Couture" e "Correção de Cor" (`#coloracao .pillar-title`) atualizados de dourado (`#C5A059`) para branco puro nobre (`#FFFFFF` / `rgb(255, 255, 255)`), preservando a barra vertical dourada (`border-left: 2px solid var(--gold-primary)`).
+  2. **Calibração 1:1 da Marca d'Água "HAIR" no Grid Técnico:**
+     - Realocação de `.color-watermark` para dentro do grid das técnicas (`.pillars-2col.color-pillars-grid`), eliminando o desalinhamento anterior que a projetava para fora do grid e escondia letras essenciais sob a fotografia.
+     - Calibração de `left: 28%; top: 50%; transform: translateY(-50%);` com `letter-spacing: 0.06em` e `font-size: clamp(5.2rem, 11vw, 9.8rem);`, posicionando com precisão milimétrica a letra "H" no vão intermediário das duas colunas, a letra "A" sob a coluna de Morena Iluminada/Correção de Cor, e a letra "I" visível no vão à direita antes da fotografia, em tom ouro suave translúcido (`rgba(197, 160, 89, 0.08)`).
+     - Cards configurados com `position: relative; z-index: 1;` e marca d'água com `z-index: 0; pointer-events: none;`.
+  3. **Blindagem Contra Cache v=4.9.0 e Validação no Docker:**
+     - Versionamento `v=4.9.0` aplicado em `index.html` e `style.css`.
+     - Recarga do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
+     - Inspeção via Chrome CDP confirmando cor computada `rgb(255, 255, 255)` para todos os 4 títulos e correspondência visual 1:1 da marca d'água.
+     - Auditoria multi-viewport via Chrome CDP e suíte `tests/audit_docker.py` executada com 100% de aprovação.
+
 
 
 
