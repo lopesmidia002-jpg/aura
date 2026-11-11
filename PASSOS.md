@@ -433,3 +433,25 @@
      - Inspeção do DOM e estilos computados via Chrome CDP confirmando 100% de correspondência cromática (`rgb(141, 104, 77)`, `rgb(140, 130, 122)`, `rgb(197, 160, 89)`).
      - Execução da suíte completa `tests/audit_docker.py` com 100% de aprovação.
 
+---
+
+### Passo 29: Restauração da Marca d'Água Tipográfica de Fundo "HAIR" na Seção Colorimetria Conforme Design Original
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Extração e Identificação da Palavra no Mockup/PDF Oficial:**
+     - Análise do export nativo de alta resolução do Figma (1920x14400) e da imagem de referência enviada pelo usuário.
+     - Identificação da palavra editorial em caixa alta **"HAIR"** projetada em escala monumental no plano de fundo da seção `#coloracao` (Colorimetria de Alta Costura).
+     - No design original, o "H" posiciona-se no vão entre as duas colunas de técnicas ("Balayage Francesa" e "Morena Iluminada"), o "A" situa-se sob a coluna de "Morena Iluminada" e os caracteres "I" e "R" estendem-se sob a fotografia panorâmica da hairstylist, emergindo com a perna direita do "R" na extremidade lateral.
+  2. **Implementação da Camada Tipográfica (`.color-watermark`):**
+     - Inclusão do elemento semântico `<div class="color-watermark" aria-hidden="true">HAIR</div>` dentro de `.color-atelier-grid` em `index.html`.
+     - Estilização com `position: absolute; left: 21%; top: 51%; transform: translateY(-50%); font-family: var(--font-serif); font-size: clamp(6.5rem, 13.5vw, 13rem); letter-spacing: 0.22em;` em `css/style.css`.
+     - Calibração de cor exata para ouro suave acetinado com 9% de opacidade (`rgba(197, 160, 89, 0.09)`), gerando o tom exato `RGB [50, 41, 33]` sobre o fundo espresso `#211C19`.
+     - Camadas de conteúdo (`.color-atelier-content`) e de mídia (`.color-atelier-media`) configuradas com `position: relative; z-index: 2;` e `.color-watermark` com `z-index: 1; pointer-events: none; user-select: none;`, garantindo legibilidade perfeita, sobreposição natural da foto e ausência de bloqueios em cliques.
+     - Adaptação fluida para mobile/tablet (`<= 991px`): centralização horizontal perfeita (`left: 50%; top: 36%; transform: translate(-50%, -50%); font-size: clamp(4.5rem, 20vw, 7.5rem); letter-spacing: 0.16em;`) e contenção estrita via `overflow: hidden;` em `#coloracao`.
+  3. **Blindagem Contra Cache v=4.5.0 e Validação no Docker:**
+     - Versionamento `v=4.5.0` aplicado em `index.html` e `style.css`.
+     - Recarga do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
+     - Inspeção via Chrome CDP e auditoria mobile multi-viewport confirmando alinhamento estético 1:1 e zero overflow.
+     - Suíte `tests/audit_docker.py` executada com 100% de sucesso.
+
+
