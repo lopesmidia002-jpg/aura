@@ -275,7 +275,7 @@ button {
 .btn-outline-dark {
   background: transparent;
   color: var(--text-ebony);
-  border: 1px solid var(--text-ebony);
+  border: 1px solid var(--gold-primary);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -286,16 +286,18 @@ button {
 
 .btn-outline-dark:hover,
 .btn-outline-dark:focus-visible {
-  background: #FFFFFF !important;
-  border-color: #FFFFFF !important;
-  color: #141414 !important;
-  box-shadow: 0 8px 24px rgba(20, 16, 12, 0.12);
+  background: #11100F !important;
+  border-color: var(--gold-primary) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
   transform: translateY(-2px);
 }
 
 .btn-outline-dark:hover span,
-.btn-outline-dark:focus-visible span {
-  color: #141414 !important;
+.btn-outline-dark:focus-visible span,
+.btn-outline-dark:hover .arrow-right,
+.btn-outline-dark:focus-visible .arrow-right {
+  color: #FFFFFF !important;
 }
 
 .btn-full {
@@ -1091,9 +1093,9 @@ button {
   margin: 28px 0 34px;
 }
 
-/* Botão Conhecer Rituais Exclusivos com moldura taupe suave conforme original */
+/* Botão Conhecer Rituais Exclusivos com moldura dourada conforme solicitado */
 .concept-action .btn-outline-dark {
-  border: 1px solid #CEC4BB;
+  border: 1px solid var(--gold-primary);
   background: transparent;
   color: #262320;
   font-size: 0.72rem;
@@ -1109,16 +1111,18 @@ button {
 
 .concept-action .btn-outline-dark:hover,
 .concept-action .btn-outline-dark:focus-visible {
-  border-color: #FFFFFF !important;
-  background: #FFFFFF !important;
-  color: #141414 !important;
-  box-shadow: 0 8px 24px rgba(20, 16, 12, 0.12);
+  border-color: var(--gold-primary) !important;
+  background: #11100F !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
   transform: translateY(-2px);
 }
 
 .concept-action .btn-outline-dark:hover span,
-.concept-action .btn-outline-dark:focus-visible span {
-  color: #141414 !important;
+.concept-action .btn-outline-dark:focus-visible span,
+.concept-action .btn-outline-dark:hover .arrow-right,
+.concept-action .btn-outline-dark:focus-visible .arrow-right {
+  color: #FFFFFF !important;
 }
 
 /* Métricas em Linha (Sem borda superior, espaçamento orgânico) */
@@ -1331,6 +1335,33 @@ button {
 .price-val strong {
   color: #8D684D;
   font-weight: 600;
+}
+
+.rituals-action {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 50px;
+}
+
+#experiencias .btn-outline-dark {
+  border: 1px solid var(--gold-primary);
+  color: #262320;
+}
+
+#experiencias .btn-outline-dark:hover,
+#experiencias .btn-outline-dark:focus-visible {
+  background: #11100F !important;
+  color: #FFFFFF !important;
+  border-color: var(--gold-primary) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+}
+
+#experiencias .btn-outline-dark:hover span,
+#experiencias .btn-outline-dark:focus-visible span,
+#experiencias .btn-outline-dark:hover .arrow-right,
+#experiencias .btn-outline-dark:focus-visible .arrow-right {
+  color: #FFFFFF !important;
 }
 
 /* ==========================================================================
@@ -1907,7 +1938,7 @@ button {
 }
 
 #especialistas .btn-outline-dark {
-  border-color: #262320;
+  border-color: var(--gold-primary);
   color: #262320;
 }
 
@@ -2743,6 +2774,31 @@ button {
 
 .insta-cell:hover img {
   transform: scale(1.08);
+}
+
+.instagram-action {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 36px;
+}
+
+#instagram .btn-outline-dark {
+  border: 1px solid var(--gold-primary);
+  color: #262320;
+}
+
+#instagram .btn-outline-dark:hover,
+#instagram .btn-outline-dark:focus-visible {
+  background: #11100F !important;
+  color: #FFFFFF !important;
+  border-color: var(--gold-primary) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+}
+
+#instagram .btn-outline-dark:hover span,
+#instagram .btn-outline-dark:focus-visible span {
+  color: #FFFFFF !important;
 }
 
 /* ==========================================================================

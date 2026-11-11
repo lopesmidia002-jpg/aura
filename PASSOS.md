@@ -566,6 +566,28 @@
      - Recarga do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
      - Auditoria automatizada `tests/audit_docker.py` executada com 100% de sucesso.
 
+---
+
+### Passo 36: Padronização dos Botões Outline (Borda Dourada, Alinhamento à Esquerda e Hover Preto/Branco)
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Alinhamento à Esquerda dos Botões Editoriais (`index.html`):**
+     - Seção Experiências & Rituais (`#experiencias`): Substituição do wrapper centralizador anterior pela classe `.rituals-action` com `display: flex; justify-content: flex-start; margin-top: 50px;`, alinhando perfeitamente o botão "VER TABELA COMPLETA DE RITUAIS & PREÇOS →" com a coluna inicial dos cards de rituais, exatamente como no PDF oficial.
+     - Seção Instagram (`#instagram`): Atualização do container para `.instagram-action` com `display: flex; justify-content: flex-start; margin-top: 36px;`.
+     - Seções O Salão (`#conceito`) e Especialistas (`#especialistas`): Mantidos alinhados à esquerda em suas respectivas grades e colunas.
+  2. **Borda Dourada em Repouso em Todos os Botões com essa Característica:**
+     - A classe global `.btn-outline-dark` e suas instâncias específicas (`.concept-action`, `#experiencias`, `#especialistas`, `#instagram`) foram padronizadas com contorno em ouro nobre acetinado (`border: 1px solid var(--gold-primary);` / `#C5A059`), substituindo as bordas escuras ou cinzas anteriores.
+  3. **Comportamento Hover Nobre Padronizado:**
+     - Ao passar o mouse (`:hover` e `:focus-visible`), todos os botões `.btn-outline-dark` transitam fluidamente para:
+       - **Fundo:** Preto ébano nobre (`background: #11100F !important;`)
+       - **Tipografia e seta:** Branco puro (`color: #FFFFFF !important;`)
+       - **Borda:** Ouro nobre acetinado (`border-color: var(--gold-primary) !important;`)
+       - **Elevação tátil:** `transform: translateY(-2px)` com sombra difusa `box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);`.
+  4. **Blindagem Contra Cache v=5.2.0 e Validação no Docker:**
+     - Versionamento `v=5.2.0` aplicado em `index.html` e `style.css`.
+     - Recarga do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
+     - Auditoria automatizada `tests/audit_docker.py` executada com 100% de sucesso.
+
 
 
 
