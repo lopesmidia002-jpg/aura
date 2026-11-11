@@ -136,3 +136,14 @@
   4. **Botão de Rituais com Moldura Taupe Suave:** Estilização de `.concept-action .btn-outline-dark` com borda sutil taupe/areia (`#CEC4BB`), tipografia em ébano suave (`#262320`) e hover dinâmico em ouro.
   5. **Harmonização das Métricas:** Remoção da borda divisória superior artificial, aplicação de numerais serifados em ouro nobre (`#B89758`), estilização proporcional da estrela `4.9★` e legendas em cinza taupe aristocrático (`#8D8680`).
   6. **Auditoria no Docker:** 100% dos testes validados com sucesso no container (`tests/audit_docker.py`).
+
+---
+
+### Passo 11: Efeito Hover Nobre em Gradiente Bronze/Espresso nos Botões Dourados
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Padronização da Tipografia em Repouso:** Garantia de que todos os botões dourados (`.btn-gold`, `.btn-header`) exibam tipografia branca nobre (`#FFFFFF`) e nítida no estado padrão sobre o fundo ouro acetinado.
+  2. **Implementação do Efeito Hover Fiel à Referência:** Aplicação do gradiente bronze profundo/espresso `linear-gradient(135deg, #876349 0%, #654C3A 40%, #44342A 75%, #2B221C 100%)` em conjunto com a borda de 1px em ouro nobre (`#C5A059`) e texto branco puro (`#FFFFFF`).
+  3. **Extensão Universal a Todos os Botões Dourados:** Efeito aplicado uniformemente em `.btn-gold`, `.btn-header`, botões de modal, formulário de noivas, agendamento principal, atelier de colorimetria e newsletter.
+  4. **Transições Aveludadas:** Curva de transição `cubic-bezier(0.16, 1, 0.3, 1)` com elevação sutil `translateY(-2px)` e sombra difusa luxuosa (`0 8px 24px rgba(0, 0, 0, 0.35)`).
+  5. **Auditoria de Integridade no Docker:** 100% dos testes validados com sucesso via `tests/audit_docker.py`.

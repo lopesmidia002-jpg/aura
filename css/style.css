@@ -220,17 +220,27 @@ button {
 
 .btn-gold {
   background: var(--gold-primary);
-  color: #141414;
+  color: var(--text-white);
   border: 1px solid var(--gold-primary);
   box-shadow: 0 4px 18px rgba(197, 160, 89, 0.28);
 }
 
-.btn-gold:hover {
-  background: #D5B069;
-  border-color: #D5B069;
-  box-shadow: 0 8px 24px rgba(197, 160, 89, 0.45);
+.btn-gold span {
+  color: var(--text-white);
+}
+
+.btn-gold:hover,
+.btn-gold:focus-visible {
+  background: linear-gradient(135deg, #876349 0%, #654C3A 40%, #44342A 75%, #2B221C 100%);
+  border-color: #C5A059;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   transform: translateY(-2px);
-  color: #141414;
+  color: #FFFFFF;
+}
+
+.btn-gold:hover span,
+.btn-gold:focus-visible span {
+  color: #FFFFFF;
 }
 
 .btn-hero-outline {
@@ -525,18 +535,22 @@ button {
   border-radius: 3px;
   background: var(--gold-primary) !important;
   color: #FFFFFF !important;
-  border: none !important;
+  border: 1px solid var(--gold-primary) !important;
   white-space: nowrap !important;
   box-shadow: none !important;
   display: none;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-.btn-header:hover {
-  background: #D5B069 !important;
+.btn-header:hover,
+.btn-header:focus-visible {
+  background: linear-gradient(135deg, #876349 0%, #654C3A 40%, #44342A 75%, #2B221C 100%) !important;
+  border-color: #C5A059 !important;
   color: #FFFFFF !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
   transform: none;
 }
 

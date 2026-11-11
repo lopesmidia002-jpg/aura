@@ -26,6 +26,7 @@ O projeto foi alinhado com **100% de fidelidade visual, estrutural e de copy** a
 
 ### 2.3. Efeitos, Materiais & Micro-interações
 - **Barra Superior Flutuante, Transparente & Single-Line:** O Header inicia com transparência total (`background: transparent; border-bottom: none`), permitindo que a imagem panorâmica do salão se estenda até o topo da tela. Todos os elementos da navegação possuem `white-space: nowrap !important`, prevenindo quebras indesejadas de texto (como "O SALÃO", "PT / EN / ES" e "AGENDAR HORÁRIO") em resoluções intermediárias (1024px a 1440px). O botão "AGENDAR HORÁRIO" exibe tipografia branca nobre (`#FFFFFF`) sobre fundo ouro acetinado. Ao rolar a página (`window.scrollY > 30`), a classe `.scrolled` ativa o glassmorphism com fundo escuro (`rgba(17, 16, 15, 0.94)`), `backdrop-filter: blur(14px)` e borda dourada acetinada de 1px.
+- **Efeito Hover Aristocrático nos Botões Dourados:** Todos os botões dourados (`.btn-gold`, `.btn-header`) exibem tipografia branca pura (`#FFFFFF`) sobre fundo ouro acetinado no estado padrão. Ao passar o mouse (`:hover`), assumem o degradê profundo bronze/espresso (`linear-gradient(135deg, #876349 0%, #654C3A 40%, #44342A 75%, #2B221C 100%)`), fina borda de 1px em ouro nobre (`#C5A059`), texto mantido em branco puro (`#FFFFFF`) e sombra de imersão (`0 8px 24px rgba(0, 0, 0, 0.35)`).
 - **Micro-interações:** feedback táctil ao toque (`:active { transform: scale(0.98); }`), sombras volumétricas suaves e transições em curva de aceleração bezier suave (`cubic-bezier(0.16, 1, 0.3, 1)`).
 
 ---
