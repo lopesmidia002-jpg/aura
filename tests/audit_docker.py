@@ -83,6 +83,8 @@ def run_full_audit():
         "photo-1527799820374-dcf8d9d4a388_002_Po4W.jpg",
         "photo-ferramentas-conceito-16-10.avif",
         "photo-ferramentas-conceito-16-10.jpg",
+        "photo-ferramentas-conceito-square.avif",
+        "photo-ferramentas-conceito-square.jpg",
         "photo-1534528741775-53994a69daeb_Po4W.avif",
         "photo-1544005313-94ddf0286df2_Po4W.avif",
         "photo-1560066984-138dadb4c035_003_Po4W.avif",

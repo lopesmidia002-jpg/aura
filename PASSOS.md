@@ -333,3 +333,21 @@
   4. **Auditoria Automatizada e Validação no Docker:**
      - Atualização do script `tests/audit_docker.py` para validar a disponibilidade de todas as 19 imagens no Nginx.
      - 100% de sucesso nos testes automatizados conteinerizados no contêiner `aura-maison-web` (porta 3000).
+
+
+---
+
+### Passo 24: Calibração Quadrada 1:1 e Reposicionamento Fidedigno da Imagem Sobreposta de Ferramentas (60% de Largura e Protrusão Proporcional)
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Geometria Quadrada 1:1 Rigorosa (316 x 316 px no PDF original):**
+     - Identificação e mensuração direta da composição no PDF original oficial (`pdf_composition_tight.jpg`), confirmando dimensões do card de 316 x 316 px (proporção matemática exata de 1.000:1 / quadrado perfeito).
+     - Geração dos novos assets dedicados em alta definição: `imagens/photo-ferramentas-conceito-square.avif` e `imagens/photo-ferramentas-conceito-square.jpg` (676 x 676 px) com erro residual mínimo de 6.6 MSE em relação ao PDF original.
+  2. **Correção do Posicionamento e Proporção do Card Sobreposto:**
+     - Ajuste de largura de 84% para 60% (`width: 60% !important; max-width: 280px !important;`), correspondendo fielmente à proporção do PDF (316px de card para 531px de foto principal = 59.5%).
+     - Ajuste do transbordo inferior: de `bottom: -30px` para `bottom: -18px !important;`, eliminando o deslocamento excessivo para baixo e mantendo o card alinhado ao rodapé da imagem principal.
+     - Ajuste da protrusão lateral direita para `right: -42px !important;` (cerca de 20% da largura da imagem principal), recriando a sobreposição de alta costura original.
+  3. **Blindagem Contra Cache com Nova Versão v=4.0.0:**
+     - Atualização das tags de preload, folha de estilos (`style.css?v=4.0.0`) e fontes da imagem com querystrings v=4.0.0 no `index.html`.
+  4. **Auditoria de Integridade no Docker:**
+     - Atualização do script `tests/audit_docker.py` para validar todas as 21 imagens e endpoints REST com status HTTP 200.
