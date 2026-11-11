@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTestimonialsCarousel();
   initBookingModal();
   initGalleryLightbox();
+  initStepsTimeline();
   initFormsAndConcierge();
   initActiveNavOnScroll();
   initPhoneMasks();
@@ -835,4 +836,31 @@ function initGalleryLightbox() {
       }
     }
   }, { passive: true });
+}
+
+/* ==========================================================================
+   13. TIMELINE DE 5 PASSOS DO ATENDIMENTO (INTERAÇÃO CLICK / HOVER)
+   ========================================================================== */
+function initStepsTimeline() {
+  const stepBoxes = document.querySelectorAll('.step-point-box');
+  if (!stepBoxes.length) return;
+
+  stepBoxes.forEach((box) => {
+    box.addEventListener('click', () => {
+      stepBoxes.forEach(b => {
+        b.querySelector('.step-circle-badge')?.classList.remove('is-active');
+      });
+      box.querySelector('.step-circle-badge')?.classList.add('is-active');
+    });
+
+    box.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        stepBoxes.forEach(b => {
+          b.querySelector('.step-circle-badge')?.classList.remove('is-active');
+        });
+        box.querySelector('.step-circle-badge')?.classList.add('is-active');
+      }
+    });
+  });
 }

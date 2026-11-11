@@ -269,3 +269,48 @@
   4. **Auditoria Automatizada e Validação no Docker:**
      - Atualização do script tests/audit_docker.py para checar a existência dos componentes do Lightbox no HTML, CSS e JS.
      - 100% de aprovação na auditoria conteinerizada no contêiner aura-maison-web (porta 3000).
+
+---
+
+### Passo 20: Calibração Fidedigna dos Círculos Numéricos da Timeline (5 Passos) com Efeito Hover Dourado Acetinado e Texto Branco
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Eliminação do Fundo Preto Estático dos Círculos Numéricos:**
+     - Remoção da regra anterior que fixava o fundo dos círculos em preto (#141414) em todas as etapas.
+     - Ajuste do estado padrão dos números (.step-circle-badge): fundo creme suave #FAF7F2 harmônico com a seção, borda fina em ouro nobre acetinado (1.5px solid #C5A059) e tipografia em preto ébano (#141414).
+  2. **Implementação do Efeito Hover com Fundo Dourado e Texto Branco (1:1 com a Imagem de Referência):**
+     - Ao passar o mouse sobre cada número ou sobre o card da etapa (.step-point-box:hover .step-circle-badge, :hover, .is-active), o círculo numérico assume imediatamente o fundo dourado acetinado radiante (linear-gradient(135deg, #D4AF67 0%, #C5A059 50%, #B89248 100%)).
+     - A tipografia do número transmuta-se para branco puro (#FFFFFF !important) com sombra suave.
+     - Aplicação de halo de luz dourada difusa (box-shadow: 0 8px 24px rgba(197, 160, 89, 0.45), 0 2px 6px rgba(197, 160, 89, 0.2)) e leve elevação táctil (transform: translateY(-3px) scale(1.06)).
+  3. **Comportamento Interativo Inteligente (js/main.js e CSS):**
+     - O item inicial "01 Consulta" inicia destacado conforme o mockup original.
+     - Ao passar o mouse sobre qualquer outra etapa (02, 03, 04 ou 05), o destaque migra suavemente e de forma imediata para o número hovered.
+     - Suporte a seleção por clique e acessibilidade com teclado (Enter/Espaço).
+  4. **Validação no Docker:**
+     - 100% de sucesso nos testes automatizados conteinerizados (tests/audit_docker.py).
+
+---
+
+### Passo 21: Ajuste Fidedigno das Pílulas de Filtro de Rituais (Fundo Branco, Contorno Dourado e Tipografia Escura)
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Eliminação do Fundo Preto no Botão Ativo (.pill-btn.active):**
+     - Remoção da regra anterior que aplicava fundo preto (#141414) no botão de filtro selecionado (ex: "TODOS").
+     - Configuração do estado ativo (.pill-btn.active) conforme o mockup oficial do PDF: fundo branco puro (#FFFFFF !important), contorno em ouro nobre acetinado (border: 1px solid #C5A059 !important), tipografia em preto ébano (color: #141414 !important) e suave sombra de elevação.
+  2. **Harmonização dos Botões Inativos e Efeito Hover (.pill-btn:hover):**
+     - Botões inativos exibem fundo transparente e contorno sutil dourado (border: 1px solid rgba(197, 160, 89, 0.35)) sobre o linho quente (#EEE5DC) da seção.
+     - Ao passar o mouse (:hover), qualquer botão inativo assume imediatamente fundo branco puro, contorno dourado #C5A059 e texto em preto ébano, assegurando transição suave e feedback tátil de alta precisão.
+  3. **Validação no Docker:**
+     - 100% de sucesso nos testes automatizados conteinerizados (tests/audit_docker.py).
+
+---
+
+### Passo 22: Implementação de Sombreamento Leve no Fundo dos Cards de Rituais no Hover
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Calibração do Sombreamento no Hover dos Cards (.ritual-card:hover):**
+     - Aplicação de sombra suave em múltiplas camadas com undertone quente de alta costura (rgba(35, 28, 22, 0.15) e rgba(35, 28, 22, 0.08)).
+     - O sombreamento se projeta atrás e abaixo do card sobre o fundo linho quente (#EEE5DC), criando sensação de profundidade e elevação tátil (transform: translateY(-6px)).
+     - Acentuação dourada acetinada suave no contorno do card (border-color: rgba(197, 160, 89, 0.55)) com transição fluida cubic-bezier(0.16, 1, 0.3, 1).
+  2. **Validação no Docker:**
+     - 100% de sucesso nos testes automatizados conteinerizados (tests/audit_docker.py).

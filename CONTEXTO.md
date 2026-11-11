@@ -35,7 +35,13 @@
 ---
 
 ## 4. Estado Atual do Projeto
-- **Status das Fases:** Passos 1 a 19 (**TODOS CONCLUÍDOS** ✅).
+- **Status das Fases:** Passos 1 a 22 (**TODOS CONCLUÍDOS** ✅).
+- **Cards de Rituais & Sombreamento (Passo 22):**
+  - Projeção de sombreamento suave, profundo e luxuoso no fundo dos cards ao passar o mouse (:hover), com elevação tátil e contorno dourado acetinado sobre o fundo linho quente.
+- **Pílulas de Filtro de Rituais (Passo 21):**
+  - Botões de categoria de rituais calibrados 1:1 com o mockup original do PDF: eliminação do fundo preto; botão ativo e hover com fundo branco puro (#FFFFFF), contorno em ouro nobre acetinado (#C5A059) e tipografia em preto ébano (#141414).
+- **Timeline de Atendimento em 5 Passos (Passo 20):**
+  - Círculos numéricos das etapas de atendimento calibrados 1:1 com a referência: fundo padrão creme #FAF7F2 com contorno ouro e tipografia escura, transmutando no hover para fundo dourado acetinado radiante (#C5A059), tipografia em branco puro (#FFFFFF) e halo de luz difusa dourada.
 - **Galeria de Arte Viva & Lightbox Fullscreen (Passo 19):**
   - Efeito hover aristocrático nos cards da galeria com escurecimento suave (brightness 0.6), zoom (scale 1.06) e revelação fluida de kicker, título editorial em branco puro (#FFFFFF) e ação "VER EM TELA TODA →".
   - Lightbox fullscreen idêntico à referência (fundo preto #0A0907 com blur, imagem em alta resolução, título da foto, contador dourado "X / 6", setas laterais circulares, botão fechar, navegação por teclado e suporte a swipe touch).
