@@ -35,7 +35,11 @@
 ---
 
 ## 4. Estado Atual do Projeto
-- **Status das Fases:** Passos 1 a 22 (**TODOS CONCLUÍDOS** ✅).
+- **Status das Fases:** Passos 1 a 23 (**TODOS CONCLUÍDOS** ✅).
+- **Imagem Sobreposta de Ferramentas (Passo 23):**
+  - Regeneração em ultra alta definição (1120x684 px, proporção 16:10 / 1.637:1 panorâmica) com enquadramento integral do vaso de cerâmica de suculenta à esquerda, presilhas, pente, prancha modeladora, escova raquete e secador CROC completo à direita.
+  - Implementação de assets dedicados (`photo-ferramentas-conceito-16-10.avif` e `.jpg`) com cache-busting v=3.5.0 para blindar contra qualquer cache estagnado do navegador.
+  - Moldura branca pura de 8px, sombra editorial suave, e proporção 16:10 forçada em CSS em todos os viewports.
 - **Cards de Rituais & Sombreamento (Passo 22):**
   - Projeção de sombreamento suave, profundo e luxuoso no fundo dos cards ao passar o mouse (:hover), com elevação tátil e contorno dourado acetinado sobre o fundo linho quente.
 - **Pílulas de Filtro de Rituais (Passo 21):**

@@ -314,3 +314,22 @@
      - Acentuação dourada acetinada suave no contorno do card (border-color: rgba(197, 160, 89, 0.55)) com transição fluida cubic-bezier(0.16, 1, 0.3, 1).
   2. **Validação no Docker:**
      - 100% de sucesso nos testes automatizados conteinerizados (tests/audit_docker.py).
+
+
+---
+
+### Passo 23: Calibração Fidedigna da Imagem Sobreposta de Ferramentas (16:10 Panorâmica) com Enquadramento Integral e Eliminação Definitiva de Cache
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Regeneração da Imagem em Ultra Alta Definição (1120 x 684 px - Proporção 16:10 / 1.637:1):**
+     - Criação de novos arquivos dedicados de alta definição: `imagens/photo-ferramentas-conceito-16-10.avif` e `imagens/photo-ferramentas-conceito-16-10.jpg`, além da atualização de `photo-1527799820374-dcf8d9d4a388_002_Po4W.avif` e `.jpg`.
+     - Enquadramento milimétrico 1:1 com a referência do usuário (`media_1794390063520_997af484.jpg`): vaso de cerâmica branca com planta suculenta completo à esquerda, presilhas jacaré, pente de cabo fino, prancha modeladora CROC, escova raquete CROC e secador profissional CROC completo à direita.
+  2. **Blindagem Contra Cache no Navegador (Cache-Busting com Nomes Dedicados e Querystrings):**
+     - Implementação de novos nomes de arquivo específicos para a seção Conceito, eliminando qualquer compartilhamento com a galeria do Instagram e prevenindo cache estagnado da proporção 1:1.
+     - Aplicação de querystring de versão (`?v=3.5.0`) nas fontes do elemento `<picture>` e na folha de estilos `style.css`.
+  3. **Estilização e Geometria da Moldura e Proporção:**
+     - Aplicação de `aspect-ratio: 16 / 10 !important;` tanto no container `.concept-inset-img-box` quanto nas tags `<picture>` e `<img>`, com `width: 84%; max-width: 400px; bottom: -30px; right: -36px; border: 8px solid #FFFFFF; box-shadow: 0 18px 42px rgba(20, 16, 12, 0.16);`.
+     - Preservação da proporção panorâmica retangular 16:10 em qualquer viewport (desktop, tablet e mobile).
+  4. **Auditoria Automatizada e Validação no Docker:**
+     - Atualização do script `tests/audit_docker.py` para validar a disponibilidade de todas as 19 imagens no Nginx.
+     - 100% de sucesso nos testes automatizados conteinerizados no contêiner `aura-maison-web` (porta 3000).
