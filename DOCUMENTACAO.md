@@ -147,3 +147,14 @@ O arquivo `.gitignore` foi configurado para manter o repositório limpo, leve e 
 - **Arquivos do Sistema:** `.DS_Store`, `Thumbs.db`, `desktop.ini`.
 - **IDEs & Editores:** `.vscode/`, `.idea/`, `*.swp`.
 - **Binários Pesados de Mockup:** `*.pdf` (preservando o repositório sem arquivos pesados de briefing).
+
+---
+
+## 9. Guia Principal do Projeto (README.md)
+
+O arquivo `README.md` serve como documentação de entrada de alto nível para desenvolvedores, parceiros e equipe de marketing, contendo:
+- Apresentação da marca e badges de arquitetura Mobile-First e Docker.
+- Tabela detalhada do Design System com valores hexadecimais e aplicações.
+- Instruções de inicialização em desenvolvimento (`docker compose up -d --build`) e produção (`./deploy.sh`).
+- Documentação da API do Concierge e fluxo de conversão via WhatsApp VIP.
+- Especificações do endereço nos Jardins e cortesia de Valet VIP.

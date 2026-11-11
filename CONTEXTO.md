@@ -20,6 +20,7 @@
   - Ambiente de produção configurado com **Docker Compose** (`docker-compose.prod.yml`) para portas `80` e `443` com renovação de SSL via Certbot.
   - Servidor web **Nginx Alpine** com suporte nativo a MIME types para `.avif`, compressão Gzip, cabeçalhos de segurança HSTS, políticas de segurança HTTP e endpoints de API REST para `/api/agendamentos` e `/api/newsletter`.
   - Scripts de deploy automatizado (`deploy.sh` e `deploy.ps1`).
+  - Guia institucional e de operação documentado no `README.md`.
   - Arquivo `.gitignore` configurado para proteção contra commits de dependências, logs, variáveis de ambiente e arquivos pesados.
   - Script automatizado de auditoria (`tests/audit_docker.py`) validando 100% dos endpoints e assets.
 
