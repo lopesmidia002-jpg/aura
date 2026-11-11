@@ -113,3 +113,14 @@
   3. Calibração da escala fluida de navegação (`font-size: clamp(0.66rem, 0.75vw, 0.72rem)` e `gap: clamp(10px, 1.3vw, 20px)`), garantindo que todos os 8 links, o seletor de idiomas e o botão caibam em uma única linha contínua em resoluções a partir de 960px/1024px.
   4. Redução da altura do botão de cabeçalho para 34px com padding ergonômico.
   5. Auditoria de integridade e carregamento no Docker 100% aprovada via `tests/audit_docker.py`.
+
+---
+
+### Passo 9: Fidelidade Cromática e Tipográfica na Seção de Citação Editorial (Manifesto)
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Calibração do Fundo Linho Quente:** Ajuste do plano de fundo de `.quote-section` para a cor exata do mockup de referência (`#EEE5DC` / RGB `238, 229, 220`), substituindo o tom muito claro/esbranquiçado anterior por um tom acolhedor e nobre idêntico ao original.
+  2. **Harmonização da Cor do Subtítulo:** Correção da cor de `.editorial-quote-sub` de dourado (`var(--gold-primary)`) para o tom neutro suave/taupe aristocrático (`#8C827A`), conferindo sutileza e refinamento tipográfico idêntico ao layout oficial.
+  3. **Quebra de Linha Natural 1:1:** Implementação de quebra editorial balanceada no texto principal (`“Cuidar da beleza também é cuidar de como você<br class="quote-break">se sente.”`), com `max-width: 680px`, assegurando que a frase quebre com precisão cirúrgica em duas linhas elegantes em qualquer resolução.
+  4. **Padronização de Espaçamentos & Bordas:** Calibração do padding fluido (`clamp(55px, 6vw, 90px) 24px`) e linha divisória suave inferior (`rgba(20, 20, 20, 0.06)`).
+  5. **Auditoria de Integridade no Docker:** 100% dos testes e endpoints validados com status HTTP 200 via `tests/audit_docker.py`.
