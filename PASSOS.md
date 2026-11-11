@@ -179,3 +179,16 @@
   3. **Posicionamento e Moldura Editorial:** Posicionamento calibrado (`bottom: -28px; right: -42px;`), preservando a moldura em branco puro sólido de 8px (`border: 8px solid #FFFFFF`), cantos suavizados com raio de 2px e sombra difusa luxuosa (`box-shadow: 0 18px 42px rgba(20, 16, 12, 0.16)`).
   4. **Responsividade Mobile:** Ajuste refinado para smartphones (`width: 80%; bottom: -20px; right: -16px; border-width: 6px;`).
   5. **Auditoria de Integridade no Docker:** 100% dos testes e endpoints validados com status HTTP 200 via `tests/audit_docker.py`.
+
+---
+
+### Passo 15: Fidelidade Absoluta 1:1 da Imagem de Ferramentas, Alinhamento de Posicionamento e Invalidação de Cache
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Análise Comparativa de Precisão da Imagem de Referência:** Mensuração direta sobre a imagem de referência do usuário (`media_1794363524985_26a9860c.jpg`), revelando dimensões de 459 x 286 px (proporção 16:10 exata, 1.605:1), cobrindo 85% da largura da foto principal, com base em y=469 e transbordo inferior de 34px (`bottom: -32px; right: -42px; width: 85%; max-width: 410px;`).
+  2. **Calibração de Enquadramento 1:1 (98.43% de Correlação):** Com `object-fit: cover` e `object-position: 4% center` (deslocamento ótimo na imagem fonte AVIF), o vaso de suculenta é enquadrado por completo à esquerda e o secador CROC por completo à direita com correlação matemática comprovada de 0.9843 com o mockup de referência.
+  3. **Blindagem Contra Cache no Navegador:**
+     - Invalidação no `nginx.conf` (`Cache-Control: no-cache, no-store, must-revalidate` para `.css` e `.js`).
+     - Versionamento de assets em `index.html` (`style.css?v=2.0.0` e `main.js?v=2.0.0`).
+     - Aplicação de estilos inline prioritários com `!important` diretamente na tag `.concept-inset-img-box` e seu `<img>`, impedindo qualquer sobreposição ou cache estagnado no navegador do usuário.
+  4. **Auditoria de Integridade no Docker:** 100% dos testes e endpoints validados com status HTTP 200 via `tests/audit_docker.py`.

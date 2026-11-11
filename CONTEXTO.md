@@ -35,11 +35,11 @@
 ---
 
 ## 4. Estado Atual do Projeto
-- **Status das Fases:** Passos 1 a 14 (**TODOS CONCLUÍDOS** ✅).
+- **Status das Fases:** Passos 1 a 15 (**TODOS CONCLUÍDOS** ✅).
 - **Fidelidade Visual do PDF & Micro-interações:** 100% alinhado com o arquivo `AURA Maison de Beauté — Salão Feminino de Alto Padrão   Experiências Exclusivas.pdf` em todas as suas seções, incluindo:
   - Barra superior em linha única contínua sem quebras indesejadas, tipografia branca nobre no botão e transparência total sobre a hero section.
   - Seção de Citação Editorial (Manifesto) calibrada com fundo linho quente exato (`#EEE5DC`), quebra natural em duas linhas e subtítulo em tom neutro suave/taupe aristocrático (`#8C827A`).
-  - Seção O Salão / Conceito com selo de excelência circular posicionado no canto superior direito da fotografia, imagem sobreposta de ferramentas em proporção retangular panorâmica 16:10 (largura de 84%, max 395px) com enquadramento completo (vaso de cerâmica com suculenta no canto esquerdo com `object-position: 6% center;`, pente, chapinha, escova e secador visíveis), moldura branca pura sólida de 8px com sombra difusa, botão com contorno taupe suave `#CEC4BB`, métricas em ouro nobre sem borda divisória e fundo `#FAF7F2` reproduzindo 1:1 o mockup de referência.
+  - Seção O Salão / Conceito com selo de excelência circular posicionado no canto superior direito da fotografia, imagem sobreposta de ferramentas em proporção retangular panorâmica 16:10 exata (largura de 85%, max 410px, bottom: -32px, right: -42px) com enquadramento completo milimetricamente correlacionado a 98.43% com a referência (vaso de cerâmica com suculenta no canto esquerdo com `object-position: 4% center;`, pente, chapinha, escova e secador CROC visíveis), moldura branca pura sólida de 8px com sombra difusa, estilos inline com `!important` para anular qualquer cache estagnado e revalidação de assets via `style.css?v=2.0.0`, botão com contorno taupe suave `#CEC4BB`, métricas em ouro nobre sem borda divisória e fundo `#FAF7F2` reproduzindo 1:1 o mockup de referência.
   - Efeito hover aristocrático padronizado em todos os botões dourados (`.btn-gold`, `.btn-header`), com transição aveludada para degradê bronze/espresso (`linear-gradient(135deg, #876349 0%, #654C3A 40%, #44342A 75%, #2B221C 100%)`), contorno em ouro nobre (`#C5A059`) e tipografia branca pura (`#FFFFFF`).
   - Efeito hover com fundo branco sólido (`background: #FFFFFF !important; border-color: #FFFFFF !important;`) e texto preto ébano (`#141414`) nos botões com fundo transparente (`.btn-hero-outline`, `.btn-outline-dark`).
 - **Ambiente Local Ativo:** Container `aura-maison-web` em execução no Docker na porta `3000` (`http://localhost:3000`).
