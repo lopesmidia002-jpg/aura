@@ -35,7 +35,10 @@
 ---
 
 ## 4. Estado Atual do Projeto
-- **Status das Fases:** Passos 1 a 18 (**TODOS CONCLUÍDOS** ✅).
+- **Status das Fases:** Passos 1 a 19 (**TODOS CONCLUÍDOS** ✅).
+- **Galeria de Arte Viva & Lightbox Fullscreen (Passo 19):**
+  - Efeito hover aristocrático nos cards da galeria com escurecimento suave (brightness 0.6), zoom (scale 1.06) e revelação fluida de kicker, título editorial em branco puro (#FFFFFF) e ação "VER EM TELA TODA →".
+  - Lightbox fullscreen idêntico à referência (fundo preto #0A0907 com blur, imagem em alta resolução, título da foto, contador dourado "X / 6", setas laterais circulares, botão fechar, navegação por teclado e suporte a swipe touch).
 - **Fidelidade Cromática e Mapeamento de Imagens (Passo 18):**
   - Seção Rituais & Procedimentos calibrada com fundo Linho Quente (#EEE5DC) com Card 1 contendo o asset de corte/visagismo original extraído do PDF (photo-corte-visagismo.avif/.jpg), Card 3 com hairstylist modelando loiro (photo-1580618672591), e Card 5 com gorro de inverno (photo-1487412720).
   - Seção Colorimetria de Alta Costura ajustada para fundo Dark Bronze/Espresso (#211C19) e imagem panorâmica 3:2 landscape da hairstylist em frente à janela (photo-1562322140).

@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initRitualsFilter();
   initTestimonialsCarousel();
   initBookingModal();
+  initGalleryLightbox();
   initFormsAndConcierge();
   initActiveNavOnScroll();
   initPhoneMasks();
@@ -694,4 +695,144 @@ function initScrollReveal() {
   });
 
   revealElements.forEach(el => revealObserver.observe(el));
+}
+
+/* ==========================================================================
+   12. GALERIA DE ARTE VIVA / LIGHTBOX FULLSCREEN (SLICE 08)
+   ========================================================================== */
+function initGalleryLightbox() {
+  const lightbox = document.querySelector('#gallery-lightbox');
+  if (!lightbox) return;
+
+  const backdrop = lightbox.querySelector('#gallery-lightbox-backdrop');
+  const closeBtn = lightbox.querySelector('#gallery-lightbox-close');
+  const prevBtn = lightbox.querySelector('#gallery-lightbox-prev');
+  const nextBtn = lightbox.querySelector('#gallery-lightbox-next');
+  const imgEl = lightbox.querySelector('#gallery-lightbox-img');
+  const titleEl = lightbox.querySelector('#gallery-lightbox-title');
+  const counterEl = lightbox.querySelector('#gallery-lightbox-counter');
+  const items = Array.from(document.querySelectorAll('.mosaic-editorial-grid .mosaic-item'));
+
+  if (!items.length || !imgEl) return;
+
+  // Build gallery items data
+  const galleryData = items.map((item, idx) => {
+    const img = item.querySelector('img');
+    const src = item.getAttribute('data-src') || (img ? img.getAttribute('src') : '');
+    const title = item.getAttribute('data-title') || 
+                  item.querySelector('.mosaic-title')?.textContent.trim() || 
+                  (img ? img.getAttribute('alt') : '') || 
+                  `Fotografia ${idx + 1}`;
+    return { src, title };
+  });
+
+  let currentIndex = 0;
+
+  const updateLightboxContent = (index, animate = false) => {
+    currentIndex = (index + galleryData.length) % galleryData.length;
+    const item = galleryData[currentIndex];
+
+    if (animate && imgEl) {
+      imgEl.style.opacity = '0';
+      imgEl.style.transform = 'scale(0.97)';
+      setTimeout(() => {
+        imgEl.src = item.src;
+        imgEl.alt = item.title;
+        if (titleEl) titleEl.textContent = item.title;
+        if (counterEl) counterEl.textContent = `${currentIndex + 1} / ${galleryData.length}`;
+        imgEl.style.opacity = '1';
+        imgEl.style.transform = 'scale(1)';
+      }, 150);
+    } else {
+      imgEl.src = item.src;
+      imgEl.alt = item.title;
+      if (titleEl) titleEl.textContent = item.title;
+      if (counterEl) counterEl.textContent = `${currentIndex + 1} / ${galleryData.length}`;
+      imgEl.style.opacity = '1';
+      imgEl.style.transform = 'scale(1)';
+    }
+  };
+
+  const openLightbox = (index) => {
+    updateLightboxContent(index, false);
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    if (closeBtn) closeBtn.focus();
+  };
+
+  const closeLightbox = () => {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  const showNext = () => {
+    updateLightboxContent(currentIndex + 1, true);
+  };
+
+  const showPrev = () => {
+    updateLightboxContent(currentIndex - 1, true);
+  };
+
+  // Click & keyboard on mosaic items
+  items.forEach((item, idx) => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      openLightbox(idx);
+    });
+
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openLightbox(idx);
+      }
+    });
+  });
+
+  // Controls listeners
+  if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+  if (backdrop) backdrop.addEventListener('click', closeLightbox);
+  if (nextBtn) nextBtn.addEventListener('click', showNext);
+  if (prevBtn) prevBtn.addEventListener('click', showPrev);
+
+  // Keyboard navigation
+  window.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('is-open')) return;
+
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closeLightbox();
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      showNext();
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      showPrev();
+    }
+  });
+
+  // Touch Swipe for mobile gestures
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  lightbox.addEventListener('touchstart', (e) => {
+    if (!e.touches.length) return;
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  lightbox.addEventListener('touchend', (e) => {
+    if (!e.changedTouches.length) return;
+    const diffX = e.changedTouches[0].clientX - touchStartX;
+    const diffY = e.changedTouches[0].clientY - touchStartY;
+
+    if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
+      if (diffX < 0) {
+        showNext();
+      } else {
+        showPrev();
+      }
+    }
+  }, { passive: true });
 }

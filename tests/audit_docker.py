@@ -56,7 +56,9 @@ def run_full_audit():
     assert "BELEZA QUE REVELA" in html and "A SUA MELHOR" in html, "Headline Hero não encontrada"
     assert "application/ld+json" in html, "Schema.org JSON-LD não encontrado"
     assert "og:image" in html, "Open Graph não configurado"
-    print("  -> Validações de conteúdo, SEO e Schema.org: APROVADAS")
+    assert "gallery-lightbox" in html, "Modal da Galeria Lightbox não configurado"
+    assert "mosaic-overlay" in html, "Overlay com texto nas fotos da galeria não encontrado"
+    print("  -> Validações de conteúdo, SEO, Schema.org e Lightbox: APROVADAS")
 
     # 2. Teste de CSS & JS
     css_res = test_endpoint("/css/style.css")
@@ -65,6 +67,8 @@ def run_full_audit():
     print(f"[JS]  /js/main.js    -> Status: {js_res.get('status')} | {js_res.get('size_bytes')}B ({js_res.get('elapsed_ms')}ms)")
     assert css_res.get("status") == 200
     assert js_res.get("status") == 200
+    assert "gallery-lightbox" in css_res.get("content", ""), "CSS da Galeria Lightbox não encontrado"
+    assert "initGalleryLightbox" in js_res.get("content", ""), "Função JS initGalleryLightbox não encontrada"
 
     # 3. Teste das Imagens AVIF e JPG
     images = [

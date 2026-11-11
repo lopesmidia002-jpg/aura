@@ -243,3 +243,29 @@
   4. **Auditoria de Integridade no Docker:**
      - Inclusão dos novos assets (photo-corte-visagismo.avif e photo-corte-visagismo.jpg) no script de auditoria tests/audit_docker.py.
      - 100% de sucesso na validação conteinerizada (HTML, CSS, JS, 16 imagens e rotas de API com status HTTP 200).
+
+---
+
+### Passo 19: Implementação do Efeito Hover Escurecedor com Revelação de Título e Modal de Galeria Fullscreen (Lightbox Imersivo)
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Efeito Hover com Escurecimento e Revelação de Texto no Grid Mosaico (.mosaic-item):**
+     - Ao passar o mouse sobre cada fotografia da galeria de arte viva, a imagem escurece de forma suave (filter: brightness(0.6)) acompanhada de um leve zoom aristocrático (scale(1.06)).
+     - Um overlay translúcido elegante (rgba(10, 9, 7, 0.52)) surge revelando de baixo para cima o kicker dourado (ex: "HAUTE COIFFURE"), o título da transformação em tipografia serifada Cormorant Garamond na cor branca pura (#FFFFFF) e o indicador de ação "VER EM TELA TODA →".
+  2. **Estrutura e Estilização do Modal Lightbox Fullscreen 1:1 com a Imagem de Referência:**
+     - Criação do componente modal (#gallery-lightbox) com fundo preto profundo (#0A0907 / rgba(10, 9, 7, 0.96)) e desfoque glassmorphism (backdrop-filter: blur(12px)).
+     - Botão fechar (✕) no canto superior direito com transição suave e hover dourado.
+     - Botões circulares minimalistas de navegação anterior/próximo (< e >) centralizados verticalmente nas laterais.
+     - Container central com fotografia em alta definição contida ergonomicamente (max-height: 70vh, max-width: 85vw).
+     - Legenda centralizada abaixo da imagem contendo o título da fotografia (ex: "Blonde Couture") e o contador de posição em dourado nobre (#C5A059) no padrão "1 / 6".
+  3. **Comportamento e Acessibilidade em JavaScript (js/main.js):**
+     - Mapeamento dinâmico de todos os 6 cards da galeria com suporte a índices e atributos data-title / data-src.
+     - Abertura imediata ao clicar em qualquer item do grid ou pressionar Enter/Espaço.
+     - Navegação circular contínua (loop entre primeira e última imagem).
+     - Suporte a teclas de atalho: Escape para fechar, ArrowRight para avançar e ArrowLeft para retroceder.
+     - Fechamento ao clicar na área externa (backdrop).
+     - Suporte a gestos tácteis de swipe horizontal em smartphones e tablets.
+     - Bloqueio e liberação de rolagem do body (overflow: hidden).
+  4. **Auditoria Automatizada e Validação no Docker:**
+     - Atualização do script tests/audit_docker.py para checar a existência dos componentes do Lightbox no HTML, CSS e JS.
+     - 100% de aprovação na auditoria conteinerizada no contêiner aura-maison-web (porta 3000).
