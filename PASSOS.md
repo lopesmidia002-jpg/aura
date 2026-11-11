@@ -124,3 +124,15 @@
   3. **Quebra de Linha Natural 1:1:** Implementação de quebra editorial balanceada no texto principal (`“Cuidar da beleza também é cuidar de como você<br class="quote-break">se sente.”`), com `max-width: 680px`, assegurando que a frase quebre com precisão cirúrgica em duas linhas elegantes em qualquer resolução.
   4. **Padronização de Espaçamentos & Bordas:** Calibração do padding fluido (`clamp(55px, 6vw, 90px) 24px`) e linha divisória suave inferior (`rgba(20, 20, 20, 0.06)`).
   5. **Auditoria de Integridade no Docker:** 100% dos testes e endpoints validados com status HTTP 200 via `tests/audit_docker.py`.
+
+---
+
+### Passo 10: Harmonização 1:1 da Seção O Salão / Conceito (Badge, Moldura e Métricas)
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Reposicionamento do Selo de Excelência (10+ Anos):** O selo circular `.badge-excellence-circle` foi movido do canto superior esquerdo para o canto superior **DIREITO** da fotografia principal (`top: -18px; right: -20px; left: auto;`), com diâmetro ajustado (`clamp(86px, 8vw, 104px)`), ouro acetinado suave no número e texto em pequenas maiúsculas nupciais (`#DDD7CE`).
+  2. **Moldura da Imagem Sobreposta de Ferramentas:** Atualização da borda de `.concept-inset-img-box` de champagne para branco puro sólido (`border: 8px solid #FFFFFF`), criando o efeito passpartout de alta definição com sombra editorial refinada (`box-shadow: 0 16px 36px rgba(20, 16, 12, 0.14)`).
+  3. **Calibração do Fundo e Grid:** Fundo ajustado para a cor exata `#FAF7F2` com largura máxima do grid em `1080px`, assegurando respiro editorial centralizado idêntico ao PDF.
+  4. **Botão de Rituais com Moldura Taupe Suave:** Estilização de `.concept-action .btn-outline-dark` com borda sutil taupe/areia (`#CEC4BB`), tipografia em ébano suave (`#262320`) e hover dinâmico em ouro.
+  5. **Harmonização das Métricas:** Remoção da borda divisória superior artificial, aplicação de numerais serifados em ouro nobre (`#B89758`), estilização proporcional da estrela `4.9★` e legendas em cinza taupe aristocrático (`#8D8680`).
+  6. **Auditoria no Docker:** 100% dos testes validados com sucesso no container (`tests/audit_docker.py`).

@@ -778,11 +778,12 @@ button {
 
 /* ==========================================================================
    3. O SALÃO / CONCEITO (SLICE 02)
+   Harmonização 1:1 com o Mockup Oficial do PDF
    ========================================================================== */
 
 .concept-section {
-  background-color: var(--bg-champagne);
-  padding: 95px 0;
+  background-color: #FAF7F2;
+  padding: clamp(65px, 8vw, 105px) 0;
 }
 
 .concept-grid {
@@ -790,25 +791,28 @@ button {
   grid-template-columns: 1fr;
   gap: 50px;
   align-items: center;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
 @media (min-width: 992px) {
   .concept-grid {
-    grid-template-columns: 1.05fr 1fr;
-    gap: 75px;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: clamp(45px, 5.5vw, 80px);
   }
 }
 
 .concept-visual-wrap {
   position: relative;
-  max-width: 520px;
+  max-width: 440px;
+  width: 100%;
   margin: 0 auto;
 }
 
 .concept-main-img-box {
-  border-radius: var(--radius-sm);
+  border-radius: 2px;
   overflow: hidden;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 16px 40px rgba(20, 16, 12, 0.08);
   aspect-ratio: 4 / 5;
 }
 
@@ -816,56 +820,59 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-/* Badge Circular 10+ Anos */
+/* Badge Circular 10+ Anos (Posicionado no canto superior DIREITO da foto principal) */
 .badge-excellence-circle {
   position: absolute;
-  top: -24px;
-  left: -24px;
-  width: 124px;
-  height: 124px;
+  top: -18px;
+  right: -20px;
+  left: auto;
+  width: clamp(86px, 8vw, 104px);
+  height: clamp(86px, 8vw, 104px);
   border-radius: 50%;
-  background: #161413;
-  border: 2px solid var(--gold-primary);
+  background: #141210;
+  border: 1.5px solid var(--gold-primary);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   z-index: 3;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
 }
 
 .badge-num {
   font-family: var(--font-serif);
-  font-size: 1.7rem;
-  font-weight: 700;
-  color: var(--gold-primary);
+  font-size: clamp(1.4rem, 2vw, 1.7rem);
+  font-weight: 400;
+  color: #D4AF67;
   line-height: 1;
 }
 
 .badge-txt {
-  font-size: 0.54rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  font-family: var(--font-sans);
+  font-size: 0.52rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--text-white);
+  color: #DDD7CE;
   line-height: 1.25;
-  margin-top: 3px;
+  margin-top: 4px;
 }
 
-/* Imagem Sobreposta de Pincéis */
+/* Imagem Sobreposta de Ferramentas / Pincéis (Moldura branca pura com sombra elegante) */
 .concept-inset-img-box {
   position: absolute;
-  bottom: -30px;
-  right: -24px;
-  width: 52%;
+  bottom: -28px;
+  right: -28px;
+  width: 58%;
   aspect-ratio: 4 / 3;
-  border: 6px solid var(--bg-champagne);
-  border-radius: var(--radius-sm);
+  border: 8px solid #FFFFFF;
+  border-radius: 2px;
   overflow: hidden;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 16px 36px rgba(20, 16, 12, 0.14);
   z-index: 2;
 }
 
@@ -873,55 +880,107 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .concept-editorial-box {
-  padding-top: 10px;
+  padding-top: 6px;
 }
 
-.editorial-body p {
-  color: var(--text-body);
-  font-size: 0.95rem;
-  line-height: 1.75;
+.concept-editorial-box .gold-kicker {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--gold-primary);
+  margin-bottom: 14px;
+}
+
+.concept-editorial-box .editorial-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.9rem, 3.2vw, 2.7rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: #141414;
+  letter-spacing: -0.01em;
+  margin-bottom: 22px;
+}
+
+.concept-editorial-box .editorial-body p {
+  color: #55504A;
+  font-size: clamp(0.88rem, 1vw, 0.94rem);
+  line-height: 1.74;
   margin-bottom: 16px;
+  font-weight: 300;
 }
 
 .concept-action {
-  margin: 30px 0 42px;
+  margin: 28px 0 34px;
 }
 
-/* Métricas em Linha */
+/* Botão Conhecer Rituais Exclusivos com moldura taupe suave conforme original */
+.concept-action .btn-outline-dark {
+  border: 1px solid #CEC4BB;
+  background: transparent;
+  color: #262320;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  padding: 13px 26px;
+  font-weight: 500;
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: var(--transition-fast);
+}
+
+.concept-action .btn-outline-dark:hover {
+  border-color: var(--gold-primary);
+  background: transparent;
+  color: var(--gold-primary);
+  transform: translateY(-2px);
+}
+
+/* Métricas em Linha (Sem borda superior, espaçamento orgânico) */
 .metrics-row {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px 16px;
-  border-top: 1px solid var(--border-subtle);
-  padding-top: 28px;
+  gap: 20px 16px;
+  border-top: none;
+  padding-top: 0;
+  margin-top: 8px;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 680px) {
   .metrics-row {
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 16px;
   }
 }
 
 .metric-val {
   font-family: var(--font-serif);
-  font-size: 1.9rem;
-  font-weight: 600;
-  color: var(--gold-primary);
+  font-size: clamp(1.75rem, 2.5vw, 2.15rem);
+  font-weight: 400;
+  color: #B89758;
   line-height: 1;
 }
 
+.metric-star {
+  font-size: 0.85em;
+  margin-left: 2px;
+  vertical-align: baseline;
+  color: #B89758;
+}
+
 .metric-lbl {
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--text-muted);
-  line-height: 1.35;
-  margin-top: 6px;
+  color: #8D8680;
+  line-height: 1.4;
+  margin-top: 8px;
 }
 
 /* ==========================================================================

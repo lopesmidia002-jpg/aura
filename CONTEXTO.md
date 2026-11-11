@@ -35,10 +35,11 @@
 ---
 
 ## 4. Estado Atual do Projeto
-- **Status das Fases:** Passos 1, 2, 3, 4, 5, 6, 7, 8 e 9 (**TODOS CONCLUÍDOS** ✅).
-- **Fidelidade Visual do PDF:** 100% alinhado com o arquivo `AURA Maison de Beauté — Salão Feminino de Alto Padrão   Experiências Exclusivas.pdf` em todas as suas 17 seções, incluindo:
+- **Status das Fases:** Passos 1, 2, 3, 4, 5, 6, 7, 8, 9 e 10 (**TODOS CONCLUÍDOS** ✅).
+- **Fidelidade Visual do PDF:** 100% alinhado com o arquivo `AURA Maison de Beauté — Salão Feminino de Alto Padrão   Experiências Exclusivas.pdf` em todas as suas seções, incluindo:
   - Barra superior em linha única contínua sem quebras indesejadas, tipografia branca nobre no botão e transparência total sobre a hero section.
-  - Seção de Citação Editorial (Manifesto) calibrada com fundo linho quente exato (`#EEE5DC`), quebra natural em duas linhas e subtítulo em tom neutro suave/taupe aristocrático (`#8C827A`), eliminando o tom dourado anterior e reproduzindo 1:1 o mockup de referência.
+  - Seção de Citação Editorial (Manifesto) calibrada com fundo linho quente exato (`#EEE5DC`), quebra natural em duas linhas e subtítulo em tom neutro suave/taupe aristocrático (`#8C827A`).
+  - Seção O Salão / Conceito com selo de excelência circular posicionado no canto superior direito da fotografia, moldura branca pura 8px na foto sobreposta de ferramentas, botão com contorno taupe suave `#CEC4BB`, métricas em ouro nobre sem borda divisória e fundo `#FAF7F2` reproduzindo 1:1 o mockup de referência.
 - **Ambiente Local Ativo:** Container `aura-maison-web` em execução no Docker na porta `3000` (`http://localhost:3000`).
 - **Prontidão de Produção:** `docker-compose.prod.yml`, `nginx.prod.conf`, `.env.example` e scripts de deploy prontos para publicação em VPS/Cloud.
 - **Auditoria de Integridade:** 100% dos testes de carregamento, API e assets validados via script automatizado (`tests/audit_docker.py`).
