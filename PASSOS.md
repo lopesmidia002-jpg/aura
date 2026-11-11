@@ -454,4 +454,59 @@
      - Inspeção via Chrome CDP e auditoria mobile multi-viewport confirmando alinhamento estético 1:1 e zero overflow.
      - Suíte `tests/audit_docker.py` executada com 100% de sucesso.
 
+---
+
+### Passo 30: Correção Cromática da Tipografia dos Badges "ANTES" e "DEPOIS" (Branco Puro 1:1 com o Original)
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Identificação e Amostragem no PDF Oficial:**
+     - Amostragem pixel-a-pixel nos badges de cantos do slider de transformações (`#transformacoes`).
+     - Constatação de que os textos "ANTES" e "DEPOIS" são renderizados em branco puro `RGB [248, 245, 240]` (`#FFFFFF`), em contraste com a regra anterior que aplicava dourado `var(--gold-primary)` (`#C5A059`).
+  2. **Ajuste no CSS (`css/style.css`):**
+     - Atualização da classe `.badge-corner-tag` para `color: var(--text-white);` (`#FFFFFF`).
+  3. **Blindagem Contra Cache v=4.6.0 e Validação no Docker:**
+     - Versionamento `v=4.6.0` aplicado em `index.html` e `style.css`.
+     - Recarga do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
+     - Inspeção do DOM via Chrome CDP confirmando `color: rgb(255, 255, 255)` para ambos os badges `.badge-left` ("ANTES") e `.badge-right` ("DEPOIS").
+     - Suíte `tests/audit_docker.py` executada com 100% de sucesso.
+
+---
+
+### Passo 31: Restauração da Marca d'Água Tipográfica de Fundo "BRIDE" na Seção Noivas Conforme Design Original
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Identificação e Amostragem da Palavra no Mockup/PDF Oficial:**
+     - Análise do export nativo de alta resolução do Figma (1920x14400) e da imagem de referência anexada pelo usuário.
+     - Identificação da palavra editorial em caixa alta **"BRIDE"** disposta no plano de fundo dos 4 cards de benefícios nupciais (`#noivas`).
+     - No design original de 5 letras simétricas: as letras "B" e "R" situam-se sob os cards da coluna esquerda ("Suíte Presidencial Privada" e "Acompanhamento no Local"), a letra central "I" alinha-se no vão vertical intermediário, e as letras "D" e "E" posicionam-se sob os cards da coluna direita ("Prévia Completa" e "Spa & Bem-estar Prévio").
+  2. **Implementação da Camada Tipográfica (`.bridal-watermark`):**
+     - Inclusão do elemento decorativo acessível `<div class="bridal-watermark" aria-hidden="true">BRIDE</div>` dentro de `.bridal-cards-grid` em `index.html`.
+     - Aplicação de `position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--font-serif); font-size: clamp(5.2rem, 11vw, 10.5rem); letter-spacing: 0.18em;` em `css/style.css`.
+     - Calibração de cor em ouro nobre acetinado translúcido com 8% de opacidade (`rgba(197, 160, 89, 0.08)`), gerando o valor exato `RGB [47, 40, 32]` sobre o fundo dark nupcial `#191512`.
+     - Os cards `.pillar-card-dark` configurados com `position: relative; z-index: 1;` com superfície semi-translúcida (`rgba(255, 255, 255, 0.025)`), permitindo que a marca d'água brilhe sutilmente através do vidro fosco dos cards e nos vãos entre eles, com `z-index: 0; pointer-events: none; user-select: none;`.
+     - Contenção mobile/tablet via `overflow: hidden;` em `#noivas` e redimensionamento fluido (`clamp(3.2rem, 16vw, 5.5rem)`).
+  3. **Blindagem Contra Cache v=4.7.0 e Validação no Docker:**
+     - Versionamento `v=4.7.0` aplicado em `index.html` e `style.css`.
+     - Recarga do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
+     - Inspeção via Chrome CDP confirmando centralização matemática horizontal e vertical perfeita (`x: 121px`, `y: 5756px`, `centerOffset: 0.3px`).
+     - Suíte `tests/audit_docker.py` executada com 100% de aprovação.
+
+---
+
+### Passo 32: Correção Cromática da Tipografia do Título do Manifesto (Preto Nobre 1:1 com o Original)
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Análise Comparativa e Amostragem no Mockup/PDF Oficial:**
+     - Amostragem minuciosa na fatia correspondente à seção `#manifesto` do vetor original do PDF (`tests/pdf_manifesto_exact.png`) e comparação com a imagem fornecida pelo usuário (`media_1794426212070_23ec5864.png`).
+     - Constatação de que a headline editorial *"Beleza não é sobre mudar quem você é. É sobre revelar."* possui tipografia escura/preta (`RGB [0, 0, 0]` a `[25, 17, 11]`), contrastando com a implementação anterior que utilizava texto branco (`#FFFFFF`).
+  2. **Ajuste no CSS (`css/style.css`):**
+     - Atualização da classe `.manifesto-huge-heading` para `color: #000000;`, harmonizando perfeitamente a leitura com o fundo fotográfico e mantendo o kicker dourado (`.gold-kicker`) e o botão de agendamento (`.btn-gold`) nos seus padrões oficiais.
+  3. **Blindagem Contra Cache v=4.8.0 e Validação no Docker:**
+     - Versionamento `v=4.8.0` aplicado em `index.html` e `style.css`.
+     - Recarga do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
+     - Inspeção via Chrome CDP confirmando cor computada exatamente como `rgb(0, 0, 0)` na classe `.manifesto-huge-heading`.
+     - Auditoria completa `tests/audit_docker.py` executada com 100% de aprovação.
+
+
+
 

@@ -35,7 +35,18 @@
 ---
 
 ## 4. Estado Atual do Projeto
-- **Status das Fases:** Passos 1 a 27 (**TODOS CONCLUÍDOS** ✅).
+- **Status das Fases:** Passos 1 a 32 (**TODOS CONCLUÍDOS** ✅).
+- **Cor da Tipografia do Título do Manifesto para Preto Nobre (Passo 32):**
+  - O título principal da seção `#manifesto` (`.manifesto-huge-heading`), *"Beleza não é sobre mudar quem você é. É sobre revelar."*, foi alterado de branco (`var(--text-white)`) para preto puro `#000000` (`rgb(0, 0, 0)`), correspondendo com exatidão matemática 1:1 ao design original do PDF oficial.
+  - Blindagem de cache `?v=4.8.0` no HTML e CSS, validado via Chrome CDP e auditoria Docker 100% aprovada.
+- **Marca d'Água Tipográfica "BRIDE" na Seção Noivas (Passo 31):**
+  - Marca d'água monumental `.bridal-watermark` posicionada no plano de fundo dos 4 cards translúcidos de benefícios (`.pillar-card-dark`) em tom ouro sutil (`rgba(197, 160, 89, 0.08)`).
+- **Tipografia dos Badges "ANTES" e "DEPOIS" (Passo 30):**
+  - Rótulos dos cantos `.badge-corner-tag` do slider calibrados para branco puro `#FFFFFF`.
+- **Marca d'Água Tipográfica "HAIR" na Colorimetria (Passo 29):**
+  - Marca d'água monumental `.color-watermark` entre colunas editoriais e fotografia panorâmica em tom ouro sutil (`rgba(197, 160, 89, 0.09)`).
+- **Cores dos Preços e Textos dos Cards de Rituais (Passo 28):**
+  - Calibração estrita dos valores para bronze/avelã `#8D684D` e prefixos para taupe `#8C827A`.
 - **Centralização do Botão "Falar com Concierge de Noivas" no Mobile (Passo 27):**
   - Wrapper `.bridal-action-wrap` e classe dedicada `.bridal-cta-btn` implementados em `index.html` e `style.css`.
   - No desktop (> 991px), preserva alinhamento à esquerda junto ao texto editorial; no mobile/tablet (<= 991px), o botão é perfeitamente centralizado com `margin: 0 auto;`, `display: flex; justify-content: center;`, `max-width: 340px` e respiro simétrico perfeito.
@@ -75,7 +86,9 @@
   - Efeito hover aristocrático padronizado em todos os botões dourados (`.btn-gold`, `.btn-header`), com transição aveludada para degradê bronze/espresso (`linear-gradient(135deg, #876349 0%, #654C3A 40%, #44342A 75%, #2B221C 100%)`), contorno em ouro nobre (`#C5A059`) e tipografia branca pura (`#FFFFFF`).
   - Efeito hover com fundo branco sólido (`background: #FFFFFF !important; border-color: #FFFFFF !important;`) e texto preto ébano (`#141414`) nos botões com fundo transparente (`.btn-hero-outline`, `.btn-outline-dark`).
   - Calibração cromática 1:1 dos cards de Rituais Exclusivos (`#experiencias`): valores e números (`.price-val strong`) em bronze aveludado / avelã quente `#8D684D` (`rgb(141, 104, 77)`), rótulos de prefixo (`.price-val`) em taupe suave `#8C827A` (`rgb(140, 130, 122)`) e links em dourado nobre `#C5A059` (`rgb(197, 160, 89)`).
-  - Marca d'água tipográfica de fundo "HAIR" restaurada na seção Colorimetria de Alta Costura (`#coloracao`), posicionada com precisão entre as colunas editoriais e estendendo-se sob a fotografia panorâmica, em ouro nobre sutil (`rgba(197, 160, 89, 0.09)`), com cache atualizado para `v=4.5.0`.
+  - Marca d'água tipográfica de fundo "HAIR" restaurada na seção Colorimetria de Alta Costura (`#coloracao`), posicionada com precisão entre as colunas editoriais e estendendo-se sob a fotografia panorâmica, em ouro nobre sutil (`rgba(197, 160, 89, 0.09)`).
+  - Tipografia dos badges "ANTES" e "DEPOIS" (`.badge-corner-tag`) do comparador de transformações calibrada para branco puro (`#FFFFFF` / `var(--text-white)`), em conformidade 1:1 com o PDF original.
+  - Marca d'água tipográfica de fundo "BRIDE" restaurada na seção Suíte Nupcial (`#noivas`), centralizada simetricamente sob os 4 cards translúcidos de benefícios (`.pillar-card-dark`), em ouro nobre sutil (`rgba(197, 160, 89, 0.08)`), com cache atualizado para `v=4.7.0`.
 - **Ambiente Local Ativo:** Container `aura-maison-web` em execução no Docker na porta `3000` (`http://localhost:3000`).
 - **Prontidão de Produção:** `docker-compose.prod.yml`, `nginx.prod.conf`, `.env.example` e scripts de deploy prontos para publicação em VPS/Cloud.
 - **Auditoria de Integridade:** 100% dos testes de carregamento, API e assets validados via script automatizado (`tests/audit_docker.py`).
