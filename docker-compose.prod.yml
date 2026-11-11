@@ -1,0 +1,46 @@
+services:
+  aura-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aura-maison-prod
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT:-80}:80"
+      - "${SSL_PORT:-443}:443"
+    volumes:
+      - ./nginx.prod.conf:/etc/nginx/nginx.conf:ro
+      - certs-data:/etc/nginx/ssl:ro
+      - certbot-challenge:/var/www/certbot:ro
+    environment:
+      - NODE_ENV=production
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:80/ || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 128M
+
+  certbot:
+    image: certbot/certbot:latest
+    container_name: aura-certbot
+    restart: unless-stopped
+    volumes:
+      - certs-data:/etc/letsencrypt
+      - certbot-challenge:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+
+volumes:
+  certs-data:
+    name: aura_certs_data
+  certbot-challenge:
+    name: aura_certbot_challenge
+

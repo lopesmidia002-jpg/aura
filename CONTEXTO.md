@@ -15,10 +15,11 @@
   - JavaScript ES6+ modular com suporte a interações touch, controle gestual de bottom sheet, slider antes/depois arrastável, máscaras dinâmicas de telefone, integração com API REST e notificações toast.
 - **Assets Visuais:**
   - Imagens em formato `.avif` de alta definição, leves e com renderização de alta fidelidade cromática.
-- **Infraestrutura, API & Docker:**
-  - 100% conteinerizado com **Docker** e orquestrado via **Docker Compose**.
-  - Servidor web **Nginx Alpine** com suporte nativo a MIME types para `.avif`, compressão Gzip, cabeçalhos de cache, políticas de segurança HTTP e endpoints de API REST para `/api/agendamentos` e `/api/newsletter`.
-  - **Porta de Acesso Local:** `http://localhost:3000`.
+- **Infraestrutura, API & Docker (100% no Docker):**
+  - Ambiente de desenvolvimento conteinerizado com **Docker Compose** (`docker-compose.yml`) na porta `3000`.
+  - Ambiente de produção configurado com **Docker Compose** (`docker-compose.prod.yml`) para portas `80` e `443` com renovação de SSL via Certbot.
+  - Servidor web **Nginx Alpine** com suporte nativo a MIME types para `.avif`, compressão Gzip, cabeçalhos de segurança HSTS, políticas de segurança HTTP e endpoints de API REST para `/api/agendamentos` e `/api/newsletter`.
+  - Scripts de deploy automatizado (`deploy.sh` e `deploy.ps1`).
   - Arquivo `.gitignore` configurado para proteção contra commits de dependências, logs, variáveis de ambiente e arquivos pesados.
   - Script automatizado de auditoria (`tests/audit_docker.py`) validando 100% dos endpoints e assets.
 
@@ -33,7 +34,7 @@
 ---
 
 ## 4. Estado Atual do Projeto
-- **Passos Concluídos:** Passo 1, Passo 2, Passo 3 e Passo 4 (**CONCLUÍDOS** ✅).
-- **Servidor Ativo:** Container `aura-maison-web` em execução no Docker na porta `3000`.
-- **Status de Resposta:** HTTP 200 OK verificado com script automatizado para todas as rotas estáticas, as 14 imagens AVIF e os endpoints da API (`/api/agendamentos` e `/api/newsletter`).
-- **Próximo Passo:** Passo 5 (Deploy / Publicação em Nuvem e Certificados SSL HTTPS) — *Aguardando autorização explícita do usuário.*
+- **Status das Fases:** Passos 1, 2, 3, 4 e 5 (**TODOS CONCLUÍDOS** ✅).
+- **Ambiente Local Ativo:** Container `aura-maison-web` em execução no Docker na porta `3000` (`http://localhost:3000`).
+- **Prontidão de Produção:** `docker-compose.prod.yml`, `nginx.prod.conf`, `.env.example` e scripts de deploy prontos para publicação em VPS/Cloud.
+- **Auditoria de Integridade:** 100% dos testes de carregamento, API e assets validados via script automatizado.

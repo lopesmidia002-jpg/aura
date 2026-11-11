@@ -39,17 +39,25 @@
 ### Passo 4: Auditoria Lighthouse, Otimização de Pré-carregamento e Metadados SEO/Open Graph
 - **Status:** **CONCLUÍDO** ✅
 - **Entregas Realizadas:**
-  1. **Metadados Open Graph & Twitter Cards:** Configurados para pré-visualização enriquecida no WhatsApp, Instagram e redes sociais.
-  2. **Dados Estruturados Schema.org JSON-LD:** Marcação semântica oficial para `BeautySalon` com endereço nos Jardins, horários e nota 4.9★.
-  3. **Otimização de Pré-carregamento (`<link rel="preload">`):** Critical-path CSS e imagem LCP do Hero pré-carregadas para tempo de resposta ultrarrápido.
-  4. **Script de Auditoria Automatizada (`tests/audit_docker.py`):** 100% de sucesso validando todas as rotas estáticas, 14 imagens AVIF e endpoints de API REST no Docker.
-  5. **Atualização da Documentação:** `DOCUMENTACAO.md`, `PASSOS.md` e `CONTEXTO.md` atualizados.
+  1. Metadados Open Graph & Twitter Cards configurados para visualização rica em redes sociais e mensageiros.
+  2. Dados estruturados Schema.org JSON-LD oficial para `BeautySalon` com nota 4.9 estrelas.
+  3. Preload de recursos críticos (`style.css` e imagem hero LCP).
+  4. Script de auditoria automatizada (`tests/audit_docker.py`) validando 100% dos assets no Docker.
 
 ---
 
 ### Passo 5: Deploy / Publicação em Nuvem e Certificados SSL HTTPS
-- **Status:** **PENDENTE** ⏳ *(Aguardando solicitação explícita do usuário para início)*
-- **Escopo Previsto:**
-  1. Configuração de certificados SSL/TLS automáticos (Let's Encrypt / Certbot ou Cloudflare).
-  2. Configuração de pipeline CI/CD ou Docker Compose para produção em VPS/Cloud (AWS, DigitalOcean, Hetzner ou Railway).
-  3. Monitoramento de uptime e métricas de conversão de cliques no WhatsApp.
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Configuração de Produção (`docker-compose.prod.yml`):**
+     - Mapeamento das portas HTTP/HTTPS (80 e 443).
+     - Limites de recursos computacionais (1 CPU / 512MB RAM) e healthcheck de uptime.
+     - Contêiner automatizado do Certbot para renovação sem interrupção de certificados SSL Let's Encrypt.
+  2. **Configuração de Segurança Nginx Produção (`nginx.prod.conf`):**
+     - Redirecionamento 301 forçado de HTTP para HTTPS.
+     - Suporte a HTTP/2, TLSv1.2 e TLSv1.3 com ciphers modernos.
+     - Cabeçalhos de segurança avançados: HSTS (`Strict-Transport-Security`), `X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`.
+     - Cache imutável de 30 dias para imagens AVIF.
+  3. **Variáveis de Ambiente (`.env.example`):** Template oficial com parâmetros de domínio e e-mail.
+  4. **Scripts de Deploy:** Criação de `deploy.sh` (Linux) e `deploy.ps1` (Windows) para automação de deploy com zero downtime.
+  5. **Atualização da Documentação:** `DOCUMENTACAO.md`, `PASSOS.md` e `CONTEXTO.md` finalizados com distinção.

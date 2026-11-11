@@ -51,7 +51,7 @@ O projeto foi construído seguindo uma estrita filosofia **Mobile-First**, garan
 
 ---
 
-## 4. SEO, Compartilhamento VIP & Performance (Passo 4)
+## 4. SEO, Compartilhamento VIP & Performance
 
 ### 4.1. Metadados Open Graph & Twitter Cards
 Configurados para visualização de alto padrão em redes sociais, WhatsApp e mensageiros:
@@ -118,19 +118,23 @@ Adicionado script semântico para SEO Local com autoridade Google:
 
 ---
 
-## 7. Arquitetura de Contêiner & Auditoria Automatizada (100% no Docker)
+## 7. Arquitetura de Contêiner & Produção (100% no Docker)
 
-O projeto está configurado para execução isolada e de alta performance via Docker:
-- **Imagem Base:** `nginx:alpine`
-- **Configuração Customizada (`nginx.conf`):**
-  - Mapeamento explícito de MIME type para imagens AVIF e WebP.
-  - Compressão Gzip ativada.
-  - Cabeçalhos de cache estático (`Cache-Control: public, no-transform; expires 7d`).
-  - Cabeçalhos de segurança HTTP (`X-Frame-Options`, `X-Content-Type-Options`, `X-XSS-Protection`).
-  - Endpoints REST para `/api/agendamentos` e `/api/newsletter` com suporte a CORS.
-- **Porta Mapeada:** `http://localhost:3000`.
-- **Script de Auditoria Automatizada (`tests/audit_docker.py`):**
-  - Valida o status 200 de todas as rotas estáticas, das 14 imagens AVIF, dos scripts JS, estilos CSS e de ambos os endpoints REST da API com tempos de resposta médios abaixo de 40ms.
+### 7.1. Ambiente de Desenvolvimento
+- **Arquivo:** `docker-compose.yml` (Porta `3000:80`).
+- **Servidor:** `nginx:alpine` com hot-reload de volumes estáticos.
+
+### 7.2. Ambiente de Produção & SSL Automático (Passo 5)
+- **Arquivo:** `docker-compose.prod.yml` (Portas `80:80` e `443:443`).
+- **Configuração Nginx Produção (`nginx.prod.conf`):**
+  - Redirecionamento 301 forçado de HTTP para HTTPS.
+  - Suporte a HTTP/2 e TLSv1.2 / TLSv1.3 com ciphers modernos.
+  - HSTS ativado (`max-age=63072000; includeSubDomains; preload`).
+  - Cache imutável de 30 dias para imagens AVIF.
+  - Limites de recursos definidos (1 CPU / 512MB RAM).
+  - Healthcheck integrado para monitoramento contínuo de uptime.
+- **Serviço Certbot:** Renovação automática de certificados Let's Encrypt a cada 12 horas.
+- **Scripts de Deploy:** `deploy.sh` (Linux/VPS) e `deploy.ps1` (Windows).
 
 ---
 
