@@ -396,6 +396,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: nowrap;
 }
 
 @media (min-width: 768px) {
@@ -409,11 +410,13 @@ button {
   display: flex;
   flex-direction: column;
   text-decoration: none;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .brand-name {
   font-family: var(--font-serif);
-  font-size: 1.65rem;
+  font-size: 1.55rem;
   letter-spacing: 0.22em;
   color: var(--text-white);
   line-height: 1;
@@ -422,11 +425,11 @@ button {
 
 .brand-tagline {
   font-family: var(--font-sans);
-  font-size: 0.52rem;
-  letter-spacing: 0.36em;
+  font-size: 0.5rem;
+  letter-spacing: 0.34em;
   color: var(--gold-primary);
   text-transform: uppercase;
-  margin-top: 3px;
+  margin-top: 2px;
   font-weight: 600;
 }
 
@@ -435,90 +438,106 @@ button {
   display: none;
 }
 
-@media (min-width: 1080px) {
+@media (min-width: 960px) {
   .nav-desktop {
     display: flex;
     align-items: center;
-    gap: 22px;
+    gap: clamp(10px, 1.3vw, 20px);
+    flex-shrink: 1;
   }
 }
 
 .nav-link {
-  font-size: 0.72rem;
+  font-size: clamp(0.66rem, 0.75vw, 0.72rem);
   font-weight: 500;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #DDD7CE;
   position: relative;
   padding: 6px 0;
+  white-space: nowrap !important;
   transition: var(--transition-fast);
 }
 
 .nav-link::after {
   content: "";
   position: absolute;
-  bottom: -2px;
+  bottom: -3px;
   left: 0;
-  width: 0%;
+  width: 100%;
   height: 1.5px;
   background: var(--gold-primary);
-  transition: width 0.25s ease;
+  opacity: 0;
+  transition: opacity 0.25s ease;
 }
 
-.nav-link:hover,
 .nav-link.active {
   color: var(--gold-primary);
+  font-weight: 600;
 }
 
-.nav-link:hover::after,
 .nav-link.active::after {
-  width: 100%;
+  opacity: 1;
+}
+
+.nav-link:hover {
+  color: var(--gold-primary);
 }
 
 /* Lado Direito do Header */
 .header-right {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 14px;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .lang-switch {
   display: none;
-  font-size: 0.72rem;
-  letter-spacing: 0.15em;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
   color: #AAA397;
   font-weight: 500;
+  white-space: nowrap !important;
+  align-items: center;
+  flex-shrink: 0;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 960px) {
   .lang-switch {
-    display: block;
+    display: inline-flex;
   }
 }
 
 .lang-divider {
   color: var(--gold-primary);
-  margin: 0 4px;
+  margin: 0 3px;
 }
 
 .btn-header {
-  min-height: 38px;
-  padding: 8px 18px;
-  font-size: 0.7rem;
+  min-height: 34px !important;
+  height: 34px;
+  padding: 0 16px !important;
+  font-size: 0.68rem !important;
   font-weight: 600;
-  letter-spacing: 0.15em;
-  border-radius: var(--radius-sm);
-  background: var(--gold-primary);
-  color: #141414;
-  border: 1px solid var(--gold-primary);
-  box-shadow: none;
+  letter-spacing: 0.12em;
+  border-radius: 3px;
+  background: var(--gold-primary) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  white-space: nowrap !important;
+  box-shadow: none !important;
   display: none;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .btn-header:hover {
-  background: #D5B069;
-  border-color: #D5B069;
-  color: #141414;
+  background: #D5B069 !important;
+  color: #FFFFFF !important;
+  transform: none;
 }
 
 @media (min-width: 600px) {
@@ -533,14 +552,14 @@ button {
   justify-content: center;
   align-items: center;
   gap: 5px;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--radius-sm);
   border: 1px solid rgba(197, 160, 89, 0.35);
   background: rgba(255, 255, 255, 0.05);
 }
 
-@media (min-width: 1080px) {
+@media (min-width: 960px) {
   .btn-mobile-toggle {
     display: none;
   }

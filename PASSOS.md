@@ -102,3 +102,14 @@
   4. Realce do link ativo `INÍCIO` em ouro acetinado (`#C5A059`) acompanhado do sublinhado sutil de 1.5px.
   5. Calibração do degradê sobreposto (`.hero-overlay`) com luminosidade suave no topo (`rgba(17, 16, 15, 0.40)`) para visibilidade natural do teto e espelhos do salão, com escurecimento progressivo para legibilidade dos botões.
   6. Validação completa via `tests/audit_docker.py` com 100% de sucesso.
+
+---
+
+### Passo 8: Correção Definitiva de Quebras de Linha e Tipografia na Barra Superior
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. Aplicação de `white-space: nowrap !important` em todos os elementos da barra superior (`.nav-link`, `.lang-switch`, `.btn-header`, `.brand-logo`), eliminando quebras indesejadas de texto como "O SALÃO" (em duas linhas), "PT / EN / ES" e "AGENDAR HORÁRIO".
+  2. Ajuste da cor da tipografia do botão "AGENDAR HORÁRIO" para branco nobre (`#FFFFFF`) sobre o fundo dourado, conforme o mockup de referência.
+  3. Calibração da escala fluida de navegação (`font-size: clamp(0.66rem, 0.75vw, 0.72rem)` e `gap: clamp(10px, 1.3vw, 20px)`), garantindo que todos os 8 links, o seletor de idiomas e o botão caibam em uma única linha contínua em resoluções a partir de 960px/1024px.
+  4. Redução da altura do botão de cabeçalho para 34px com padding ergonômico.
+  5. Auditoria de integridade e carregamento no Docker 100% aprovada via `tests/audit_docker.py`.
