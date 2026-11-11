@@ -1304,11 +1304,11 @@ button {
 
 .price-val {
   font-size: 0.82rem;
-  color: var(--text-muted);
+  color: #8C827A;
 }
 
 .price-val strong {
-  color: var(--text-ebony);
+  color: #8D684D;
   font-weight: 600;
 }
 

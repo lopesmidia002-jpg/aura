@@ -414,3 +414,22 @@
      - Atualização do versionamento de cache para `v=4.3.0` em `index.html` e `style.css`.
      - Verificação visual e métrica automatizada via Chrome CDP (`tests/screenshots/mobile_bridal_button_centered.png`).
      - 100% de sucesso nos testes automatizados no Docker (`aura-maison-web` na porta 3000) via `tests/audit_docker.py`.
+
+---
+
+### Passo 28: Calibração Cromática de Textos e Números dos Cards de Rituais Conforme Original (PDF)
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Extração e Amostragem Fiel das Cores do PDF Original:**
+     - Amostragem pixel-a-pixel no PDF oficial de alta resolução de ambas as fileiras de cards da seção de Rituais (`#experiencias`).
+     - Destaques numéricos e de valor (`.price-val strong`): "R$ 280", "VIP", "VIP", "R$ 360", "R$ 380", "Medida" utilizam tom nobre bronze aveludado / avelã quente `#8D684D` (`rgb(141, 104, 77)`), com `font-weight: 600`, eliminando o preto ébano genérico (`#141414`).
+     - Rótulos de prefixo (`.price-val`): "A partir de", "Sob avaliação", "Pacotes sob" utilizam tom taupe refinado `#8C827A` (`rgb(140, 130, 122)`), `font-size: 0.82rem`.
+     - Links com traço de ação (`.action-dash`): "AGENDAR —", "AVALIAR —", "CONHECER —" mantidos em dourado acetinado nobre `#C5A059` (`rgb(197, 160, 89)`).
+  2. **Refinamento do CSS (`css/style.css`):**
+     - Atualização das classes `.price-val` e `.price-val strong` para aplicação estrita de `#8C827A` e `#8D684D`.
+  3. **Blindagem Contra Cache v=4.4.0 e Validação no Docker:**
+     - Bump de versão de cache para `v=4.4.0` nos preloads e links de folha de estilo em `index.html`.
+     - Recarga imediata do serviço Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
+     - Inspeção do DOM e estilos computados via Chrome CDP confirmando 100% de correspondência cromática (`rgb(141, 104, 77)`, `rgb(140, 130, 122)`, `rgb(197, 160, 89)`).
+     - Execução da suíte completa `tests/audit_docker.py` com 100% de aprovação.
+
