@@ -35,8 +35,8 @@
 ---
 
 ## 4. Estado Atual do Projeto
-- **Status das Fases:** Passos 1, 2, 3, 4, 5 e 6 (**TODOS CONCLUÍDOS** ✅).
-- **Fidelidade Visual do PDF:** 100% alinhado com o arquivo `AURA Maison de Beauté — Salão Feminino de Alto Padrão   Experiências Exclusivas.pdf` em todas as suas 17 seções, textos, imagens e hierarquia.
+- **Status das Fases:** Passos 1, 2, 3, 4, 5, 6 e 7 (**TODOS CONCLUÍDOS** ✅).
+- **Fidelidade Visual do PDF:** 100% alinhado com o arquivo `AURA Maison de Beauté — Salão Feminino de Alto Padrão   Experiências Exclusivas.pdf` em todas as suas 17 seções, com topo de tela transparente, tipografia Cormorant Garamond autêntica e alinhamento de grid perfeito.
 - **Ambiente Local Ativo:** Container `aura-maison-web` em execução no Docker na porta `3000` (`http://localhost:3000`).
 - **Prontidão de Produção:** `docker-compose.prod.yml`, `nginx.prod.conf`, `.env.example` e scripts de deploy prontos para publicação em VPS/Cloud.
 - **Auditoria de Integridade:** 100% dos testes de carregamento, API e assets validados via script automatizado (`tests/audit_docker.py`).

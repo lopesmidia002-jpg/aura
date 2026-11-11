@@ -90,3 +90,15 @@
   3. Folha de estilo `css/style.css` completamente harmonizada com o Design System de luxo, variáveis CSS padronizadas, suporte a mobile-first, tablet e desktop.
   4. Script `js/main.js` atualizado para controle do comparador antes/depois, filtros de categoria, carrossel de depoimentos, modal bottom sheet, máscaras de formulário e envio assíncrono para os endpoints do Nginx com redirecionamento ao Concierge WhatsApp.
   5. Validação com 100% de sucesso no script de auditoria conteinerizado no Docker (`tests/audit_docker.py`).
+
+---
+
+### Passo 7: Ajuste de Alta Fidelidade no Hero e Barra Superior Transparente
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. Correção da barra superior (Header) para iniciar com transparência total sobre a imagem panorâmica do salão, eliminando o retângulo escuro e as bordas que fragmentavam o topo da tela.
+  2. Alinhamento de largura do container do Header para `max-width: 1240px`, garantindo alinhamento pixel-perfect do logotipo AURA e do botão `AGENDAR HORÁRIO` com o grid editorial da página.
+  3. Priorização tipográfica de `Cormorant Garamond` no Hero, resgatando a cauda caligráfica clássica da letra 'Q' em "BELEZA QUE REVELA" e reduzindo o `line-height` para 1.08.
+  4. Realce do link ativo `INÍCIO` em ouro acetinado (`#C5A059`) acompanhado do sublinhado sutil de 1.5px.
+  5. Calibração do degradê sobreposto (`.hero-overlay`) com luminosidade suave no topo (`rgba(17, 16, 15, 0.40)`) para visibilidade natural do teto e espelhos do salão, com escurecimento progressivo para legibilidade dos botões.
+  6. Validação completa via `tests/audit_docker.py` com 100% de sucesso.

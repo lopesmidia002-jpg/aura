@@ -21,11 +21,11 @@ O projeto foi alinhado com **100% de fidelidade visual, estrutural e de copy** a
 - **Texto Marfim / Ivory:** `#DDD7CE` / `#AAA397` (textos sobre fundos escuros)
 
 ### 2.2. Tipografia Editorial
-- **Títulos e Citações:** `Playfair Display` & `Cormorant Garamond` (serifadas editoriais clássicas com kerning refinado, escala fluida e pesos 400/500/600/700).
+- **Títulos e Citações:** `Cormorant Garamond` & `Playfair Display` (serifadas editoriais clássicas francesas com kerning refinado, cauda caligráfica estendida em glifos como 'Q' e 'R', escala fluida e line-height compacto de 1.08 no Hero).
 - **Corpo, Botões e Metadados:** `Montserrat` & `Inter` (sem-serifas geométricas limpas, modernas e de alta legibilidade).
 
 ### 2.3. Efeitos, Materiais & Micro-interações
-- **Glassmorphism Aristocrático:** `backdrop-filter: blur(14px)` com fundo translúcido escuro no Header fixo e no bottom sheet.
+- **Barra Superior Flutuante & Transparente:** O Header inicia com transparência total (`background: transparent; border-bottom: none`), permitindo que a imagem panorâmica do salão se estenda até o topo da tela. Ao rolar a página (`window.scrollY > 30`), a classe `.scrolled` ativa o glassmorphism com fundo escuro (`rgba(17, 16, 15, 0.94)`), `backdrop-filter: blur(14px)` e borda dourada acetinada de 1px.
 - **Micro-interações:** feedback táctil ao toque (`:active { transform: scale(0.98); }`), sombras volumétricas suaves e transições em curva de aceleração bezier suave (`cubic-bezier(0.16, 1, 0.3, 1)`).
 
 ---
