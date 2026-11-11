@@ -351,3 +351,20 @@
      - Atualização das tags de preload, folha de estilos (`style.css?v=4.0.0`) e fontes da imagem com querystrings v=4.0.0 no `index.html`.
   4. **Auditoria de Integridade no Docker:**
      - Atualização do script `tests/audit_docker.py` para validar todas as 21 imagens e endpoints REST com status HTTP 200.
+
+
+---
+
+### Passo 25: Remoção do Menu Sanduíche da Barra Superior no Modo Mobile e Alinhamento do Botão de Agendamento
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Remoção do Menu Sanduíche (`.btn-mobile-toggle`) no Modo Mobile:**
+     - Remoção da tag `<button class="btn-mobile-toggle" ...>` da barra superior em `index.html`.
+     - Aplicação da regra `display: none !important;` na classe `.btn-mobile-toggle` em `css/style.css`, garantindo que o ícone de hambúrguer não seja renderizado em nenhum breakpoint.
+  2. **Harmonização do Header Mobile e Botão de Agendamento:**
+     - O botão de ação `.btn-header` ("AGENDAR HORÁRIO") agora permanece acessível e harmonioso em todos os tamanhos de tela (`display: inline-flex`), com dimensionamento compacto adaptativo (`padding: 0 12px; font-size: 0.62rem; height: 30px`) em smartphones estreitos (<= 480px).
+     - Alinhamento limpo da barra superior no mobile: Marca AURA à esquerda e Botão de Agendamento Dourado à direita, reproduzindo o design minimalista de alta costura.
+  3. **Blindagem Contra Cache v=4.1.0:**
+     - Atualização do versionamento de cache para `v=4.1.0` em `index.html` e `style.css`.
+  4. **Auditoria de Integridade no Docker:**
+     - Validação conteinerizada com 100% de sucesso via `tests/audit_docker.py` (HTML, CSS, JS, 21 imagens e rotas da API).

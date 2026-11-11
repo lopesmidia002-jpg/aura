@@ -35,7 +35,10 @@
 ---
 
 ## 4. Estado Atual do Projeto
-- **Status das Fases:** Passos 1 a 24 (**TODOS CONCLUÍDOS** ✅).
+- **Status das Fases:** Passos 1 a 25 (**TODOS CONCLUÍDOS** ✅).
+- **Barra Superior Mobile — Remoção do Menu Sanduíche (Passo 25):**
+  - Remoção completa do botão de menu sanduíche (`.btn-mobile-toggle`) da barra superior no modo mobile, eliminando a poluição visual e mantendo o cabeçalho estritamente minimalista e aristocrático com a Marca AURA à esquerda e o botão de agendamento à direita (`display: inline-flex`).
+  - Cache-busting imediato `?v=4.1.0` nas chamadas de CSS e preload no HTML.
 - **Imagem Sobreposta de Ferramentas — Formato Quadrado 1:1 e Posicionamento (Passo 24):**
   - Ajuste fidedigno ao PDF original (316x316 px): proporção rigorosamente quadrada 1:1 (`aspect-ratio: 1 / 1`), largura proporcional de 60% (`width: 60% !important; max-width: 280px !important;`), bottom: -18px e right: -42px.
   - Assets dedicados em ultra resolução: `photo-ferramentas-conceito-square.avif` e `photo-ferramentas-conceito-square.jpg` (676x676 px) com erro residual de apenas 6.6 MSE em relação ao PDF oficial.
