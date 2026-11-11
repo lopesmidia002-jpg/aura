@@ -906,10 +906,10 @@ button {
 /* Imagem Sobreposta de Ferramentas / Pincéis (Moldura branca pura retangular 16:10 com enquadramento completo do vaso de suculenta à esquerda e ferramentas) */
 .concept-inset-img-box {
   position: absolute;
-  bottom: -32px;
-  right: -42px;
-  width: 85%;
-  max-width: 410px;
+  bottom: -12px;
+  right: -14px;
+  width: 79%;
+  max-width: 380px;
   aspect-ratio: 16 / 10;
   border: 8px solid #FFFFFF;
   border-radius: 2px;
@@ -923,15 +923,15 @@ button {
   height: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
-  object-position: 4% center;
+  object-position: center center;
   display: block;
 }
 
 @media (max-width: 576px) {
   .concept-inset-img-box {
-    width: 82%;
-    bottom: -22px;
-    right: -16px;
+    width: 76%;
+    bottom: -10px;
+    right: -10px;
     border-width: 6px;
   }
 }

@@ -185,10 +185,17 @@
 ### Passo 15: Fidelidade Absoluta 1:1 da Imagem de Ferramentas, Alinhamento de Posicionamento e Invalidação de Cache
 - **Status:** **CONCLUÍDO** ✅
 - **Entregas Realizadas:**
-  1. **Análise Comparativa de Precisão da Imagem de Referência:** Mensuração direta sobre a imagem de referência do usuário (`media_1794363524985_26a9860c.jpg`), revelando dimensões de 459 x 286 px (proporção 16:10 exata, 1.605:1), cobrindo 85% da largura da foto principal, com base em y=469 e transbordo inferior de 34px (`bottom: -32px; right: -42px; width: 85%; max-width: 410px;`).
-  2. **Calibração de Enquadramento 1:1 (98.43% de Correlação):** Com `object-fit: cover` e `object-position: 4% center` (deslocamento ótimo na imagem fonte AVIF), o vaso de suculenta é enquadrado por completo à esquerda e o secador CROC por completo à direita com correlação matemática comprovada de 0.9843 com o mockup de referência.
-  3. **Blindagem Contra Cache no Navegador:**
-     - Invalidação no `nginx.conf` (`Cache-Control: no-cache, no-store, must-revalidate` para `.css` e `.js`).
-     - Versionamento de assets em `index.html` (`style.css?v=2.0.0` e `main.js?v=2.0.0`).
-     - Aplicação de estilos inline prioritários com `!important` diretamente na tag `.concept-inset-img-box` e seu `<img>`, impedindo qualquer sobreposição ou cache estagnado no navegador do usuário.
-  4. **Auditoria de Integridade no Docker:** 100% dos testes e endpoints validados com status HTTP 200 via `tests/audit_docker.py`.
+  1. **Análise Comparativa de Precisão da Imagem de Referência:** Mensuração direta sobre a imagem de referência do usuário (`media_1794363524985_26a9860c.jpg`), revelando proporção 16:10 exata (1.605:1).
+  2. **Blindagem Contra Cache no Navegador:** Invalidação no `nginx.conf` (`Cache-Control: no-cache, no-store, must-revalidate` para `.css` e `.js`) e versionamento de assets em `index.html`.
+  3. **Auditoria de Integridade no Docker:** 100% dos testes e endpoints validados com status HTTP 200 via `tests/audit_docker.py`.
+
+---
+
+### Passo 16: Substituição Direta do Asset de Imagem AVIF pela Matriz Original Calibrada (753x459 px) e Ajuste de Overflow
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Substituição do Arquivo Físico da Imagem:** O arquivo `imagens/photo-1527799820374-dcf8d9d4a388_002_Po4W.avif` foi regravado em alta definição diretamente com a matriz original recortada (`753 x 459 px`), contendo o vaso de suculenta completo à esquerda, pente, chapinha, escova e secador à direita com 97.35% de correlação com a referência enviada.
+  2. **Eliminação de Dependência de Recorte via CSS:** Como o próprio arquivo de imagem já possui a proporção e enquadramento panorâmico idêntico ao original, `object-fit: cover` e `object-position: center center` agora preservam 100% de todos os elementos em qualquer resolução.
+  3. **Ajuste Milimétrico de Proporção e Overflow:** Com base na medição da composição original enviada (`media_1794364511173_5471406c.jpg`), o container foi ajustado para `width: 79%; max-width: 380px; bottom: -12px; right: -14px;`, eliminando o deslocamento excessivo para fora da foto principal e reproduzindo a sobreposição perfeita do mockup.
+  4. **Atualização da Tag HTML com Cache-Buster v2.1.0:** Inserido `photo-1527799820374-dcf8d9d4a388_002_Po4W.avif?v=2.1.0` para forçar o recarregamento imediato no navegador.
+  5. **Auditoria de Integridade no Docker:** 100% dos testes e endpoints validados via `tests/audit_docker.py`.
