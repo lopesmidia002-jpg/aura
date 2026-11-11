@@ -161,11 +161,21 @@
 
 ---
 
-### Passo 13: Correção do Formato e Proporção 4:3 da Foto Sobreposta de Ferramentas
+### Passo 13: Correção do Formato e Proporção da Foto Sobreposta de Ferramentas
 - **Status:** **CONCLUÍDO** ✅
 - **Entregas Realizadas:**
-  1. **Calibração da Proporção 4:3 (Landscape):** Correção do formato de `.concept-inset-img-box` que anteriormente estava sendo comprimido para um formato quase quadrado (1.1:1). Aplicação de `aspect-ratio: 4 / 3` tanto no contêiner quanto no elemento `<img>`.
-  2. **Enquadramento Completo dos Elementos Fotográficos:** Ajuste da largura para `width: 78%` (max `370px`) e `object-position: center center`, permitindo que o vasinho de cerâmica com suculenta no canto esquerdo, o pente, a chapinha, a escova de raquete e o secador no canto direito fiquem 100% visíveis, eliminando o corte lateral indesejado.
-  3. **Moldura e Profundidade Editorial:** Preservação da moldura de passpartout em branco puro de 8px (`border: 8px solid #FFFFFF`) com cantos de 2px e sombra difusa (`box-shadow: 0 18px 42px rgba(20, 16, 12, 0.16)`).
-  4. **Responsividade Mobile:** Ajuste proporcional para telas móveis (`width: 72%`, `border-width: 6px`).
-  5. **Auditoria no Docker:** 100% dos testes validados com sucesso no container (`tests/audit_docker.py`).
+  1. **Calibração da Proporção Landscape:** Correção do formato de `.concept-inset-img-box` que anteriormente estava sendo comprimido para um formato quase quadrado.
+  2. **Enquadramento Inicial dos Elementos Fotográficos:** Ajuste da moldura de passpartout em branco puro de 8px (`border: 8px solid #FFFFFF`) com cantos de 2px e sombra difusa (`box-shadow: 0 18px 42px rgba(20, 16, 12, 0.16)`).
+  3. **Responsividade Mobile:** Ajuste proporcional para telas móveis.
+  4. **Auditoria no Docker:** 100% dos testes validados com sucesso no container (`tests/audit_docker.py`).
+
+---
+
+### Passo 14: Calibração Retangular 16:10 da Foto Sobreposta de Ferramentas e Enquadramento do Vaso de Suculenta
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Proporção Panorâmica / Retangular 16:10:** A proporção anterior de 4:3 (1.33:1) ainda gerava um aspecto excessivamente quadrado e cortava o vaso de suculenta à esquerda. Foi implementado o formato landscape retangular `aspect-ratio: 16 / 10` (1.6:1), conferindo a exata geometria horizontal retangular solicitada pelo usuário e presente no mockup de referência.
+  2. **Enquadramento Completo do Vaso de Suculenta à Esquerda:** Com `object-position: 6% center;` e expansão de largura para `width: 84%; max-width: 395px;`, o vaso de cerâmica branca com a planta suculenta no canto esquerdo fica 100% visível, assim como o pente de cabo fino, a chapinha de titânio, a escova de raquete e o secador profissional à direita.
+  3. **Posicionamento e Moldura Editorial:** Posicionamento calibrado (`bottom: -28px; right: -42px;`), preservando a moldura em branco puro sólido de 8px (`border: 8px solid #FFFFFF`), cantos suavizados com raio de 2px e sombra difusa luxuosa (`box-shadow: 0 18px 42px rgba(20, 16, 12, 0.16)`).
+  4. **Responsividade Mobile:** Ajuste refinado para smartphones (`width: 80%; bottom: -20px; right: -16px; border-width: 6px;`).
+  5. **Auditoria de Integridade no Docker:** 100% dos testes e endpoints validados com status HTTP 200 via `tests/audit_docker.py`.
