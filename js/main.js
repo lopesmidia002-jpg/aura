@@ -92,6 +92,11 @@ function initMobileMenu() {
     link.addEventListener('click', closeDrawer);
   });
 
+  const footerCta = drawer.querySelector('.mobile-drawer-footer a');
+  if (footerCta) {
+    footerCta.addEventListener('click', closeDrawer);
+  }
+
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && drawer.classList.contains('open')) {
       closeDrawer();

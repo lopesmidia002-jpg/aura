@@ -768,6 +768,141 @@
      - Recarga do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
      - Suíte de testes `tests/audit_docker.py` executada com 100% de aprovação.
 
+---
+
+### Passo 46: Calibração Cromática do Fundo da Caixa de Aviso de Transparência (Marrom Espresso Suave #2E251E 1:1 com o Original)
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Auditoria Colorimétrica Rigorosa no Mockup e PDF Original:**
+     - Confronto pixel a pixel entre a captura em produção (`media_1794439567907_93df2fbd.png`), o recorte do original enviado pelo usuário (`media_1794439587678_f65b91eb.png`) e a extração vetorial de alta definição do PDF oficial (`AURA Maison de Beauté — Salão Feminino de Alto Padrão   Experiências Exclusivas.pdf`, página 0, y ~ 4500 a 5000).
+     - Comprovou-se que o fundo da caixa de aviso de transparência (`.transparency-alert`) na seção de Colorimetria (`#coloracao`) não é transparente, mas sim preenchido por um tom marrom espresso suave mais claro: `RGB [46, 37, 30]` (`#2E251E`), que se destaca com sutil elegância sobre o fundo bronze espresso da seção (`#211C19` / `RGB [33, 28, 25]`).
+  2. **Refatoração em CSS (`css/style.css`):**
+     - `.transparency-alert`: configurado com `background-color: #2E251E;`, substituindo a declaração `background: transparent;`.
+     - Mantidos com total fidelidade o contorno pontilhado em ouro acetinado (`border: 1px dotted rgba(197, 160, 89, 0.6);`), a tipografia branca nobre e o ícone com aro dourado.
+  3. **Validação Automatizada via Chrome CDP:**
+     - Inspeção em runtime confirmando `alertBg: "rgb(46, 37, 30)"`, `sectionBg: "rgb(33, 28, 25)"`, `borderStyle: "dotted"` e `borderColor: "rgba(197, 160, 89, 0.6)"`.
+  4. **Blindagem Contra Cache v=5.12.0 e Validação no Docker:**
+     - Versionamento `v=5.12.0` aplicado em `index.html` (links e preloads) e `style.css`.
+     - Recarga sem interrupção do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
+     - Suíte de auditoria completa `tests/audit_docker.py` executada com 100% de sucesso.
+
+---
+
+### Passo 47: Equalização Dimensional do Card de Noivas com a Coluna da Esquerda (Altura 1:1 com o Original)
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Auditoria Geométrica Comparativa (`media_1794439727082_0d4d4144.jpg` vs `media_1794439740949_a64a260e.jpg`):**
+     - Na captura em produção anterior, o card de formulário de noivas (`.bridal-form-card`) encerrava em 532px, enquanto a coluna da esquerda com os 4 cards e o botão "FALAR COM CONCIERGE DE NOIVAS" estendia-se até 588px (degrau de 56px abaixo do card).
+     - No mockup original de referência (`im2`), a base inferior do card de noivas e a base inferior do botão da coluna esquerda alinham-se rigorosamente na mesma linha horizontal (`y = 474` vs `y = 471`, `diff: 0px`).
+  2. **Refatoração do Grid e Card em CSS (`css/style.css`):**
+     - `.bridal-layout-grid` em `@media (min-width: 992px)`: configurado com `align-items: stretch;`, garantindo preenchimento vertical integral das duas colunas.
+     - `.bridal-form-card`: configurado com `height: 100%;` e `display: flex; flex-direction: column;`.
+     - `#bridal-proposal-form`: configurado com `display: flex; flex-direction: column; flex: 1; justify-content: space-between;`, distribuindo harmoniosamente os campos do formulário e posicionando o botão "SOLICITAR ORÇAMENTO DE NOIVAS" rente à base com o padding interno.
+  3. **Validação Automatizada via Chrome CDP:**
+     - Testes realizados nos viewports 1600px, 1440px, 1280px e 1024px:
+       - 1600px: `leftHeight: 682px, cardHeight: 682px, heightDiff: 0px, bottomDiff: 0px`.
+       - 1440px: `leftHeight: 682px, cardHeight: 682px, heightDiff: 0px, bottomDiff: 0px`.
+       - 1280px: `leftHeight: 682px, cardHeight: 682px, heightDiff: 0px, bottomDiff: 0px`.
+       - 1024px: `leftHeight: 829px, cardHeight: 829px, heightDiff: 0px, bottomDiff: 0px`.
+     - Auditoria mobile (768px, 480px, 375px) confirmando `overflow: false` e fluxo vertical natural.
+  4. **Blindagem Contra Cache v=5.13.0 e Validação no Docker:**
+     - Versionamento `v=5.13.0` aplicado em `index.html` (links e preloads) e `style.css`.
+     - Recarga sem interrupção do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
+     - Suíte de testes `tests/audit_docker.py` executada com 100% de aprovação.
+
+---
+
+### Passo 48: Calibração Cromática do Fundo da Seção de Depoimentos (Linho Quente #EEE5DC 1:1 com o Original)
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Auditoria Colorimétrica Rigorosa no Mockup e PDF Original:**
+     - Confronto pixel a pixel entre a captura em produção (`media_1794439874032_dd0286d0.png`), a referência enviada pelo usuário (`media_1794439891626_735e4474.png`) e a extração vetorial de alta definição do PDF oficial (`AURA Maison de Beauté — Salão Feminino de Alto Padrão   Experiências Exclusivas.pdf`, página 0, y ~ 10300 a 11200).
+     - Constatou-se que a seção de depoimentos (`.testimonials-editorial-section` / `#depoimentos`) utilizava anteriormente `var(--bg-champagne-alt)` (`#F7F3EC` / `RGB [247, 243, 236]`), apresentando tonalidade excessivamente clara.
+     - A amostragem colorimétrica no PDF oficial e na referência comprovou que o fundo autêntico é o tom linho quente aveludado `RGB [238, 229, 220]` (`#EEE5DC`, 61.7% dos pixels da seção), idêntico ao fundo da seção de rituais e manifesto.
+  2. **Refatoração em CSS (`css/style.css`):**
+     - `.testimonials-editorial-section`: configurado com `background-color: #EEE5DC;`, escurecendo sutilmente o fundo e gerando o contraste visual perfeito, nobre e caloroso com o card central branco puro (`.testimonial-spotlight-card` com `#FFFFFF`) e a pílula Google Reviews (`.google-reviews-pill` com `#FFFFFF`).
+  3. **Validação Automatizada via Chrome CDP:**
+     - Inspeção em runtime confirmando `secBg: "rgb(238, 229, 220)"` (`#EEE5DC`), `cardBg: "rgb(255, 255, 255)"` e `pillBg: "rgb(255, 255, 255)"`.
+  4. **Blindagem Contra Cache v=5.14.0 e Validação no Docker:**
+     - Versionamento `v=5.14.0` aplicado em `index.html` (links e preloads) e `style.css`.
+     - Recarga sem interrupção do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
+     - Suíte de auditoria completa `tests/audit_docker.py` executada com 100% de sucesso.
+
+---
+
+### Passo 49: Alinhamento Fiel da Seção de Newsletter (Fundo Linho Quente #EEE5DC, Borda Superior e Formulário 1:1 com o Original)
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Auditoria Colorimétrica e Geométrica no PDF Original e Referência:**
+     - Confronto pixel a pixel entre a captura em produção (`media_1794439964093_03866963.png`), a referência enviada pelo usuário (`media_1794440113214_c17712d5.png`) e a extração vetorial do PDF oficial (`AURA Maison de Beauté — Salão Feminino de Alto Padrão   Experiências Exclusivas.pdf`, transição das páginas 0 e 1, y ~ 14150 da pág 0 a 200 da pág 1).
+     - Identificado que o fundo autêntico da seção de newsletter é linho quente `RGB [238, 229, 220]` (`#EEE5DC`), que a seção possui linha divisória superior em tom suave `RGB [222, 213, 206]` (`#DED5CE`), e que a proporção do formulário é de ~530px com campo branco e botão dourado aristocrático de 48px de altura com gap de 8px.
+  2. **Refatoração no CSS (`css/style.css`) e Marcação HTML (`index.html`):**
+     - `.newsletter-clean-section`: fundo ajustado para `#EEE5DC;`, borda superior `1px solid #DED5CE;`, paddings calibrados para `85px 20px 90px;`.
+     - Tipografia: `.gold-kicker` com `letter-spacing: 0.22em`, `.editorial-heading` com `clamp(1.8rem, 2.5vw, 2.35rem)` e `.section-subtext` em tom taupe `#5A524C` com max-width de 580px e margem harmônica.
+     - `.newsletter-clean-form`: largura máxima de 530px, gap de 8px e alinhamento `stretch`.
+     - `.newsletter-clean-input`: fundo branco puro `#FFFFFF`, borda `1px solid #DED5CE`, cantos arredondados de 4px, altura mínima de 48px e placeholder taupe `#9E9A95`.
+     - `.btn-newsletter`: altura equalizada de 48px, fundo dourado `#C5A059`, cantos de 4px e sombra refinada.
+  3. **Validação Automatizada via Chrome CDP:**
+     - Verificação em tempo real: `secBg: "rgb(238, 229, 220)"` (`#EEE5DC`), `borderTop: "1px solid rgb(222, 213, 206)"`, `formWidth: 530px`, `inputHeight: 48px`, `buttonHeight: 48px`.
+  4. **Blindagem Contra Cache v=5.15.0 e Validação no Docker:**
+     - Versionamento `v=5.15.0` aplicado em `index.html` (links e preloads) e `style.css`.
+     - Recarga sem interrupção do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
+     - Suíte de auditoria completa `tests/audit_docker.py` executada com 100% de aprovação.
+
+---
+
+### Passo 50: Equalização e Calibração Fiel dos Cards de Agendamento e Horários (1:1 com o Original)
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Auditoria Geométrica e Colorimétrica no PDF Original e Referência:**
+     - Confronto pixel a pixel entre a captura em produção (`media_1794441274432_97fcaac0.jpg`), a referência do usuário (`media_1794441296300_2f1826b3.jpg`) e a extração vetorial do PDF oficial (`AURA Maison de Beauté — Salão Feminino de Alto Padrão   Experiências Exclusivas.pdf`, página 0, y ~ 11800 a 12600).
+     - Identificado que o layout desktop original possui proporção assimétrica nobre com a coluna esquerda mais larga (~1.35fr : 1fr) para acomodar com elegância a linha tripla de inputs ("Profissional Desejado", "Data de Preferência" e "Horário Preferido"), eliminando qualquer truncamento ou quebra de texto nos seletores.
+     - Amostragem colorimétrica confirmou o fundo dos cards em marrom espresso quente `#1F1A17` (`RGB [31, 26, 23]`), rótulos em marfim/taupe suave `#C4B5A8` (`RGB [196, 181, 168]`), botão dourado acetinado com glow envolvente `box-shadow: 0 4px 20px rgba(186, 155, 108, 0.35)`, e dia ativo da semana "Terça-feira" em marfim sereno (`var(--text-ivory)`), sem destaque dourado estridente.
+  2. **Refatoração no CSS (`css/style.css`):**
+     - `.booking-double-grid`: atualizado nos breakpoints desktop para `grid-template-columns: 1.35fr 1fr; gap: 40px; align-items: stretch;`.
+     - `.booking-box-dark` e `.schedule-box-dark`: fundo calibrado para `#1F1A17;`, borda `1px solid rgba(197, 160, 89, 0.22);`, altura equalizada de 688px.
+     - `#section-booking-form .form-label-txt`: tipografia atualizada para `color: #C4B5A8; font-size: 0.68rem; letter-spacing: 0.16em;`.
+     - `.form-grid-3 .input-dark`: preenchimento refinado para `padding: 12px 10px; font-size: 0.82rem;`, acomodando os selects com folga e elegância visual; textarea com `resize: none;`.
+     - `#section-booking-form .btn-gold`: estilizado com gradiente `linear-gradient(135deg, #C5A059 0%, #B89248 100%)`, `box-shadow: 0 4px 20px rgba(186, 155, 108, 0.35);`, `letter-spacing: 0.14em;`, `min-height: 48px;`.
+     - `.schedule-row.active-day`: tipografia definida como `color: var(--text-ivory); font-weight: 500;`, alinhando perfeitamente com a sobriedade da tabela original.
+     - `.concierge-subbox`: background refinado para `rgba(197, 160, 89, 0.06); border: 1px solid rgba(197, 160, 89, 0.22);`.
+  3. **Validação Automatizada via Chrome CDP:**
+     - Inspeção em runtime no container Docker:
+       - `leftCard`: `width: 523.9px, height: 688.1px, bg: rgb(31, 26, 23)`
+       - `rightCard`: `width: 388.1px, height: 688.1px, bg: rgb(31, 26, 23)`
+       - `labelColor`: `rgb(196, 181, 168)` (`#C4B5A8`)
+       - `btnShadow`: `rgba(186, 155, 108, 0.35) 0px 4px 20px 0px`
+       - `activeDayColor`: `rgb(221, 215, 206)` (`var(--text-ivory)`)
+  4. **Blindagem Contra Cache v=5.16.0 e Validação no Docker:**
+     - Versionamento `v=5.16.0` aplicado em `index.html` e `style.css`.
+     - Recarga sem interrupção do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
+     - Suíte de auditoria completa `tests/audit_docker.py` executada com 100% de sucesso.
+
+---
+
+### Passo 51: Implementação e Calibração Fiel do Menu Hambúrguer Mobile no Lado Direito do Header
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Estrutura Semântica no Header (`index.html`):**
+     - Inclusão do botão `#menu-toggle-btn.btn-mobile-toggle` dentro de `.header-right`, posicionado à direita do botão de agendamento ("AGENDAR HORÁRIO"), com atributos acessíveis `aria-label="Abrir Menu de Navegação"`, `aria-expanded="false"` e `aria-controls="mobile-drawer"`, e 3 elementos `<span>` para animação fluida das linhas do menu.
+  2. **Estilização Visual de Alto Padrão (`css/style.css`):**
+     - Ocultação no desktop (`@media (min-width: 960px)` com `display: none !important;`) preservando a integridade da barra de navegação horizontal completa.
+     - Exibição em tablets e mobile (`max-width: 959px`) com formato ergonômico de 38x38px (e 34x34px em telas <= 480px, 32x32px em <= 360px).
+     - Acabamento nobre com fundo Dark Espresso translúcido (`rgba(22, 18, 15, 0.75)`), desfoque em vidro (`backdrop-filter: blur(8px)`), borda de joalheria em ouro acetinado (`rgba(197, 160, 89, 0.45)`), e linhas douradas (`#C5A059`) que transicionam para estado ativo em "X" com feixe branco puro (`#FFFFFF`).
+     - Refinamento do botão de fechar do drawer lateral (`.mobile-drawer-close`) com aro dourado, hover luminoso e alinhamento centrado.
+  3. **Comportamento Interativo e Usabilidade (`js/main.js`):**
+     - Sincronização bidirecional do estado ativo (`.active`, `aria-expanded`) com a abertura do `.mobile-drawer` e do `.mobile-drawer-overlay`.
+     - Fechamento imediato e reativo ao clicar nos links do menu mobile, no botão fechar superior "✕", no overlay exterior, na tecla Escape, no gesto de deslize (swipe touch para a direita) e no botão de CTA do rodapé do drawer.
+  4. **Auditoria e Validação via Chrome CDP e Docker:**
+     - Inspeção via Chrome CDP em 1280px (desktop: botão oculto), 768px (tablet: botão visível sem overflow) e 375px (mobile: botão visível a 16px da borda direita, abertura e fechamento perfeitos, `hasHScroll: false`).
+     - Versionamento `v=5.17.0` aplicado em `index.html`, `style.css` e `main.js`.
+     - Recarga sem interrupção do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
+     - Suíte `tests/audit_docker.py` executada com 100% de aprovação.
+
+
+
+
+
 
 
 
