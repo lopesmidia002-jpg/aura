@@ -35,7 +35,12 @@
 ---
 
 ## 4. Estado Atual do Projeto
-- **Status das Fases:** Passos 1 a 51 (**TODOS CONCLUÍDOS** ✅).
+- **Status das Fases:** Passos 1 a 52 (**TODOS CONCLUÍDOS** ✅).
+- **Divisores de Linha em Cada Dia/Horário e Efeito Hover Dourado no Quadro de Atendimento (Passo 52):**
+  - Inclusão de divisor de linha inferior em cada uma das 7 linhas de dias e horários (`.schedule-row` com `border-bottom: 1px solid rgba(255, 255, 255, 0.08);`) com espaçamento homogêneo e balanceado de ~45px por linha.
+  - Hover reativo em ouro nobre acetinado (`border-bottom-color: var(--gold-primary)` / `#C5A059`) e tipografia iluminada em branco puro (`#FFFFFF`) ao passar o cursor sobre qualquer dia da semana.
+  - Destaque padrão do dia ativo (Terça-feira) e suporte a interatividade touch por toque em telas de smartphones e tablets via `initScheduleInteractions()`.
+  - Blindagem de cache `?v=5.18.0` no HTML, CSS e JS, com auditoria Docker 100% aprovada.
 - **Implementação do Menu Hambúrguer Mobile no Lado Direito do Header (Passo 51):**
   - Inclusão do botão `#menu-toggle-btn.btn-mobile-toggle` posicionado à direita de `.header-right` após o botão de agendamento, garantindo posicionamento no extremo direito no mobile e tablet (`max-width: 959px`), e ocultação rigorosa no desktop (`min-width: 960px`).
   - Acabamento de joalheria em Dark Espresso com vidro fosco (`backdrop-filter: blur(8px)`), contorno em ouro acetinado (`rgba(197, 160, 89, 0.45)`), e três barras em ouro que animam para "X" com feixe branco puro quando ativo.
@@ -129,6 +134,7 @@
   - Alinhamento e calibração fiel da seção de Newsletter (`.newsletter-clean-section`): fundo em tom linho quente autêntico `#EEE5DC` (`RGB [238, 229, 220]`), divisor superior `1px solid #DED5CE`, formulário de 530px com gap de 8px, campo branco puro e botão dourado aristocrático de 48px, com cache `v=5.15.0`.
   - Equalização e calibração fiel dos cards de Agendamento e Horários (`#agendamento`): proporção nobre de grid `1.35fr 1fr; gap: 40px; align-items: stretch;`, eliminando aperto nos selects triplos, fundo em marrom espresso quente `#1F1A17` (`RGB [31, 26, 23]`), rótulos em marfim suave `#C4B5A8`, botão com gradiente e glow dourado suave, e dia ativo sem excessos cromáticos, com cache `v=5.16.0`.
   - Implementação do menu hambúrguer no lado direito do header no mobile (`.btn-mobile-toggle#menu-toggle-btn`): botão elegante em dark espresso com vidro fosco e aro em ouro acetinado, linhas em ouro nobre animadas em "X", acionando o drawer lateral com navegação completa por todas as 13 seções, gestos touch e fechamento acessível, com cache `v=5.17.0`.
+  - Divisores de linha em cada dia/horário e hover dourado interativo (`.schedule-row` em `#agendamento`): linhas divisórias individuais em todas as 7 linhas (`border-bottom: 1px solid rgba(255, 255, 255, 0.08)`), transição instantânea para ouro acetinado (`#C5A059`) e tipografia branca pura ao passar o mouse sobre qualquer dia, com destaque de dia ativo e suporte a toque mobile, com cache `v=5.18.0`.
 - **Ambiente Local Ativo:** Container `aura-maison-web` em execução no Docker na porta `3000` (`http://localhost:3000`).
 - **Prontidão de Produção:** `docker-compose.prod.yml`, `nginx.prod.conf`, `.env.example` e scripts de deploy prontos para publicação em VPS/Cloud.
 - **Auditoria de Integridade:** 100% dos testes de carregamento, API e assets validados via script automatizado (`tests/audit_docker.py`).

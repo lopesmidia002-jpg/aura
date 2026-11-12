@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPhoneMasks();
   initMinDates();
   initScrollReveal();
+  initScheduleInteractions();
 });
 
 /* ==========================================================================
@@ -894,6 +895,21 @@ function initLanguageSwitcher() {
         e.preventDefault();
         activate();
       }
+    });
+  });
+}
+
+/* ==========================================================================
+   15. INTERAÇÃO DOS DIAS E HORÁRIOS DE ATENDIMENTO
+   ========================================================================== */
+function initScheduleInteractions() {
+  const rows = document.querySelectorAll('.schedule-row');
+  if (!rows.length) return;
+
+  rows.forEach(row => {
+    row.addEventListener('click', () => {
+      rows.forEach(r => r.classList.remove('active-day'));
+      row.classList.add('active-day');
     });
   });
 }

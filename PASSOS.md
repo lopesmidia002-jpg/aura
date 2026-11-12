@@ -899,6 +899,26 @@
      - Recarga sem interrupção do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
      - Suíte `tests/audit_docker.py` executada com 100% de aprovação.
 
+---
+
+### Passo 52: Divisores de Linha em Cada Dia/Horário e Efeito Hover Dourado no Quadro de Atendimento (1:1 com o Original)
+- **Status:** **CONCLUÍDO** ✅
+- **Entregas Realizadas:**
+  1. **Análise Comparativa e Amostragem no Mockup/PDF Oficial:**
+     - Amostragem pixel a pixel na captura de referência (`media_1794443581161_fcb1e42c.png`), comprovando que cada uma das 7 linhas de dias e horários da semana possui um divisor de linha inferior (`border-bottom: 1px solid rgba(255, 255, 255, 0.08);`) com espaçamento homogêneo de ~45px por linha.
+     - Constatou-se que o efeito hover ao passar o cursor sobre qualquer linha (`.schedule-row:hover`) altera a cor da linha correspondente para ouro nobre acetinado (`border-bottom-color: var(--gold-primary)` / `#C5A059`) e realça o texto em branco puro (`#FFFFFF`).
+  2. **Refatoração no CSS (`css/style.css`):**
+     - `.schedule-table-rows`: removido o gap vertical e o padding redundante, mantendo `border-top: 1px solid rgba(255, 255, 255, 0.08);` e margem inferior de 24px.
+     - `.schedule-row`: configurado com `border-bottom: 1px solid rgba(255, 255, 255, 0.08);`, padding vertical refinado de `13px 0 12px;`, `align-items: center;` e transição aveludada de 0.25s.
+     - Hover e estado ativo: `.schedule-row:hover` com `border-bottom-color: var(--gold-primary) !important;` e `color: #FFFFFF;`, `.schedule-row.active-day` com linha dourada por padrão, e chaveamento inteligente quando o mouse percorre a tabela (`.schedule-table-rows:hover .schedule-row.active-day:not(:hover)`).
+  3. **Interatividade Touch em Dispositivos Móveis (`js/main.js`):**
+     - Adicionada função `initScheduleInteractions()` permitindo que o toque em qualquer dia em telas mobile/tablet também ative o dia selecionado e exiba a linha dourada.
+  4. **Auditoria e Validação via Chrome CDP e Docker:**
+     - Validado via Chrome CDP em runtime confirmando todas as 7 linhas com `borderBottom: 1px solid rgba(255, 255, 255, 0.08)`, Terça-feira ativa com linha `rgb(197, 160, 89)`, hover dinâmico transformando Quarta-feira em dourado ao passar o cursor, e seleção reativa por clique.
+     - Versionamento `v=5.18.0` aplicado em `index.html`, `style.css` e `main.js`.
+     - Recarga sem interrupção do Nginx no container Docker (`docker exec aura-maison-web nginx -s reload`).
+     - Suíte `tests/audit_docker.py` executada com 100% de sucesso.
+
 
 
 
